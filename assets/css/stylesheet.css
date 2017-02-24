@@ -73,6 +73,38 @@
     color: #a24ef4;
 }
 
+#wrapper{
+  display: inline-block;
+  position:relative;
+}
+
+#pccase-parallax{
+  width: 100%;
+  max-width: 100%;
+}
+
+#motherboard-parallax{
+  position:absolute;
+  right: 135%;
+  top: 10%;
+  max-width:40%;
+}
+
+#graphicscard-parallax{
+  position:absolute;
+  left: 120%;
+  top: 40%;
+  max-width:30%;
+}
+
+
+#cpucooler-parallax{
+  position:absolute;
+  left: 120%;
+  top: 16%;
+  max-width:28%;
+}
+
 #navbarsearchform {
     margin-left: 0em;
     margin-right: 0;
@@ -178,3 +210,84 @@
     background-image: linear-gradient(to top, #139fe8, #36f4a8);
     transition: opacity 0.4s ease-out;
 }
+ 
+
+/*Product Search Results page*/
+#product-submit {
+    border-radius: 27px;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+    padding: 16px 20px 20px;
+    line-height: 5px;
+    height: 26px;
+    font-size: 10px;
+    color: white;
+    background-image: linear-gradient(#4f47bc, #a24ef4);
+    border: none;
+    transition: all 0.4s ease;
+    z-index: 10;
+}
+
+#product-submit:hover {
+    background-image: linear-gradient(to top, #139fe8, #36f4a8);
+    transition: opacity 0.4s ease-out;
+}
+
+#product-search-bounds{
+   overflow-y: scroll;
+   height: 500px;
+   background-color: #d3d3d3;
+}
+
+#product-filter-bounds{
+
+}
+
+#product-filter-bounds input{
+    margin-top: 1em;
+}
+
+#product-search-results{
+    padding: 1em;
+    border: 5px solid transparent;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    background-color: white;
+}
+
+#product-search-results:hover{
+    border: 5px solid #a24ef4;
+    transition: opacity 0.4s ease-out;
+}
+
+#product-search-results button{
+    margin-top:50%;
+}
+
+#productprice{
+    margin-bottom: 0 !important;
+    margin-top: 2em;
+}
+
+#addtocartbutton {
+    border-radius: 27px;
+    letter-spacing: .7px;
+    margin-top: 1em !important;
+    text-transform: uppercase;
+    padding: 16px 22px 18px;
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    background-image: linear-gradient(#4f47bc, #a24ef4);
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease;
+}
+
+#addtocartbutton:hover {
+    background-image: linear-gradient(to top, #139fe8, #36f4a8);
+    transition: opacity 0.4s ease-out;
+}
+
+
+/*End Of Product Search Results page*/
