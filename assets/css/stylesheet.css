@@ -105,6 +105,20 @@
   max-width:28%;
 }
 
+#index-products{
+    border: 4px solid;
+    border-radius: 8px;
+    border-color: #a24ef4;
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+}
+
+#index-products:hover{
+    border: 4px solid;
+    border-radius: 8px;
+    border-color: #60cbfc;
+}
+
 #navbarsearchform {
     margin-left: 0em;
     margin-right: 0;
