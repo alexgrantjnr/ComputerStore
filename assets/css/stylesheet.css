@@ -1,3 +1,5 @@
+/*all page styling*/
+
 *:focus {
     outline: none;
 }
@@ -27,6 +29,19 @@
     color: white;
 }
 
+.purple-to-blue {
+    color: #a24ef4;
+    transition: all 0.6s ease;
+}
+
+.purple-to-blue:hover {
+    color: #60cbfc;
+    transition: opacity 0.6s ease-out;
+}
+
+
+/*end of all page styling*/
+
 #topnav {
     background-color: #363441;
     padding-top: 2em;
@@ -41,16 +56,6 @@
 .footer-info {
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-size: 1.5em;
-}
-
-.purple-to-blue {
-    color: #a24ef4;
-    transition: all 0.6s ease;
-}
-
-.purple-to-blue:hover {
-    color: #60cbfc;
-    transition: opacity 0.6s ease-out;
 }
 
 #subnav {
@@ -73,39 +78,38 @@
     color: #a24ef4;
 }
 
-#wrapper{
-  display: inline-block;
-  position:relative;
+#wrapper {
+    display: inline-block;
+    position: relative;
 }
 
-#pccase-parallax{
-  width: 100%;
-  max-width: 100%;
+#pccase-parallax {
+    width: 100%;
+    max-width: 100%;
 }
 
-#motherboard-parallax{
-  position:absolute;
-  right: 135%;
-  top: 10%;
-  max-width:40%;
+#motherboard-parallax {
+    position: absolute;
+    right: 135%;
+    top: 10%;
+    max-width: 40%;
 }
 
-#graphicscard-parallax{
-  position:absolute;
-  left: 120%;
-  top: 40%;
-  max-width:30%;
+#graphicscard-parallax {
+    position: absolute;
+    left: 120%;
+    top: 40%;
+    max-width: 30%;
 }
 
-
-#cpucooler-parallax{
-  position:absolute;
-  left: 120%;
-  top: 16%;
-  max-width:28%;
+#cpucooler-parallax {
+    position: absolute;
+    left: 120%;
+    top: 16%;
+    max-width: 28%;
 }
 
-#index-products{
+#index-products {
     border: 4px solid;
     border-radius: 8px;
     border-color: #a24ef4;
@@ -113,7 +117,7 @@
     margin-top: 0.5em;
 }
 
-#index-products:hover{
+#index-products:hover {
     border: 4px solid;
     border-radius: 8px;
     border-color: #60cbfc;
@@ -224,9 +228,10 @@
     background-image: linear-gradient(to top, #139fe8, #36f4a8);
     transition: opacity 0.4s ease-out;
 }
- 
+
 
 /*Product Search Results page*/
+
 #product-submit {
     border-radius: 27px;
     letter-spacing: .7px;
@@ -247,21 +252,19 @@
     transition: opacity 0.4s ease-out;
 }
 
-#product-search-bounds{
-   overflow-y: scroll;
-   height: 500px;
-   background-color: #d3d3d3;
+#product-search-bounds {
+    overflow-y: scroll;
+    height: 500px;
+    background-color: #d3d3d3;
 }
 
-#product-filter-bounds{
+#product-filter-bounds {}
 
-}
-
-#product-filter-bounds input{
+#product-filter-bounds input {
     margin-top: 1em;
 }
 
-#product-search-results{
+#product-search-results {
     padding: 1em;
     border: 5px solid transparent;
     margin-top: 0.5em;
@@ -269,16 +272,16 @@
     background-color: white;
 }
 
-#product-search-results:hover{
+#product-search-results:hover {
     border: 5px solid #a24ef4;
     transition: opacity 0.4s ease-out;
 }
 
-#product-search-results button{
-    margin-top:50%;
+#product-search-results button {
+    margin-top: 50%;
 }
 
-#productprice{
+#productprice {
     margin-bottom: 0 !important;
     margin-top: 2em;
 }
@@ -305,3 +308,30 @@
 
 
 /*End Of Product Search Results page*/
+
+
+/*Admin panel styling*/
+
+#admin-panel-settings {
+    background-color: #363441;
+    height: 100%;
+}
+
+.admin-menu-item {
+    margin-top: 1em;
+    font-size: 1.2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+}
+
+.admin-menu-item:hover {
+    color: #60cbfc;
+    border-bottom: 1px solid #a24ef4;
+    border-top: 1px solid #a24ef4;
+}
+
+
+/*end of admin panel styling*/
