@@ -4,6 +4,7 @@ This store was created using the Java Play! Framework, for our end of year 2 pro
   - Feature here
   - Feature here
   - Feature here
+
 # Team Members
 
 Name | XNumber
