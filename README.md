@@ -9,8 +9,8 @@ This store was created using the Java Play! Framework, for our end of year 2 pro
 
 Name | XNumber
 ------------ | -------------
-Ian Daly :baby_bottle::baby: | X1234567
-Connor Behan :blue_car: | X1234567
+Ian Daly :baby_bottle::baby: | X00132250
+Connor Behan :blue_car: | X00123839
 Bren Dempsey :guitar: | X1234567
 Alex Grant :smoking: | X1234567
 
