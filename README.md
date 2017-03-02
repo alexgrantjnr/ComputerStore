@@ -11,7 +11,7 @@ Name | XNumber
 ------------ | -------------
 Ian Daly :baby_bottle::baby: | X00132250
 Connor Behan :blue_car: | X00123839
-Bren Dempsey :guitar: | X1234567
-Alex Grant :smoking: | X1234567
+Bren Dempsey :guitar: | X00132084
+Alex Grant :smoking: | X00132028
 
 ![alt text](https://lh3.googleusercontent.com/-ltNl8YtLGXo/AAAAAAAAAAI/AAAAAAAAAEE/lzC0TnDoACE/w360-h203-p/photo.jpg)
