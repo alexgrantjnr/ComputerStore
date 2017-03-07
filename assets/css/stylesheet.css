@@ -317,6 +317,10 @@
     height: 100%;
 }
 
+#admin-panel-content{
+    background-color: white;
+}
+
 .admin-menu-item {
     margin-top: 1em;
     font-size: 1.2em;

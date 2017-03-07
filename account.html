@@ -94,12 +94,12 @@
                         <span class="help-block">Crumlin, IE</span>
                     </div>
                     <ul class="navigation">
-                        <li class="active">
+                        <li id = "user-info-list">
 
                         <p class = "text-center"><span class="glyphicon glyphicon-user" id="user-info-button"></span></p>
 
                         </li>
-                        <li>
+                        <li id = "user-setting-list">
 
                             <p class = "text-center"><span class="glyphicon glyphicon-cog" id="user-settings-button"></span></p>
 
@@ -344,18 +344,23 @@
 
 <script>
 $(document).ready(function() {
+    $("#user-info-list").last().addClass( "active" );
     $("#account-information").show();
     $("#account-settings").hide();
     
 
     $("#user-settings-button").click(function() {
+        $("#user-setting-list").last().addClass( "active" );
+        $("#user-info-list").last().removeClass( "active" );
         $("#account-information").hide();
-    $("#account-settings").show();
+        $("#account-settings").show();
     });
 
     $("#user-info-button").click(function() {
-           $("#account-information").show();
-    $("#account-settings").hide();
+        $("#user-setting-list").last().removeClass( "active" );
+        $("#user-info-list").last().addClass( "active" );
+        $("#account-information").show();
+        $("#account-settings").hide();
     });
 
 });

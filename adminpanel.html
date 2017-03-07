@@ -74,7 +74,7 @@
     </div>
     <!--end of end of subnav-->
     <div class="container-fluid">
-        <div class="row">
+        <div class="row" id = "admin-panel-content">
             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" id="admin-panel-settings">
                 <h3 class="text-center whitetext">Admin Panel</h3>
                 <img src="assets/img/blank_profile.jpg" class="img-responsive img-circle">
@@ -84,7 +84,7 @@
             </div>
             <!--end of col -->
 
-            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12" id = "admin-panel-display">
                 <div class="container-fluid admin-sections" id="charts-section">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-4 col-xs-4">
@@ -107,7 +107,7 @@
                                 <div class="panel-heading" id = "admin-users-panel-heading">
                                     <div class="row">
                                         <div class="col col-xs-12">
-                                            <h3 class="panel-title purpletext text-center">Registered Users</h3>
+                                            <h3 class="panel-title whitetext text-center">Registered Users</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -153,7 +153,7 @@
                                 <div class="panel-heading" id = "admin-users-panel-heading">
                                     <div class="row">
                                         <div class="col col-xs-12">
-                                            <h3 class="panel-title purpletext text-center">Products</h3>
+                                            <h3 class="panel-title whitetext text-center">Products</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -283,7 +283,7 @@ function drawPieChart() {
         'title': 'Products sold By Category',
         'width': 500,
         'height': 300,
-        backgroundColor: '#E4E4E4'
+        backgroundColor: 'white'
     };
 
     // Instantiate and draw the chart.
@@ -318,7 +318,7 @@ function drawLineChart() {
     // Set chart options
     var options = {
         'title': 'Sales By Months',
-        backgroundColor: '#E4E4E4',
+        backgroundColor: 'white',
         hAxis: {
             title: 'Month'
         },
