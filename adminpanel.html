@@ -15,11 +15,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!--Custom font-->
     <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
-     <!--Jquery UI-->
-    <script
-  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-  crossorigin="anonymous"></script>
+    <!--Jquery UI-->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -76,97 +73,19 @@
         <!--end of end of container-->
     </div>
     <!--end of end of subnav-->
-    <!--Charts javascript-->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-    google.charts.load('current', {
-        packages: ['corechart']
-    });
-
-
-    function drawPieChart() {
-        // Define the chart to be drawn.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Browser');
-        data.addColumn('number', 'Percentage');
-        data.addRows([
-            ['Truckloads', 45.0],
-            ['Plenty', 26.8],
-            ['Inchicore', 12.8],
-            ['Ballyer', 8.5],
-            ['Gear', 6.2],
-            ['Others', 0.7]
-        ]);
-
-        // Set chart options
-        var options = {
-            'title': 'Products sold By Category',
-            'width': 500,
-            'height': 300
-        };
-
-        // Instantiate and draw the chart.
-        var chart = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
-        chart.draw(data, options);
-    }
-
-
-    function drawLineChart() {
-        // Define the chart to be drawn.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Compnents');
-        data.addColumn('number', 'Laptops');
-        data.addColumn('number', 'Desktops');
-        data.addColumn('number', 'Accessories');
-        data.addColumn('number', 'Tablets');
-        data.addRows([
-            ['Jan', 7.0, -0.2, -0.9, 3.9],
-            ['Feb', 6.9, 0.8, 0.6, 4.2],
-            ['Mar', 9.5, 5.7, 3.5, 5.7],
-            ['Apr', 14.5, 11.3, 8.4, 8.5],
-            ['May', 18.2, 17.0, 13.5, 11.9],
-            ['Jun', 21.5, 22.0, 17.0, 15.2],
-            ['Jul', 25.2, 24.8, 18.6, 17.0],
-            ['Aug', 26.5, 24.1, 17.9, 16.6],
-            ['Sep', 23.3, 20.1, 14.3, 14.2],
-            ['Oct', 18.3, 14.1, 9.0, 10.3],
-            ['Nov', 13.9, 8.6, 3.9, 6.6],
-            ['Dec', 9.6, 2.5, 1.0, 4.8]
-        ]);
-
-        // Set chart options
-        var options = {
-            'title': 'Sales By Months',
-            hAxis: {
-                title: 'Month'
-            },
-            vAxis: {
-                title: 'Sales'
-            },
-            'width': 500,
-            'height': 300
-        };
-
-        // Instantiate and draw the chart.
-        var chart = new google.visualization.LineChart(document.getElementById('line_chart_div'));
-        chart.draw(data, options);
-    }
-    google.charts.setOnLoadCallback(drawLineChart);
-    google.charts.setOnLoadCallback(drawPieChart);
-    </script>
-    <!--End of charts javascript-->
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" id="admin-panel-settings">
                 <h3 class="text-center whitetext">Admin Panel</h3>
                 <img src="assets/img/blank_profile.jpg" class="img-responsive img-circle">
-                <p class="text-center whitetext admin-menu-item">Menu Item <i class="fa fa-cogs" aria-hidden="true"></i></p>
-                <p class="text-center whitetext admin-menu-item">Menu Item <i class="fa fa-user" aria-hidden="true"></i></p>
-                <p class="text-center whitetext admin-menu-item">Menu Item <i class="fa fa-tags" aria-hidden="true"></i></p>
+                <p class="text-center whitetext admin-menu-item" id="admin-charts-button">Charts <i class="fa fa-line-chart" aria-hidden="true"></i></p>
+                <p class="text-center whitetext admin-menu-item" id="admin-users-button">Users <i class="fa fa-user" aria-hidden="true"></i></p>
+                <p class="text-center whitetext admin-menu-item" id="admin-product-button">Products <i class="fa fa-tags" aria-hidden="true"></i></p>
             </div>
             <!--end of col -->
+
             <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                <div class="container-fluid">
+                <div class="container-fluid admin-sections" id="charts-section">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-4 col-xs-4">
                             <div id="pie_chart_div"></div>
@@ -179,7 +98,99 @@
                     </div>
                     <!--end of end of row -->
                 </div>
-                <!--end of end of inner container -->
+                <!--end of end of admin-charts-section -->
+
+                <div class="container-fluid admin-sections" id="users-section">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="panel panel-default panel-table" id = "admin-users-panel">
+                                <div class="panel-heading" id = "admin-users-panel-heading">
+                                    <div class="row">
+                                        <div class="col col-xs-12">
+                                            <h3 class="panel-title purpletext text-center">Registered Users</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-striped table-bordered table-list">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <p class="text-center purpletext">Action <i class="fa fa-cog" aria-hidden="true"></i></p>
+                                                </th>
+                                                <th class="hidden-xs">
+                                                    <p class="text-center purpletext">ID</p>
+                                                </th>
+                                                <th> <p class="text-center purpletext">Name</p></th>
+                                                <th><p class="text-center purpletext">Email</p></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td align="center">
+                                                    <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
+                                                    <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                                </td>
+                                                <td class="hidden-xs">1</td>
+                                                <td>John Doe</td>
+                                                <td>johndoe@example.com</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end of col -->
+                    </div>
+                    <!--end of end of row -->
+                </div>
+                <!--end of end of admin-users-section -->
+
+                <div class="container-fluid admin-sections" id="products-section">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="panel panel-default panel-table" id = "admin-users-panel">
+                                <div class="panel-heading" id = "admin-users-panel-heading">
+                                    <div class="row">
+                                        <div class="col col-xs-12">
+                                            <h3 class="panel-title purpletext text-center">Products</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-striped table-bordered table-list">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <p class="text-center purpletext">Action <i class="fa fa-cog" aria-hidden="true"></i></p>
+                                                </th>
+                                                <th class="hidden-xs">
+                                                    <p class="text-center purpletext">ID</p>
+                                                </th>
+                                                <th> <p class="text-center purpletext">Name</p></th>
+                                                <th><p class="text-center purpletext">Email</p></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td align="center">
+                                                    <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
+                                                    <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                                </td>
+                                                <td class="hidden-xs">1</td>
+                                                <td>John Doe</td>
+                                                <td>johndoe@example.com</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end of col -->
+                    </div>
+                    <!--end of end of row -->
+                </div>
+                <!--end of end of admin-products-section -->
             </div>
             <!--end of col -->
         </div>
@@ -245,5 +256,112 @@
     </div>
     <!--end of end of container fluid-->
 </body>
+<!--Charts javascript-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+google.charts.load('current', {
+    packages: ['corechart']
+});
+
+
+function drawPieChart() {
+    // Define the chart to be drawn.
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Browser');
+    data.addColumn('number', 'Percentage');
+    data.addRows([
+        ['Truckloads', 45.0],
+        ['Plenty', 26.8],
+        ['Inchicore', 12.8],
+        ['Ballyer', 8.5],
+        ['Gear', 6.2],
+        ['Others', 0.7]
+    ]);
+
+    // Set chart options
+    var options = {
+        'title': 'Products sold By Category',
+        'width': 500,
+        'height': 300,
+        backgroundColor: '#E4E4E4'
+    };
+
+    // Instantiate and draw the chart.
+    var chart = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
+    chart.draw(data, options);
+}
+
+
+function drawLineChart() {
+    // Define the chart to be drawn.
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Compnents');
+    data.addColumn('number', 'Laptops');
+    data.addColumn('number', 'Desktops');
+    data.addColumn('number', 'Accessories');
+    data.addColumn('number', 'Tablets');
+    data.addRows([
+        ['Jan', 7.0, -0.2, -0.9, 3.9],
+        ['Feb', 6.9, 0.8, 0.6, 4.2],
+        ['Mar', 9.5, 5.7, 3.5, 5.7],
+        ['Apr', 14.5, 11.3, 8.4, 8.5],
+        ['May', 18.2, 17.0, 13.5, 11.9],
+        ['Jun', 21.5, 22.0, 17.0, 15.2],
+        ['Jul', 25.2, 24.8, 18.6, 17.0],
+        ['Aug', 26.5, 24.1, 17.9, 16.6],
+        ['Sep', 23.3, 20.1, 14.3, 14.2],
+        ['Oct', 18.3, 14.1, 9.0, 10.3],
+        ['Nov', 13.9, 8.6, 3.9, 6.6],
+        ['Dec', 9.6, 2.5, 1.0, 4.8]
+    ]);
+
+    // Set chart options
+    var options = {
+        'title': 'Sales By Months',
+        backgroundColor: '#E4E4E4',
+        hAxis: {
+            title: 'Month'
+        },
+        vAxis: {
+            title: 'Sales'
+        },
+        'width': 500,
+        'height': 300
+    };
+
+    // Instantiate and draw the chart.
+    var chart = new google.visualization.LineChart(document.getElementById('line_chart_div'));
+    chart.draw(data, options);
+}
+google.charts.setOnLoadCallback(drawLineChart);
+google.charts.setOnLoadCallback(drawPieChart);
+</script>
+<!--End of charts javascript-->
+
+<script>
+$(document).ready(function() {
+    $("#charts-section").show();
+    $("#users-section").hide();
+    $("#products-section").hide();
+
+    $("#admin-charts-button").click(function() {
+        $("#charts-section").show();
+        $("#products-section").hide();
+        $("#users-section").hide();
+    });
+
+    $("#admin-users-button").click(function() {
+        $("#charts-section").hide();
+        $("#products-section").hide();
+        $("#users-section").show();
+    });
+
+     $("#admin-product-button").click(function() {
+        $("#charts-section").hide();
+        $("#products-section").show();
+        $("#users-section").hide();
+    });
+});
+</script>
 
 </html>

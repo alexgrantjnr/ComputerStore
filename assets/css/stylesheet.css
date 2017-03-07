@@ -333,6 +333,18 @@
     border-top: 1px solid #a24ef4;
 }
 
+.admin-sections{
+    margin-top: 2em;
+}
+
+#admin-users-panel{
+
+}
+
+#admin-users-panel-heading{
+    background-color: #363441;
+}
+
 
 /*end of admin panel styling*/
 
