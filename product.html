@@ -139,12 +139,31 @@
 
                 <div class="col-xs-9">
                     <ul class="menu-items">
-                        <li class="active">Product Details</li>
-                        <li>Guarantee</li>
-                        <li>Seller</li>
-                        <li>Shipping</li>
+                        
+
+                        <li id = "product-info-button">
+
+                        <p class = "text-center"> Product Details</p>
+
+                        </li>
+
+                        <li id = "guarantee-info-button">
+
+                        <p class = "text-center"> Guarantee</p>
+
+                        </li>
+
+                        <li id = "shipping-info-button">
+
+                        <p class = "text-center"> Shipping</p>
+
+                        </li>
+
+                        
                     </ul>
-                    <div style="width:100%;border-top:1px solid silver">
+
+
+                    <div id="product-info" style="width:100%;border-top:1px solid silver">
                         <p style="padding:15px;">
                             <small>
                             Stay connected either on the phone or the Web with the Galaxy S4 I337 from Samsung. With 16 GB of memory and a 4G connection, this phone stores precious photos and video and lets you upload them to a cloud or social network at blinding-fast speed. With a 17-hour operating life from one charge, this phone allows you keep in touch even on the go. 
@@ -174,7 +193,43 @@
 
 
                     </div>
+
+
+                    <div id="guarantee-info" style="width:100%;border-top:1px solid silver">
+                        <p style="padding:15px;">
+                            <small>
+                            The warranty card and warranty information included with the product provides details of the warranty for the product and the associated terms and conditions.
+
+                            The information included with the product may provide a specific website address for the warranty information, in which case the warranty for the product is as stated at that website address.
+                            <br>
+                            <br>
+
+                            The warranty periods and warranty services referred to above are intended as a guide only and variations may occur. If there are differences between the warranty card and information included with the product and the information shown above, the warranty card and information included with the product shall apply.
+                            <br>
+                            <br>
+
+                            The warranty periods apply from the first date of purchase of the product. To obtain warranty service, the original proof of purchase will be required and the serial number affixed to the product must be complete and undamaged.
+                           
+                            </small>
+                        </p>
                 </div>      
+
+                  <div id="shipping-info" style="width:100%;border-top:1px solid silver">
+                        <p style="padding:15px;">
+                            <small>
+                            The warranty card and warranty information included with the product provides details of the warranty for the product and the associated terms and conditions.
+
+                            The information included with the product may provide a specific website address for the warranty information, in which case the warranty for the product is as stated at that website address.
+                            <br>
+                            <br>
+
+                            The warranty periods and warranty services referred to above are intended as a guide only and variations may occur. If there are differences between the warranty card and information included with the product and the information shown above, the warranty card and information included with the product shall apply.
+                            <br>
+                            
+                           
+                            </small>
+                        </p>
+                </div>    
     </div>
 </div>
 
@@ -293,7 +348,49 @@ function showDivs(n) {
   }
   x[slideIndex-1].style.display = "block";  
 }
+
+
+$(document).ready(function() {
+
+
+    $("#product-info-button").last().addClass( "active" );
+    $("#product-info").show();
+    $("#guarantee-info").hide(); 
+    $("#shipping-info").hide(); 
+
+
+    $("#product-info-button").click(function() {
+    $("#product-info-list").last().addClass( "active" );
+    $("#gurantee-info").last().removeClass( "active" );
+    $("#shipping-info").last().removeClass( "active" );
+    $("#product-info").show();
+    $("#guarantee-info").hide(); 
+    $("#shipping-info").hide();
+    });
+    
+    
+
+    $("#guarantee-info-button").click(function() {
+    $("#guarantee-info-list").last().addClass( "active" );
+    $("#product-info").last().removeClass( "active" );
+    $("#product-info").hide();
+    $("#guarantee-info").show(); 
+    $("#shipping-info").hide();
+    });
+
+    $("#shipping-info-button").click(function() {
+        $("#shipping-info-list").last().addClass( "active" );
+        $("#guarantee-info").last().removeClass( "active" );
+        $("#product-info").last().removeClass( "active" );
+        $("#product-info").hide();
+        $("#guarantee-info").hide(); 
+        $("#shipping-info").show(); 
+         
+    });
+
+});
 </script>
+
 
 
 
