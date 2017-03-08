@@ -496,30 +496,37 @@ body {
 }
 
 .user-info-block .navigation {
-    float: left;
+    
     width: 100%;
     margin: 20px;
     padding: 0;
     list-style: none;
     border-bottom: 1px solid #428BCA;
     border-top: 1px solid #428BCA;
+        text-align: center;
 }
 
 .navigation li {
-    float: left;
+
+    display: inline-block;
     margin: 30px;
-    padding-left: 100px;
-    font-size: 30px
+    padding-right: 100px;
+    font-size: 30px;
+    text-align: center;
+
 }
 
 .navigation li a {
     padding: 30px 40px;
     float: left;
+
+    
 }
 
 .navigation li.active a {
     background: #428BCA;
     color: #fff;
+    background-color: #3b5998;
 }
 
 .user-info-block .user-body {
