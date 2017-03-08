@@ -254,11 +254,25 @@
 
 #product-search-bounds {
     overflow-y: scroll;
-    height: 500px;
+    height: 60em;
     background-color: #d3d3d3;
 }
 
-#product-filter-bounds {}
+#product-filter-bounds{
+    background-color: #363441;
+    height: 60em;
+}
+
+#product-filter-bounds input:focus {
+    border-color: #a24ef4;
+    box-shadow: 1px 1px 1px 1px #60cbfc inset, 0 0 8px #60cbfc;
+    outline: 0 none;
+    color: #a24ef4;
+}
+
+#product-filter-bounds input[type="submit"] {
+    width: 40%;
+}
 
 #product-filter-bounds input {
     margin-top: 1em;
@@ -401,6 +415,10 @@
 #add-product-cancel:hover{
     background-image: linear-gradient(to top, #139fe8, #36f4a8);
     transition: opacity 0.4s ease-out;
+}
+
+#add-product-textarea{
+    resize: none;
 }
 
 /*end of admin panel styling*/
