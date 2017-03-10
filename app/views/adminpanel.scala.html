@@ -1,9 +1,9 @@
-@main("Welcome to Play"){
+@main("Admin Panel"){
 <div class="container-fluid">
     <div class="row" id="admin-panel-content">
         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" id="admin-panel-settings">
             <h3 class="text-center whitetext">Admin Panel</h3>
-            <img src="assets/img/blank_profile.jpg" class="img-responsive img-circle">
+            <img src="@routes.Assets.versioned("images/blank_profile.jpg")" class="img-responsive img-circle">
             <p class="text-center whitetext admin-menu-item" id="admin-charts-button">Charts <i class="fa fa-line-chart" aria-hidden="true"></i></p>
             <p class="text-center whitetext admin-menu-item" id="admin-users-button">Users <i class="fa fa-user" aria-hidden="true"></i></p>
             <p class="text-center whitetext admin-menu-item" id="admin-product-button">Products <i class="fa fa-tags" aria-hidden="true"></i></p>
@@ -123,12 +123,12 @@
                 <!--end of end of row -->
             </div>
             <!--end of end of admin-products-section -->
-            <div class="col-lg-4 col-md-6 col-sm-8 col-xs-12 col-centered" id="admin-add-product">
+            <div class="col-lg-4 col-md-6 col-sm-8 col-xs-12 col-lg-offset-4 col-md-offset-3 col-ms-offset-2" id="admin-add-product">
                 <br>
                 <h2 class="text-center whitetext">Add a <span class="purpletext">product</span></h2>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 col-centered">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
                             <form>
                                 <div class="form-group">
                                     <label for="productname">

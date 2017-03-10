@@ -4,10 +4,6 @@
     outline: none;
 }
 
-.padding-0 {
-    padding: 0;
-}
-
 .col-centered {
     float: none;
     margin: 0 auto;
@@ -43,8 +39,6 @@
     font-family: 'Pacifico', cursive;
 }
 
-
-/*end of all page styling*/
 
 #topnav {
     background-color: #363441;
@@ -82,9 +76,16 @@
     color: #a24ef4;
 }
 
+
+/*end of all page styling*/
+
 #wrapper {
     display: inline-block;
     position: relative;
+}
+
+#bigbanner{
+    padding: 0;
 }
 
 #pccase-parallax {
@@ -365,10 +366,10 @@
 
 #admin-add-product {
     background-color: #363441;
-    z-index: 1;
-    position: relative;
-    bottom: 10em;
-    padding-bottom: 2em;
+    z-index: 1 !important;
+    position: relative !important;
+    bottom: 10em !important;
+    padding-bottom: 2em !important;
 }
 
 #admin-add-product input:focus {
