@@ -9,27 +9,27 @@ public class HomeController extends Controller {
 
     
     public Result index() {
-        return ok(index.render("Index"));
+        return ok(index.render());
     }
 
     public Result account() {
-        return ok(account.render("Account"));
+        return ok(account.render());
     }
 
     public Result adminPanel() {
-        return ok(adminpanel.render("AdminPanel"));
+        return ok(adminpanel.render());
     }
 
     public Result payment() {
-        return ok(payment.render("Payment"));
+        return ok(payment.render());
     }
 
     public Result product() {
-        return ok(product.render("Product"));
+        return ok(product.render());
     }
 
     public Result search() {
-        return ok(search.render("Search"));
+        return ok(search.render());
     }
 
 }

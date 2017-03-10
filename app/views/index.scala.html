@@ -1,17 +1,17 @@
-@(title: String){
+@main("Welcome to Play"){
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-0">
-            <img class="img-responsive" src="assets/img/mac.jpg" alt="macbanner" />
+            <img class="img-responsive" src="@routes.Assets.versioned("images/mac.jpg")" alt="macbanner" />
         </div>
     </div>
     <!--end of row-->
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-0">
-            <img class="img-responsive" src="assets/img/macbook.png" alt="macbook" />
+            <img class="img-responsive" src="@routes.Assets.versioned("images/macbook.png")" alt="macbook" />
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-0">
-            <img class="img-responsive" src="assets/img/headphones.png" alt="headphones" />
+            <img class="img-responsive" src="@routes.Assets.versioned("images/headphones.png")" alt="headphones" />
         </div>
     </div>
     <!--end of row-->
@@ -21,13 +21,13 @@
 <br>
 <div class="container" id="pc-customise">
     <div class="row">
-        <h2 class="text-center text-muted">ALL OUR PC'S ARE FULLY CUSTOMISABLE<br><small class = "purpletext">WE CATER TO ALL YOUR NEEDS</small></h2>
+        <h2 class="text-center bluetext">ALL OUR PC'S ARE FULLY CUSTOMISABLE<br><small class = "purpletext">WE CATER TO ALL YOUR NEEDS</small></h2>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-centered">
             <div id="wrapper">
-                <img src="assets/img/pccase.png" alt="pccase" class="img-responsive" id="pccase-parallax" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-                <img src="assets/img/motherboard.png" alt="motherboard" class="img-responsive" id="motherboard-parallax">
-                <img src="assets/img/graphicscard.png" alt="graphicscard" class="img-responsive" id="graphicscard-parallax">
-                <img src="assets/img/cpucooler.png" alt="cpucooler" class="img-responsive" id="cpucooler-parallax">
+                <img src="@routes.Assets.versioned("images/pccase.png")" alt="pccase" class="img-responsive" id="pccase-parallax" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                <img src="@routes.Assets.versioned("images/motherboard.png")" class="img-responsive" id="motherboard-parallax">
+                <img src="@routes.Assets.versioned("images/graphicscard.png")" alt="graphicscard" class="img-responsive" id="graphicscard-parallax">
+                <img src="@routes.Assets.versioned("images/cpucooler.png")" alt="cpucooler" class="img-responsive" id="cpucooler-parallax">
             </div>
         </div>
     </div>
@@ -58,7 +58,7 @@
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="index-products">
             <h3 class="text-center text-muted">Name Variable Here</h3>
             <h4 class="text-center text-muted"><span class = "purpletext">€</span>Price Variable Here</h4>
-            <img class="img-responsive" src="assets/img/cpucooler.png">
+            <img class="img-responsive" src="@routes.Assets.versioned("images/cpucooler.png")">
             <p class="text-center">
                 <button type="button" id="addtocartbutton">Add To Cart <i class="fa fa-1x fa-shopping-cart" aria-hidden="true"></i></button>
             </p>
@@ -70,7 +70,7 @@
 <!--end of end of container -->
 <div class="container-fluid">
     <div class="row" id="subscribe-section">
-        <div class="col-lg-6 col-centered">
+        <div class="col-lg-6 col-lg-offset-3">
             <h2 class="text-center whitetext">Subscribe To Out Mailing List</h2>
             <h3 class="text-center purpletext">To keep up with out latest offers and news!</h3>
             <form id="subscribe-form">
@@ -81,49 +81,6 @@
         <!--end of end of col-->
     </div>
     <!--end of end of row-->
-</div>
-<!--end of end of container fluid-->
-<div class="container-fluid" id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <h3 class="whitetext text-center"><b>SHIPPING AND DELIEVERY</b></h3>
-                <p class="text-muted footer-info">Here you can read some details about a nifty little lifecycle of your order's journey from the time you place your order to your new treasures arriving at your doorstep.</p>
-            </div>
-            <!--end of end of col-->
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <h3 class="whitetext text-center"><b>PAYMENY METHODS</b></h3>
-                <p class="text-muted footer-info">It is equally important to choose the solution which offers a specific selection of credit cards that are most popular in the merchants target markets. We take Visa,Paypal,Skrill and PaySafeCard as they are widely used by cyber customers.</p>
-            </div>
-            <!--end of end of col-->
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <h3 class="whitetext text-center"><b>CONTACT US</b></h3>
-                <p class="text-muted footer-info">You can contact us any way that is convenient for you. We are available 24/7 via fax, email or telephone. You can also use a quick contact form or visit our office personally.</p>
-            </div>
-            <!--end of end of col-->
-        </div>
-        <!--end of end of row -->
-        <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                <img src="assets/img/visa.png" class="img-responsive" alt="visa">
-            </div>
-            <!--end of col-->
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                <img src="assets/img/paypal.png" class="img-responsive" alt="paypal">
-            </div>
-            <!--end of col-->
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                <img src="assets/img/skrill.png" class="img-responsive" alt="skrill">
-            </div>
-            <!--end of col-->
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                <img src="assets/img/paysafe.png" class="img-responsive" alt="paysafe">
-            </div>
-            <!--end of col-->
-        </div>
-        <!--end of row-->
-    </div>
-    <!--end of end of container -->
 </div>
 <!--end of end of container fluid-->
 <script>
