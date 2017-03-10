@@ -1,0 +1,154 @@
+@(title: String){
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-sm-3 col-xs-12 col-md-3" id="product-filter-bounds">
+                <h2 class="text-center whitetext">Filter Results</h2>
+
+                <form>
+                    <div class="form-group">
+                        <label for="brand"><p class = "whitetext">Brand</p></label>
+                        <input type="text" name="brand" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="minprice"><p class = "whitetext">Minimum Price</p></label>
+                        <input type="number" min="0.01" step="0.01" max="9999" value="00.00" name="minprice" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="maxprice"><p class = "whitetext">Maximum Price</p></label>
+                        <input type="number" min="0.01" step="0.01" max="9999" value="00.00" name="maxprice" class="form-control">
+                    </div>
+
+                    <input type="submit" value="Filter" id="product-submit" class="pull-right">
+
+                </form>
+                <!--end of form-->
+            </div>
+            <!--End of col-->
+            <div class="col-lg-9 col-sm-9 col-xs-12 col-md-9" id="product-search-bounds">
+                <h2 class="text-center">Search Results for $Variable Name$</h2>
+
+
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <!--Play will echo recults here-->
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="product-search-results">
+
+                            <div class="container-fluid">
+                                <div class="row">
+
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <img src="assets/img/amd.jpg" class="img-responsive">
+                                    </div>
+                                    <!--End of col-->
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <h3 class="text-center">Name Here</h3>
+                                        <h4 class="text-center purpletext">Delivery Available</h4>
+                                        <h4 class="text-center">Quantity Available here</h4>
+                                        <p class="text-center text-muted">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                            mollit anim id est laborum."</p>
+
+
+                                    </div>
+                                    <!--End of col-->
+
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                        <h2 class="text-center" id="productprice"><span class="purpletext">€</span>250.00</h2>
+                                        <button type="button" id="addtocartbutton">Add To Cart</button>
+                                    </div>
+                                    <!--End of col-->
+
+
+                                </div>
+                                <!--End of row-->
+                            </div>
+                            <!--End of container-->
+
+                        </div>
+                        <!--End of col/product searchresults/Play Echo-->
+
+                    </div>
+                    <!--End of row-->
+                </div>
+                <!--End of container-->
+
+
+            </div>
+            <!--End of col/product search bounds-->
+        </div>
+        <!--End of row-->
+    </div>
+    <!--End of container-->
+
+
+    <div class="container-fluid">
+        <div class="row" id="subscribe-section">
+            <div class="col-lg-6 col-centered">
+                <h2 class="text-center whitetext">Subscribe To Out Mailing List</h2>
+                <h3 class="text-center purpletext">To keep up with out latest offers and news!</h3>
+                <form id="subscribe-form">
+                    <input type="text" placeholder="Example@@Example.com" id="form-white-outline">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <!--end of end of col-->
+        </div>
+        <!--end of end of row-->
+    </div>
+    <!--end of end of container fluid-->
+    <div class="container-fluid" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <h3 class="whitetext text-center"><b>SHIPPING AND DELIEVERY</b></h3>
+                    <p class="text-muted footer-info">Here you can read some details about a nifty little lifecycle of your order's journey from the time you
+                        place your order to your new treasures arriving at your doorstep.</p>
+                </div>
+                <!--end of end of col-->
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <h3 class="whitetext text-center"><b>PAYMENY METHODS</b></h3>
+                    <p class="text-muted footer-info">It is equally important to choose the solution which offers a specific selection of credit cards that
+                        are most popular in the merchants target markets. We take Visa,Paypal,Skrill and PaySafeCard as they
+                        are widely used by cyber customers.</p>
+                </div>
+                <!--end of end of col-->
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <h3 class="whitetext text-center"><b>CONTACT US</b></h3>
+                    <p class="text-muted footer-info">You can contact us any way that is convenient for you. We are available 24/7 via fax, email or telephone.
+                        You can also use a quick contact form or visit our office personally.</p>
+                </div>
+                <!--end of end of col-->
+            </div>
+            <!--end of end of row -->
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <img src="assets/img/visa.png" class="img-responsive" alt="visa">
+                </div>
+                <!--end of col-->
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <img src="assets/img/paypal.png" class="img-responsive" alt="paypal">
+                </div>
+                <!--end of col-->
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <img src="assets/img/skrill.png" class="img-responsive" alt="skrill">
+                </div>
+                <!--end of col-->
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <img src="assets/img/paysafe.png" class="img-responsive" alt="paysafe">
+                </div>
+                <!--end of col-->
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of end of container -->
+    </div>
+    <!--end of end of container fluid-->
+}
