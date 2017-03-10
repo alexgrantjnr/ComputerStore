@@ -1,259 +1,244 @@
 @(title: String){
-    
-    <div class="container-fluid">
-        <div class="row" id="admin-panel-content">
-            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" id="admin-panel-settings">
-                <h3 class="text-center whitetext">Admin Panel</h3>
-                <img src="assets/img/blank_profile.jpg" class="img-responsive img-circle">
-                <p class="text-center whitetext admin-menu-item" id="admin-charts-button">Charts <i class="fa fa-line-chart" aria-hidden="true"></i></p>
-                <p class="text-center whitetext admin-menu-item" id="admin-users-button">Users <i class="fa fa-user" aria-hidden="true"></i></p>
-                <p class="text-center whitetext admin-menu-item" id="admin-product-button">Products <i class="fa fa-tags" aria-hidden="true"></i></p>
-            </div>
-            <!--end of col -->
-            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" id="admin-panel-display">
-                <div class="container-fluid admin-sections" id="charts-section">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-4 col-xs-4">
-                            <div id="pie_chart_div"></div>
-                        </div>
-                        <!--end of col -->
-                        <div class="col-lg-6 col-md-6 col-sm-4 col-xs-4">
-                            <div id="line_chart_div"></div>
-                        </div>
-                        <!--end of col -->
-                    </div>
-                    <!--end of end of row -->
-                </div>
-                <!--end of end of admin-charts-section -->
-                <div class="container-fluid admin-sections" id="users-section">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="panel panel-default panel-table">
-                                <div class="panel-heading" id="admin-users-panel-heading">
-                                    <div class="row">
-                                        <div class="col col-xs-12">
-                                            <h3 class="panel-title whitetext">Registered Users <i class="fa fa-user" aria-hidden="true"></i></h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel-body">
-                                    <table class="table table-striped table-bordered table-list">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    <p class="text-center purpletext">Action <i class="fa fa-cog" aria-hidden="true"></i></p>
-                                                </th>
-                                                <th class="hidden-xs">
-                                                    <p class="text-center purpletext">ID</p>
-                                                </th>
-                                                <th>
-                                                    <p class="text-center purpletext">Name</p>
-                                                </th>
-                                                <th>
-                                                    <p class="text-center purpletext">Email</p>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td align="center">
-                                                    <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                                    <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                                </td>
-                                                <td class="hidden-xs">1</td>
-                                                <td>John Doe</td>
-                                                <td>johndoe@@example.com</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end of col -->
-                    </div>
-                    <!--end of end of row -->
-                </div>
-                <!--end of end of admin-users-section -->
-                <div class="container-fluid admin-sections" id="products-section">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="panel panel-default panel-table" id="admin-users-panel">
-                                <div class="panel-heading" id="admin-users-panel-heading">
-                                    <div class="row">
-                                        <div class="col col-xs-12">
-                                            <h3 class="panel-title whitetext">Products <i class="fa fa-tags" aria-hidden="true"></i></h3>
-                                            <button type="button" class="btn btn-default pull-right" id="add-product-button">Add A Product</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel-body">
-                                    <table class="table table-striped table-bordered table-list">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    <p class="text-center purpletext">Action <i class="fa fa-cog" aria-hidden="true"></i></p>
-                                                </th>
-                                                <th class="hidden-xs">
-                                                    <p class="text-center purpletext">ID</p>
-                                                </th>
-                                                <th>
-                                                    <p class="text-center purpletext">Name</p>
-                                                </th>
-                                                <th>
-                                                    <p class="text-center purpletext">Email</p>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td align="center">
-                                                    <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                                    <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                                </td>
-                                                <td class="hidden-xs">1</td>
-                                                <td>John Doe</td>
-                                                <td>johndoe@@example.com</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end of col -->
-                    </div>
-                    <!--end of end of row -->
-                </div>
-                <!--end of end of admin-products-section -->
-
-
-                <div class="col-lg-4 col-md-6 col-sm-8 col-xs-12 col-centered" id="admin-add-product">
-                    <br>
-
-                    <h2 class="text-center whitetext">Add a <span class="purpletext">product</span></h2>
-
-                    <div class="container-fluid">
-
-                        <div class="row">
-
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 col-centered">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="productname"><p class = "whitetext">Name</p></label>
-                                        <input type="text" class="form-control" id="productname" placeholder="Product Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="productquantity"><p class = "whitetext">Quantity</p></label>
-                                        <input type="number" class="form-control" id="productquantity" placeholder="Quantity">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="productprice"><p class = "whitetext">Price €</p></label>
-                                        <input type="number" min="0.01" step="0.01" max="9999" value="00.00" name="productprice" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="productdescription"><p class = "whitetext">Description</p></label>
-                                        <textarea id="add-product-textarea" name="productdescription" class="form-control"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="imageupload"><p class = "whitetext">Images</p></label>
-                                        <input type="file" name="imageupload" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="submit" class="form-control" id="add-product-submit" placeholder="Submit">
-                                    </div>
-                                </form>
-                                <div class="form-group">
-                                    <button id="add-product-cancel">Cancel</button>
-                                </div>
-
-
-                            </div>
-                            <!--end of inner col-->
-
-
-
-                        </div>
-                        <!--end of row-->
-
-                    </div>
-                    <!--end of inner contaienr-->
-
-
-                </div>
-                <!--end of add user form-->
-
-
-
-
-
-            </div>
-            <!--end of admin panel display -->
+<div class="container-fluid">
+    <div class="row" id="admin-panel-content">
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" id="admin-panel-settings">
+            <h3 class="text-center whitetext">Admin Panel</h3>
+            <img src="assets/img/blank_profile.jpg" class="img-responsive img-circle">
+            <p class="text-center whitetext admin-menu-item" id="admin-charts-button">Charts <i class="fa fa-line-chart" aria-hidden="true"></i></p>
+            <p class="text-center whitetext admin-menu-item" id="admin-users-button">Users <i class="fa fa-user" aria-hidden="true"></i></p>
+            <p class="text-center whitetext admin-menu-item" id="admin-product-button">Products <i class="fa fa-tags" aria-hidden="true"></i></p>
         </div>
-        <!--end of admin panel content -->
+        <!--end of col -->
+        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" id="admin-panel-display">
+            <div class="container-fluid admin-sections" id="charts-section">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-4 col-xs-4">
+                        <div id="pie_chart_div"></div>
+                    </div>
+                    <!--end of col -->
+                    <div class="col-lg-6 col-md-6 col-sm-4 col-xs-4">
+                        <div id="line_chart_div"></div>
+                    </div>
+                    <!--end of col -->
+                </div>
+                <!--end of end of row -->
+            </div>
+            <!--end of end of admin-charts-section -->
+            <div class="container-fluid admin-sections" id="users-section">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default panel-table">
+                            <div class="panel-heading" id="admin-users-panel-heading">
+                                <div class="row">
+                                    <div class="col col-xs-12">
+                                        <h3 class="panel-title whitetext">Registered Users <i class="fa fa-user" aria-hidden="true"></i></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-striped table-bordered table-list">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <p class="text-center purpletext">Action <i class="fa fa-cog" aria-hidden="true"></i></p>
+                                            </th>
+                                            <th class="hidden-xs">
+                                                <p class="text-center purpletext">ID</p>
+                                            </th>
+                                            <th>
+                                                <p class="text-center purpletext">Name</p>
+                                            </th>
+                                            <th>
+                                                <p class="text-center purpletext">Email</p>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td align="center">
+                                                <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
+                                                <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                            </td>
+                                            <td class="hidden-xs">1</td>
+                                            <td>John Doe</td>
+                                            <td>johndoe@@example.com</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of col -->
+                </div>
+                <!--end of end of row -->
+            </div>
+            <!--end of end of admin-users-section -->
+            <div class="container-fluid admin-sections" id="products-section">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default panel-table" id="admin-users-panel">
+                            <div class="panel-heading" id="admin-users-panel-heading">
+                                <div class="row">
+                                    <div class="col col-xs-12">
+                                        <h3 class="panel-title whitetext">Products <i class="fa fa-tags" aria-hidden="true"></i></h3>
+                                        <button type="button" class="btn btn-default pull-right" id="add-product-button">Add A Product</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-striped table-bordered table-list">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <p class="text-center purpletext">Action <i class="fa fa-cog" aria-hidden="true"></i></p>
+                                            </th>
+                                            <th class="hidden-xs">
+                                                <p class="text-center purpletext">ID</p>
+                                            </th>
+                                            <th>
+                                                <p class="text-center purpletext">Name</p>
+                                            </th>
+                                            <th>
+                                                <p class="text-center purpletext">Email</p>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td align="center">
+                                                <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
+                                                <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                            </td>
+                                            <td class="hidden-xs">1</td>
+                                            <td>John Doe</td>
+                                            <td>johndoe@@example.com</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of col -->
+                </div>
+                <!--end of end of row -->
+            </div>
+            <!--end of end of admin-products-section -->
+            <div class="col-lg-4 col-md-6 col-sm-8 col-xs-12 col-centered" id="admin-add-product">
+                <br>
+                <h2 class="text-center whitetext">Add a <span class="purpletext">product</span></h2>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 col-centered">
+                            <form>
+                                <div class="form-group">
+                                    <label for="productname">
+                                        <p class="whitetext">Name</p>
+                                    </label>
+                                    <input type="text" class="form-control" id="productname" placeholder="Product Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="productquantity">
+                                        <p class="whitetext">Quantity</p>
+                                    </label>
+                                    <input type="number" class="form-control" id="productquantity" placeholder="Quantity">
+                                </div>
+                                <div class="form-group">
+                                    <label for="productprice">
+                                        <p class="whitetext">Price €</p>
+                                    </label>
+                                    <input type="number" min="0.01" step="0.01" max="9999" value="00.00" name="productprice" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="productdescription">
+                                        <p class="whitetext">Description</p>
+                                    </label>
+                                    <textarea id="add-product-textarea" name="productdescription" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="imageupload">
+                                        <p class="whitetext">Images</p>
+                                    </label>
+                                    <input type="file" name="imageupload" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="form-control" id="add-product-submit" placeholder="Submit">
+                                </div>
+                            </form>
+                            <div class="form-group">
+                                <button id="add-product-cancel">Cancel</button>
+                            </div>
+                        </div>
+                        <!--end of inner col-->
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of inner contaienr-->
+            </div>
+            <!--end of add user form-->
+        </div>
+        <!--end of admin panel display -->
     </div>
-    <!--end of end of container fluid-->
-    <div class="container-fluid">
-        <div class="row" id="subscribe-section">
-            <div class="col-lg-6 col-centered">
-                <h2 class="text-center whitetext">Subscribe To Out Mailing List</h2>
-                <h3 class="text-center purpletext">To keep up with out latest offers and news!</h3>
-                <form id="subscribe-form">
-                    <input type="text" placeholder="Example@@Example.com" id="form-white-outline">
-                    <input type="submit" value="Submit">
-                </form>
+    <!--end of admin panel content -->
+</div>
+<!--end of end of container fluid-->
+<div class="container-fluid">
+    <div class="row" id="subscribe-section">
+        <div class="col-lg-6 col-centered">
+            <h2 class="text-center whitetext">Subscribe To Out Mailing List</h2>
+            <h3 class="text-center purpletext">To keep up with out latest offers and news!</h3>
+            <form id="subscribe-form">
+                <input type="text" placeholder="Example@@Example.com" id="form-white-outline">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <!--end of end of col-->
+    </div>
+    <!--end of end of row-->
+</div>
+<!--end of end of container fluid-->
+<div class="container-fluid" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <h3 class="whitetext text-center"><b>SHIPPING AND DELIEVERY</b></h3>
+                <p class="text-muted footer-info">Here you can read some details about a nifty little lifecycle of your order's journey from the time you place your order to your new treasures arriving at your doorstep.</p>
+            </div>
+            <!--end of end of col-->
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <h3 class="whitetext text-center"><b>PAYMENY METHODS</b></h3>
+                <p class="text-muted footer-info">It is equally important to choose the solution which offers a specific selection of credit cards that are most popular in the merchants target markets. We take Visa,Paypal,Skrill and PaySafeCard as they are widely used by cyber customers.</p>
+            </div>
+            <!--end of end of col-->
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <h3 class="whitetext text-center"><b>CONTACT US</b></h3>
+                <p class="text-muted footer-info">You can contact us any way that is convenient for you. We are available 24/7 via fax, email or telephone. You can also use a quick contact form or visit our office personally.</p>
             </div>
             <!--end of end of col-->
         </div>
-        <!--end of end of row-->
-    </div>
-    <!--end of end of container fluid-->
-    <div class="container-fluid" id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <h3 class="whitetext text-center"><b>SHIPPING AND DELIEVERY</b></h3>
-                    <p class="text-muted footer-info">Here you can read some details about a nifty little lifecycle of your order's journey from the time you
-                        place your order to your new treasures arriving at your doorstep.</p>
-                </div>
-                <!--end of end of col-->
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <h3 class="whitetext text-center"><b>PAYMENY METHODS</b></h3>
-                    <p class="text-muted footer-info">It is equally important to choose the solution which offers a specific selection of credit cards that
-                        are most popular in the merchants target markets. We take Visa,Paypal,Skrill and PaySafeCard as they
-                        are widely used by cyber customers.</p>
-                </div>
-                <!--end of end of col-->
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <h3 class="whitetext text-center"><b>CONTACT US</b></h3>
-                    <p class="text-muted footer-info">You can contact us any way that is convenient for you. We are available 24/7 via fax, email or telephone.
-                        You can also use a quick contact form or visit our office personally.</p>
-                </div>
-                <!--end of end of col-->
+        <!--end of end of row -->
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                <img src="assets/img/visa.png" class="img-responsive" alt="visa">
             </div>
-            <!--end of end of row -->
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <img src="assets/img/visa.png" class="img-responsive" alt="visa">
-                </div>
-                <!--end of col-->
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <img src="assets/img/paypal.png" class="img-responsive" alt="paypal">
-                </div>
-                <!--end of col-->
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <img src="assets/img/skrill.png" class="img-responsive" alt="skrill">
-                </div>
-                <!--end of col-->
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <img src="assets/img/paysafe.png" class="img-responsive" alt="paysafe">
-                </div>
-                <!--end of col-->
+            <!--end of col-->
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                <img src="assets/img/paypal.png" class="img-responsive" alt="paypal">
             </div>
-            <!--end of row-->
+            <!--end of col-->
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                <img src="assets/img/skrill.png" class="img-responsive" alt="skrill">
+            </div>
+            <!--end of col-->
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                <img src="assets/img/paysafe.png" class="img-responsive" alt="paysafe">
+            </div>
+            <!--end of col-->
         </div>
-        <!--end of end of container -->
+        <!--end of row-->
     </div>
-    <!--end of end of container fluid-->
-
+    <!--end of end of container -->
+</div>
+<!--end of end of container fluid-->
 <!--Charts javascript-->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -341,7 +326,7 @@ $(document).ready(function() {
     $("#users-section").hide();
     $("#products-section").hide();
     $("#admin-add-product").hide();
-  
+
 
     $("#admin-charts-button").click(function() {
         $("#charts-section").show();
@@ -367,13 +352,13 @@ $(document).ready(function() {
         $("#users-section").hide();
     });
 
-     $("#add-product-button").click(function() {
-         $("#admin-add-product").fadeIn();     
+    $("#add-product-button").click(function() {
+        $("#admin-add-product").fadeIn();
     });
 
-      $("#add-product-cancel").click(function() {
-         $("#admin-add-product").fadeOut();     
-    }); 
+    $("#add-product-cancel").click(function() {
+        $("#admin-add-product").fadeOut();
+    });
 });
 </script>
 }

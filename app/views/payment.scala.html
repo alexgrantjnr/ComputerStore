@@ -1,21 +1,18 @@
 @(title: String){
-
-   <div class="container">
+<div class="container">
     <div class="row">
         <!-- You can make it whatever width you want. I'm making it full width
              on <= small devices and 4/12 page width on >= medium devices -->
-        <div class="col-xs-12 col-md-4 col-centered" id = "paymentinfo">
-        
-        
+        <div class="col-xs-12 col-md-4 col-centered" id="paymentinfo">
             <!-- CREDIT CARD FORM STARTS HERE -->
             <div class="panel panel-default credit-card-box">
-                <div class="panel-heading display-table" id = "paymentheading">
-                    <div class="row display-tr" >
+                <div class="panel-heading display-table" id="paymentheading">
+                    <div class="row display-tr">
                         <h2 class="panel-title display-td text-center whitetext">Enter Your Payment Details</h2>
-                        <div class="display-td" >                            
+                        <div class="display-td">
                             <img class="img-responsive" src="http://i76.imgup.net/accepted_c22e0.png">
                         </div>
-                    </div>                    
+                    </div>
                 </div>
                 <div class="panel-body">
                     <form role="form" id="payment-form">
@@ -24,44 +21,23 @@
                                 <div class="form-group">
                                     <label for="cardNumber">CARD NUMBER</label>
                                     <div class="input-group">
-                                        <input 
-                                            type="tel"
-                                            class="form-control"
-                                            name="cardNumber"
-                                            placeholder="Valid Card Number"
-                                            autocomplete="cc-number"
-                                            required autofocus 
-                                        />
+                                        <input type="tel" class="form-control" name="cardNumber" placeholder="Valid Card Number" autocomplete="cc-number" required autofocus />
                                         <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                                     </div>
-                                </div>                            
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-7 col-md-7">
                                 <div class="form-group">
                                     <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
-                                    <input 
-                                        type="tel" 
-                                        class="form-control" 
-                                        name="cardExpiry"
-                                        placeholder="MM / YY"
-                                        autocomplete="cc-exp"
-                                        required 
-                                    />
+                                    <input type="tel" class="form-control" name="cardExpiry" placeholder="MM / YY" autocomplete="cc-exp" required />
                                 </div>
                             </div>
                             <div class="col-xs-5 col-md-5 pull-right">
                                 <div class="form-group">
                                     <label for="cardCVC">CV CODE</label>
-                                    <input 
-                                        type="tel" 
-                                        class="form-control"
-                                        name="cardCVC"
-                                        placeholder="CVC"
-                                        autocomplete="cc-csc"
-                                        required
-                                    />
+                                    <input type="tel" class="form-control" name="cardCVC" placeholder="CVC" autocomplete="cc-csc" required />
                                 </div>
                             </div>
                         </div>
@@ -71,103 +47,90 @@
                                     <label for="couponCode">Cardholders Name</label>
                                     <input type="text" class="form-control" name="couponCode" />
                                 </div>
-                            </div>                        
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <p class = "text-center">
-                                <button id="paybutton" type="button">Buy Now</button>
+                                <p class="text-center">
+                                    <button id="paybutton" type="button">Buy Now</button>
                                 </p>
                             </div>
                         </div>
-                       
                     </form>
                 </div>
-            </div>            
+            </div>
             <!-- CREDIT CARD FORM ENDS HERE -->
-            
-            
-        </div> <!--end of payment info-->          
-        
-       
-        
-    </div><!--end of row-->
-
-
-
-       
-   
-    </div><!--end of container-->
-
-
-
-    <div class="container-fluid">
-        <div class="row" id="subscribe-section">
-            <div class="col-lg-6 col-centered">
-                <h2 class="text-center whitetext">Subscribe To Out Mailing List</h2>
-                <h3 class="text-center purpletext">To keep up with out latest offers and news!</h3>
-                <form id="subscribe-form">
-                    <input type="text" placeholder="Example@@Example.com" id="form-white-outline">
-                    <input type="submit" value="Submit">
-                </form>
+        </div>
+        <!--end of payment info-->
+    </div>
+    <!--end of row-->
+</div>
+<!--end of container-->
+<div class="container-fluid">
+    <div class="row" id="subscribe-section">
+        <div class="col-lg-6 col-centered">
+            <h2 class="text-center whitetext">Subscribe To Out Mailing List</h2>
+            <h3 class="text-center purpletext">To keep up with out latest offers and news!</h3>
+            <form id="subscribe-form">
+                <input type="text" placeholder="Example@@Example.com" id="form-white-outline">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <!--end of end of col-->
+    </div>
+    <!--end of end of row-->
+</div>
+<!--end of end of container fluid-->
+<div class="container-fluid" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <h3 class="whitetext text-center"><b>SHIPPING AND DELIEVERY</b></h3>
+                <p class="text-muted footer-info">Here you can read some details about a nifty little lifecycle of your order's journey from the time you place your order to your new treasures arriving at your doorstep.</p>
+            </div>
+            <!--end of end of col-->
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <h3 class="whitetext text-center"><b>PAYMENY METHODS</b></h3>
+                <p class="text-muted footer-info">It is equally important to choose the solution which offers a specific selection of credit cards that are most popular in the merchants target markets. We take Visa,Paypal,Skrill and PaySafeCard as they are widely used by cyber customers.</p>
+            </div>
+            <!--end of end of col-->
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <h3 class="whitetext text-center"><b>CONTACT US</b></h3>
+                <p class="text-muted footer-info">You can contact us any way that is convenient for you. We are available 24/7 via fax, email or telephone. You can also use a quick contact form or visit our office personally.</p>
             </div>
             <!--end of end of col-->
         </div>
-        <!--end of end of row-->
-    </div>
-    <!--end of end of container fluid-->
-    <div class="container-fluid" id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <h3 class="whitetext text-center"><b>SHIPPING AND DELIEVERY</b></h3>
-                    <p class="text-muted footer-info">Here you can read some details about a nifty little lifecycle of your order's journey from the time you place your order to your new treasures arriving at your doorstep.</p>
-                </div>
-                <!--end of end of col-->
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <h3 class="whitetext text-center"><b>PAYMENY METHODS</b></h3>
-                    <p class="text-muted footer-info">It is equally important to choose the solution which offers a specific selection of credit cards that are most popular in the merchants target markets. We take Visa,Paypal,Skrill and PaySafeCard as they are widely used by cyber customers.</p>
-                </div>
-                <!--end of end of col-->
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <h3 class="whitetext text-center"><b>CONTACT US</b></h3>
-                    <p class="text-muted footer-info">You can contact us any way that is convenient for you. We are available 24/7 via fax, email or telephone. You can also use a quick contact form or visit our office personally.</p>
-                </div>
-                <!--end of end of col-->
+        <!--end of end of row -->
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                <img src="assets/img/visa.png" class="img-responsive" alt="visa">
             </div>
-            <!--end of end of row -->
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <img src="assets/img/visa.png" class="img-responsive" alt="visa">
-                </div>
-                <!--end of col-->
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <img src="assets/img/paypal.png" class="img-responsive" alt="paypal">
-                </div>
-                <!--end of col-->
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <img src="assets/img/skrill.png" class="img-responsive" alt="skrill">
-                </div>
-                <!--end of col-->
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <img src="assets/img/paysafe.png" class="img-responsive" alt="paysafe">
-                </div>
-                <!--end of col-->
+            <!--end of col-->
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                <img src="assets/img/paypal.png" class="img-responsive" alt="paypal">
             </div>
-            <!--end of row-->
+            <!--end of col-->
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                <img src="assets/img/skrill.png" class="img-responsive" alt="skrill">
+            </div>
+            <!--end of col-->
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                <img src="assets/img/paysafe.png" class="img-responsive" alt="paysafe">
+            </div>
+            <!--end of col-->
         </div>
-        <!--end of end of container -->
+        <!--end of row-->
     </div>
-    <!--end of end of container fluid-->
-
+    <!--end of end of container -->
+</div>
+<!--end of end of container fluid-->
 <script>
-$(document).ready(function(){
+$(document).ready(function() {
 
 
-$("#paymentinfo").effect( "bounce", 
-              {times:4}, 800 );
+    $("#paymentinfo").effect("bounce", {
+        times: 4
+    }, 800);
 });
-
-
 </script>
 }
