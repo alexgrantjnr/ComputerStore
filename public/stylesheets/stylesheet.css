@@ -623,3 +623,177 @@ body {
 }
 
 /*end of product page page styling*/
+
+/* Wish List page styling */
+
+#access-nav{
+    /*margin-right: 3%;/**/
+    /*margin-left: .5%;/*.5%;*/
+    background-color: #363441;/* #a24ef4;
+    /*background-color: yellow;*/
+    /* Just testing sizing for now */
+}
+
+/*#add-to-cart{
+    background-color: green;
+}
+#del-from-wishlist{
+    background-color: cyan;
+}*/
+
+#action-cols{
+    background-color: #fff;
+    padding-top: 2em;
+    /*width: 25%;*/
+}
+
+#action-cols h5{
+    font-weight: bold;
+}
+
+#action-cols a{
+    margin-left: 35%;
+    margin-top: 10%;
+    margin-bottom: 55%;
+}
+
+#wishlist-details{
+    background-color: #ffffff;
+    margin-bottom: 5%;
+}
+
+#wishlist-details h1{
+    padding-top: 0.8em;
+    padding-bottom: 1.2em;
+    padding-left: 2.3em;
+    border-bottom: solid 2px #ccc; 
+    font-family: times;
+}
+
+.wishbar{
+    border: 3px solid #46349b;
+    border-radius: 10px; 
+    padding: 1.5em;
+    list-style-type: none;
+    /*background-color: #ffffff;*/
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;   
+    line-height: .1em; 
+    font-size: 18px;
+    background-color: yellow;
+}
+
+.pagebar{
+ width: 50%;
+ border: 3px solid #46349b;
+ border-radius: 20px;
+ line-height: 2em;
+ font-size: 25px;
+ background-color: #363441; 
+ margin-left: 50%;
+}
+
+.pagebar p{
+    padding-left: 1.4em;
+    padding-right: 1em;
+    word-spacing: 150px;
+}
+
+#pagination{
+    /*background-color:  #a24ef4; */
+    background-color: #eee;
+    border-top: solid 1px #ccc; 
+    /*border-bottom: solid 1px #ccc;*/
+    padding-bottom: 3.5em;
+    padding-top: 4.5em;
+}
+
+#page-p{
+    text-align: right;
+    font-style: italic;
+    color: blue;
+}
+
+.wishbar a{
+    padding: .8em;
+}
+
+a:hover{
+    text-decoration: none;
+    color: #363441;
+}
+
+/* End of Wish List styles */
+
+
+
+/* Shopping-Cart page styling (CSS Online) */
+
+#shop-cart{
+    background-color: #fff;
+    margin-bottom: 2.5%;
+    margin-top: 2.5%;
+}
+
+.table>tbody>tr>td, .table>tfoot>tr>td{
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 600px) {
+
+    #cart tbody td .form-control{
+        width:20%;
+        display: inline !important;
+    }
+
+    .actions .btn{
+        width:36%;
+        margin:1.5em 0;
+    }
+    
+    .actions .btn-info{
+        float:left;
+    }
+
+    .actions .btn-danger{
+        float:right;
+    }
+    
+    #cart thead { 
+        display: none; 
+    }
+
+    #cart tbody td { 
+        display: block; 
+        padding: .6rem; 
+        min-width:320px;
+    }
+
+    #cart tbody tr td:first-child { 
+        background: #333; 
+        color: #fff; 
+    }
+
+    #cart tbody td:before {
+        content: attr(data-th); 
+        font-weight: bold;
+        display: inline-block; 
+        width: 8rem;
+    }
+
+    #cart tfoot{
+        /*margin-bottom: 10%;*/
+    }
+    
+    #cart tfoot td{
+        display:block; 
+    }
+
+    #cart tfoot td .btn{
+        display:block;
+    }
+
+}
+
+/* End of Shopping-cart styles */
+

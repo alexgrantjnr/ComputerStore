@@ -32,4 +32,12 @@ public class HomeController extends Controller {
         return ok(search.render());
     }
 
+    public Result cart() {
+        return ok(cart.render());
+    }
+
+    public Result wishlist() {
+        return ok(wishlist.render());
+    }
+
 }
