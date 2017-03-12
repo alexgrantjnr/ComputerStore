@@ -7,6 +7,12 @@ import views.html.*;
 
 public class HomeController extends Controller {
 
+    private FormFactory formFactory;
+
+    public HomeController(FormFactory f){
+    this.formFactory = f;
+    }
+
     
     public Result index() {
         return ok(index.render());
@@ -17,7 +23,26 @@ public class HomeController extends Controller {
     }
 
     public Result adminPanel() {
-        return ok(adminpanel.render());
+
+        Form<Product> addProductForm = formFactory.form(Product.class);
+
+        return ok(adminpanel.render(addProductForm));
+    }
+
+    public Result addProductSubmit(){
+
+        Form<Product> newProduct = formFactory.form(Product.class).bindFromRequest();
+
+        if (newProduct.hasErrors){
+            return badRequest(adminpanel.render(addProductForm));
+        }
+
+        Product newProd = newProduct.get();
+
+        newProd.save();
+
+        return redirect(controllers.routes.HomeController.adminPanel());
+
     }
 
     public Result payment() {

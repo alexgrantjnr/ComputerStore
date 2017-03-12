@@ -1,3 +1,6 @@
+@import helper._
+@(addProductForm: Form[models.Product])
+
 @main("Admin Panel"){
 <div class="container-fluid">
     <div class="row" id="admin-panel-content">
@@ -129,41 +132,41 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
-                            <form>
+                        @helper.form(action = routes.HomeController.addProductSubmit()) {
                                 <div class="form-group">
                                     <label for="productname">
                                         <p class="whitetext">Name</p>
                                     </label>
-                                    <input type="text" class="form-control" id="productname" placeholder="Product Name">
+                                    @inputText(addProductForm("name"), '_class -> "form-control", '_id -> "productname", '_placeholder -> "Product Name")
                                 </div>
                                 <div class="form-group">
                                     <label for="productquantity">
                                         <p class="whitetext">Quantity</p>
                                     </label>
-                                    <input type="number" class="form-control" id="productquantity" placeholder="Quantity">
+                                    @input(addProductForm("quantity"),'_type -> "number", '_class -> "form-control", '_id -> "productquantity", '_placeholder -> "Quantity")
                                 </div>
                                 <div class="form-group">
                                     <label for="productprice">
                                         <p class="whitetext">Price €</p>
                                     </label>
-                                    <input type="number" min="0.01" step="0.01" max="9999" value="00.00" name="productprice" class="form-control">
+                                    @input(addProductForm("price"),'_type -> "number", '_class -> "form-control", '_min -> "0.01", '_step -> "0.01", '_max -> "9999", '_value -> "00.00")
                                 </div>
                                 <div class="form-group">
                                     <label for="productdescription">
                                         <p class="whitetext">Description</p>
                                     </label>
-                                    <textarea id="add-product-textarea" name="productdescription" class="form-control"></textarea>
+                                    @textarea(addProductForm("description"), '_class -> "form-control", '_id -> "add-product-textarea", '_placeholder -> "Quantity")
                                 </div>
                                 <div class="form-group">
                                     <label for="imageupload">
                                         <p class="whitetext">Images</p>
                                     </label>
-                                    <input type="file" name="imageupload" class="form-control">
+                                    @inputFile(addProductForm("productImage"), '_class -> "form-control", '_class -> "form-control")
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" class="form-control" id="add-product-submit" placeholder="Submit">
                                 </div>
-                            </form>
+                        }
                             <div class="form-group">
                                 <button id="add-product-cancel">Cancel</button>
                             </div>

@@ -7,16 +7,23 @@ import com.avaje.ebean.Model;
 import play.data.format.*;
 import play.data.validation.*;
 
-public class user extends Model{
+@Entity
+public class User extends Model{
 
-
-    private long id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String age;
-    private String phone,mobile;
-    private byte[] profilePic;
+    @id
+    public long id;
+    @Constraints.Required
+    public String firstName;
+    @Constraints.Required
+    public String lastName;
+    @Constraints.Required
+    public String email;
+    @Constraints.Required
+    public String age;
+    @Constraints.Required
+    public String phone,mobile;
+    @Constraints.Required
+    public byte[] profilePic;
 
     public user(long id, String firstName, String lastName, String email, String age, String phone, String mobile, byte[] profilePic) {
         this.id = id;
