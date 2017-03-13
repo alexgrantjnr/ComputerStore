@@ -10,7 +10,7 @@ import play.data.validation.*;
 @Entity
 public class User extends Model{
 
-    @id
+    @Id
     public long id;
     @Constraints.Required
     public String firstName;
@@ -25,7 +25,7 @@ public class User extends Model{
     @Constraints.Required
     public byte[] profilePic;
 
-    public user(long id, String firstName, String lastName, String email, String age, String phone, String mobile, byte[] profilePic) {
+    public User(long id, String firstName, String lastName, String email, String age, String phone, String mobile, byte[] profilePic) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

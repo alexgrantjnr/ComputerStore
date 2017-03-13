@@ -157,16 +157,16 @@
                                     <label for="productdescription">
                                         <p class="whitetext">Description</p>
                                     </label>
-                                    @textarea(addProductForm("description"), '_class -> "form-control", '_id -> "add-product-textarea", '_placeholder -> "Quantity")
+                                    @inputText(addProductForm("description"), '_class -> "form-control", '_id -> "add-product-textarea", '_placeholder -> "Quantity")
                                 </div>
                                 <div class="form-group">
                                     <label for="imageupload">
                                         <p class="whitetext">Images</p>
                                     </label>
-                                    @inputFile(addProductForm("productImage"), '_class -> "form-control", '_class -> "form-control")
+                                    @inputFile(addProductForm("productImage"), '_class -> "form-control")
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" class="form-control" id="add-product-submit" placeholder="Submit">
+                                    <input type="submit" class="form-control" id="add-product-submit" value="Submit">
                                 </div>
                         }
                             <div class="form-group">
@@ -177,7 +177,7 @@
                     </div>
                     <!--end of row-->
                 </div>
-                <!--end of inner contaienr-->
+                <!--end of inner container-->
             </div>
             <!--end of add user form-->
         </div>

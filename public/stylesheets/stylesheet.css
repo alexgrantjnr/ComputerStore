@@ -4,6 +4,11 @@
     outline: none;
 }
 
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none!important;
+}
+
 .col-centered {
     float: none;
     margin: 0 auto;
@@ -23,6 +28,15 @@
 
 .whitetext {
     color: white;
+}
+
+.grow {
+    transition: all .2s ease-in-out;
+    text-decoration: none;
+}
+
+.grow:hover {
+    transform: scale(1.1);
 }
 
 .purple-to-blue {

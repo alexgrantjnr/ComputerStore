@@ -1,14 +1,20 @@
 package controllers;
 
 import play.mvc.*;
-
+import play.api.Environment;
+import play.data.*;
+import play.db.ebean.Transactional;
+import javax.inject.Inject;
+import java.util.List;
+import java.util.ArrayList;
 import views.html.*;
-
+import models.*;
 
 public class HomeController extends Controller {
 
     private FormFactory formFactory;
 
+    @Inject
     public HomeController(FormFactory f){
     this.formFactory = f;
     }
@@ -35,8 +41,8 @@ public class HomeController extends Controller {
         Form<Product> newProduct = formFactory.form(Product.class).bindFromRequest();
 
         //If the form has errors return a bad request
-        if (newProduct.hasErrors){
-            return badRequest(adminpanel.render(addProductForm));
+        if (newProduct.hasErrors()){
+            return badRequest(adminpanel.render(null));
         }
         //Making a new object of type Product and assigning the variables from the form to the object
         Product newProd = newProduct.get();

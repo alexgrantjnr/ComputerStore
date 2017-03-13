@@ -10,7 +10,7 @@ import play.data.validation.*;
 @Entity
 public class Product extends Model {
 
-    @id
+    @Id
     public long id;
     @Constraints.Required
     public String name;
@@ -20,7 +20,7 @@ public class Product extends Model {
     public double price;
     @Constraints.Required
     public String description;
-    @Constraint.Required
+    @Constraints.Required
     public byte[] productImage;
 
     public Product(long id, String name, int quantity, double price, String description, byte[] productImage) {
