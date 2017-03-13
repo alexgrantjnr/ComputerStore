@@ -19,6 +19,7 @@ public class HomeController extends Controller {
     this.formFactory = f;
     }
 
+    
     public Result index() {
         return ok(index.render());
     }
