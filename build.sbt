@@ -10,5 +10,8 @@ libraryDependencies ++= Seq(
   javaJdbc,
   cache,
   evolutions,
-  javaWs
+  javaWs,
+  "com.loicdescotte.coffeebean" %% "html5tags" % "1.2.2"
 )
+
+resolvers += Resolver.url("github repo for html5tags", url("http://loicdescotte.github.io/Play2-HTML5Tags/releases/"))(Resolver.ivyStylePatterns)

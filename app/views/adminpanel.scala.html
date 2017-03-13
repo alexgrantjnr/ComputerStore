@@ -1,4 +1,6 @@
 @import helper._
+@import html5.tags.html._
+
 @(addProductForm: Form[models.Product])
 
 @main("Admin Panel"){
@@ -143,13 +145,13 @@
                                     <label for="productquantity">
                                         <p class="whitetext">Quantity</p>
                                     </label>
-                                    @input(addProductForm("quantity"),'_type -> "number", '_class -> "form-control", '_id -> "productquantity", '_placeholder -> "Quantity")
+                                    @number(addProductForm("quantity"),'_type -> "number", '_class -> "form-control", '_id -> "productquantity", '_placeholder -> "Quantity")
                                 </div>
                                 <div class="form-group">
                                     <label for="productprice">
                                         <p class="whitetext">Price €</p>
                                     </label>
-                                    @input(addProductForm("price"),'_type -> "number", '_class -> "form-control", '_min -> "0.01", '_step -> "0.01", '_max -> "9999", '_value -> "00.00")
+                                    @number(addProductForm("price"),'_type -> "number", '_class -> "form-control", '_min -> "0.01", '_step -> "0.01", '_max -> "9999", '_value -> "00.00")
                                 </div>
                                 <div class="form-group">
                                     <label for="productdescription">
