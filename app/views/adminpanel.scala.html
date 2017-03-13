@@ -12,6 +12,7 @@
             <p class="text-center whitetext admin-menu-item" id="admin-charts-button">Charts <i class="fa fa-line-chart" aria-hidden="true"></i></p>
             <p class="text-center whitetext admin-menu-item" id="admin-users-button">Users <i class="fa fa-user" aria-hidden="true"></i></p>
             <p class="text-center whitetext admin-menu-item" id="admin-product-button">Products <i class="fa fa-tags" aria-hidden="true"></i></p>
+            <p class="text-center whitetext admin-menu-item" id="admin-add-product-button">Add A Product <i class="fa fa-tags" aria-hidden="true"></i></p>
         </div>
         <!--end of col -->
         <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" id="admin-panel-display">
@@ -36,7 +37,7 @@
                             <div class="panel-heading" id="admin-users-panel-heading">
                                 <div class="row">
                                     <div class="col col-xs-12">
-                                        <h3 class="panel-title whitetext">Registered Users <i class="fa fa-user" aria-hidden="true"></i></h3>
+                                        <h3 class="panel-title">Registered Users <i class="fa fa-user" aria-hidden="true"></i></h3>
                                     </div>
                                 </div>
                             </div>
@@ -85,8 +86,7 @@
                             <div class="panel-heading" id="admin-users-panel-heading">
                                 <div class="row">
                                     <div class="col col-xs-12">
-                                        <h3 class="panel-title whitetext">Products <i class="fa fa-tags" aria-hidden="true"></i></h3>
-                                        <button type="button" class="btn btn-default pull-right" id="add-product-button">Add A Product</button>
+                                        <h3 class="panel-title">Products <i class="fa fa-tags" aria-hidden="true"></i></h3>
                                     </div>
                                 </div>
                             </div>
@@ -128,50 +128,29 @@
                 <!--end of end of row -->
             </div>
             <!--end of end of admin-products-section -->
-            <div class="col-lg-4 col-md-6 col-sm-8 col-xs-12 col-lg-offset-4 col-md-offset-3 col-ms-offset-2" id="admin-add-product">
-                <br>
-                <h2 class="text-center whitetext">Add a <span class="purpletext">product</span></h2>
+            <div class="container-fluid admin-sections" id="add-products-section">
+                <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="admin-add-product">
+
+                <h2 class="text-center purpletext">Add A Product <span class = "joined-font">Peecy Wurld</span></h2>
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4" >
                         @helper.form(action = routes.HomeController.addProductSubmit()) {
-                                <div class="form-group">
-                                    <label for="productname">
-                                        <p class="whitetext">Name</p>
-                                    </label>
-                                    @inputText(addProductForm("name"), '_class -> "form-control", '_id -> "productname", '_placeholder -> "Product Name")
-                                </div>
-                                <div class="form-group">
-                                    <label for="productquantity">
-                                        <p class="whitetext">Quantity</p>
-                                    </label>
-                                    @number(addProductForm("quantity"),'_type -> "number", '_class -> "form-control", '_id -> "productquantity", '_placeholder -> "Quantity")
-                                </div>
-                                <div class="form-group">
-                                    <label for="productprice">
-                                        <p class="whitetext">Price €</p>
-                                    </label>
-                                    @number(addProductForm("price"),'_type -> "number", '_class -> "form-control", '_min -> "0.01", '_step -> "0.01", '_max -> "9999", '_value -> "00.00")
-                                </div>
-                                <div class="form-group">
-                                    <label for="productdescription">
-                                        <p class="whitetext">Description</p>
-                                    </label>
-                                    @inputText(addProductForm("description"), '_class -> "form-control", '_id -> "add-product-textarea", '_placeholder -> "Quantity")
-                                </div>
-                                <div class="form-group">
-                                    <label for="imageupload">
-                                        <p class="whitetext">Images</p>
-                                    </label>
-                                    @inputFile(addProductForm("productImage"), '_class -> "form-control")
-                                </div>
-                                <div class="form-group">
+
+                                    @text(addProductForm("Name"), 'class -> "form-control", 'id -> "productname", 'placeholder -> "Product Name")
+
+                                    @number(addProductForm("Quantity"), 'class -> "form-control", 'id -> "productquantity", 'placeholder -> "Quantity")
+
+                                    @number(addProductForm("Price"),'type -> "number", 'class -> "form-control", 'min -> "0.01", 'step -> "0.01", 'max -> "9999", 'value -> "00.00")
+
+                                    @text(addProductForm("Description"), 'class -> "form-control", 'id -> "add-product-textarea", 'placeholder -> "Description")
+
+                                    @file(addProductForm("ProductImage"), 'class -> "form-control")
+
                                     <input type="submit" class="form-control" id="add-product-submit" value="Submit">
-                                </div>
+
                         }
-                            <div class="form-group">
-                                <button id="add-product-cancel">Cancel</button>
-                            </div>
                         </div>
                         <!--end of inner col-->
                     </div>
@@ -180,6 +159,9 @@
                 <!--end of inner container-->
             </div>
             <!--end of add user form-->
+                </div>
+                    <!--end of row-->
+            </div> <!--end of col-->
         </div>
         <!--end of admin panel display -->
     </div>
@@ -273,40 +255,39 @@ $(document).ready(function() {
     $("#charts-section").show();
     $("#users-section").hide();
     $("#products-section").hide();
-    $("#admin-add-product").hide();
+    $("#add-products-section").hide();
+
+
 
 
     $("#admin-charts-button").click(function() {
         $("#charts-section").show();
         $("#products-section").hide();
         $("#users-section").hide();
+        $("#add-products-section").hide();
     });
 
     $("#admin-users-button").click(function() {
         $("#charts-section").hide();
         $("#products-section").hide();
         $("#users-section").show();
+        $("#add-products-section").hide();
     });
 
     $("#admin-product-button").click(function() {
         $("#charts-section").hide();
         $("#products-section").show();
         $("#users-section").hide();
+        $("#add-products-section").hide();
     });
 
-    $("#admin-product-button").click(function() {
+    $("#admin-add-product-button").click(function() {
         $("#charts-section").hide();
-        $("#products-section").show();
+        $("#products-section").hide();
         $("#users-section").hide();
+        $("#add-products-section").show();
     });
 
-    $("#add-product-button").click(function() {
-        $("#admin-add-product").fadeIn();
-    });
-
-    $("#add-product-cancel").click(function() {
-        $("#admin-add-product").fadeOut();
-    });
 });
 </script>
 }
