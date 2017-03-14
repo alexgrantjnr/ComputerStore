@@ -36,6 +36,7 @@ public class HomeController extends Controller {
         return ok(adminpanel.render(addProductForm));
     }
 
+    //Add a Product to the database
     public Result addProductSubmit(){
         //Create a Form object which takes the form passed from the view
         Form<Product> newProduct = formFactory.form(Product.class).bindFromRequest();
@@ -64,6 +65,9 @@ public class HomeController extends Controller {
     }
 
     public Result search() {
+
+
+
         return ok(search.render());
     }
 

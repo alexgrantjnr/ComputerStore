@@ -174,26 +174,6 @@ a:hover, a:visited, a:link, a:active
     margin-right: 1em;
 }
 
-#navcheckoutbutton {
-    margin-top: 0.3em;
-    border-radius: 27px;
-    letter-spacing: .7px;
-    text-transform: uppercase;
-    padding: 16px 22px 18px;
-    font-weight: 500;
-    font-size: 16px;
-    color: white;
-    background-image: linear-gradient(#4f47bc, #a24ef4);
-    display: inline-block;
-    border: none;
-    transition: all 0.4s ease;
-}
-
-#navcheckoutbutton:hover {
-    background-image: linear-gradient(to top, #139fe8, #36f4a8);
-    transition: opacity 0.4s ease-out;
-}
-
 #subscribe-section {
     background-color: #363441;
     padding: 2em;
@@ -338,7 +318,6 @@ a:hover, a:visited, a:link, a:active
     background-image: linear-gradient(to top, #139fe8, #36f4a8);
     transition: opacity 0.4s ease-out;
 }
-
 
 /*End Of Product Search Results page*/
 
