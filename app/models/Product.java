@@ -10,7 +10,8 @@ import play.data.validation.*;
 public class Product extends Model {
 
     @Id
-    public long id;
+    @GeneratedValue
+    public long productId;
     @Constraints.Required
     public String name;
     @Constraints.Required
@@ -22,21 +23,12 @@ public class Product extends Model {
     @Constraints.Required
     public byte[] productImage;
 
-    public Product(long id, String name, int quantity, double price, String description, byte[] productImage) {
-        this.id = id;
-        this.name = name;
-        this.quantity = quantity;
-        this.price = price;
-        this.description = description;
-        this.productImage = productImage;
+    public long getProductId() {
+        return productId;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public void setProductId(long productId) {
+        this.productId = productId;
     }
 
     public String getName() {

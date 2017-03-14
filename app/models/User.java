@@ -11,13 +11,18 @@ import play.data.validation.*;
 public class User extends Model{
 
     @Id
-    public long id;
+    @GeneratedValue
+    public long userId;
     @Constraints.Required
     public String firstName;
     @Constraints.Required
     public String lastName;
     @Constraints.Required
+    public String role;
+    @Constraints.Required
     public String email;
+    @Constraints.Required
+    public String password;
     @Constraints.Required
     public String age;
     @Constraints.Required
@@ -25,23 +30,25 @@ public class User extends Model{
     @Constraints.Required
     public byte[] profilePic;
 
-    public User(long id, String firstName, String lastName, String email, String age, String phone, String mobile, byte[] profilePic) {
-        this.id = id;
+    public User(long userId, String firstName, String lastName, String role, String email, String password, String age, String phone, String mobile, byte[] profilePic) {
+        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.role = role;
         this.email = email;
+        this.password = password;
         this.age = age;
         this.phone = phone;
         this.mobile = mobile;
         this.profilePic = profilePic;
     }
 
-    public long getId() {
-        return id;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
@@ -60,12 +67,28 @@ public class User extends Model{
         this.lastName = lastName;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getAge() {
@@ -99,7 +122,6 @@ public class User extends Model{
     public void setProfilePic(byte[] profilePic) {
         this.profilePic = profilePic;
     }
-
 }
 
 
