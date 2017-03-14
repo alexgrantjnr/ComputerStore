@@ -1,4 +1,7 @@
-@main("Payment"){
+@import helper._
+@import html5.tags.html._
+@(searchProductForm: Form[models.Search])
+@main("Payment",searchProductForm){
 <div class="container">
     <div class="row">
         <!-- You can make it whatever width you want. I'm making it full width

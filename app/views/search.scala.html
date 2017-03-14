@@ -1,4 +1,7 @@
-@main("Search"){
+@import helper._
+@import html5.tags.html._
+@(searchProductForm: Form[models.Search])
+@main("Search",searchProductForm){
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-3 col-sm-3 col-xs-12 col-md-3" id="product-filter-bounds">

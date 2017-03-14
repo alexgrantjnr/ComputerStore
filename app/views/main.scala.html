@@ -1,4 +1,5 @@
-@(title: String)(content: Html)
+@import helper._
+@(title: String,searchProductForm: Form[models.Search])(content: Html)
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,12 +30,12 @@
             <div class="row">
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 pull-left">
                     <a href="@routes.HomeController.index()"><h1 class="pull-left joined-font" id="logo"><span>Peecy</span> Wurld</h1></a>
-                    <form class="navbar-form navbar-left" id="navbarsearchform">
-                        <div>
-                            <input type="text" placeholder="Search" id="form-white-outline" class="pull-left">
-                            <input type="submit" value="Submit" id="navbar-submit">
-                        </div>
-                    </form>
+
+                    @helper.form(action = routes.HomeController.searchProduct(), 'class -> "navbar-form navbar-left", 'id -> "navbarsearchform") {
+                            @inputText(searchProductForm("Search"), 'class -> "form-control", 'id -> "form-white-outline", 'placeholder -> "Search")
+                            <input type="submit" value="Submit" id="navbar-submit" class = "pull-right">
+                    }
+
                 </div>
                 <!--end of col-->
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 pull-right">
@@ -53,22 +54,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <a href="@routes.HomeController.search()"><h4 class="text-center whitetext grow"><i class="fa fa-laptop" aria-hidden="true"></i> Laptops</h4></a>
+                    <a href="@routes.HomeController.searchProduct()"><h4 class="text-center whitetext grow"><i class="fa fa-laptop" aria-hidden="true"></i> Laptops</h4></a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <a href="@routes.HomeController.search()"><h4 class="text-center whitetext grow"><i class="fa fa-desktop" aria-hidden="true"></i> Desktops</h4></a>
+                    <a href="@routes.HomeController.searchProduct()"><h4 class="text-center whitetext grow"><i class="fa fa-desktop" aria-hidden="true"></i> Desktops</h4></a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <a href="@routes.HomeController.search()"><h4 class="text-center whitetext grow"> <i class="fa fa-television" aria-hidden="true"></i>Monitors</h4></a>
+                    <a href="@routes.HomeController.searchProduct()"><h4 class="text-center whitetext grow"> <i class="fa fa-television" aria-hidden="true"></i>Monitors</h4></a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <a href="@routes.HomeController.search()"><h4 class="text-center whitetext grow"><i class="fa fa-tablet" aria-hidden="true"></i> Tablets</h4></a>
+                    <a href="@routes.HomeController.searchProduct()"><h4 class="text-center whitetext grow"><i class="fa fa-tablet" aria-hidden="true"></i> Tablets</h4></a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <a href="@routes.HomeController.search()"><h4 class="text-center whitetext grow"><i class="fa fa-headphones" aria-hidden="true"></i> Accessories</h4></a>
+                    <a href="@routes.HomeController.searchProduct()"><h4 class="text-center whitetext grow"><i class="fa fa-headphones" aria-hidden="true"></i> Accessories</h4></a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <a href="@routes.HomeController.search()"><h4 class="text-center whitetext grow"><i class="fa fa-cog" aria-hidden="true"></i> Components</h4></a>
+                    <a href="@routes.HomeController.searchProduct()"><h4 class="text-center whitetext grow"><i class="fa fa-cog" aria-hidden="true"></i> Components</h4></a>
                 </div>
                 <!--end of end of col-->
             </div>

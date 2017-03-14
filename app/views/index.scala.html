@@ -1,4 +1,7 @@
-@main("Home"){
+@import helper._
+@import html5.tags.html._
+@(searchProductForm: Form[models.Search])
+@main("Home",searchProductForm){
 
 <div class="container-fluid">
     <div class="row">
