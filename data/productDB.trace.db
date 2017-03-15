@@ -1,0 +1,101 @@
+2017-03-15 12:50:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "[*]#                         
+# TO STOP EBEAN DDL GENERATION, REMOVE THIS COMMENT AND START USING EVOLUTIONS
+
+#         
+
+CREATE TABLE CATEGORY (
+  CATEGORY_ID                   BIGINT NOT NULL,
+  CONSTRAINT PK_CATEGORY PRIMARY KEY (CATEGORY_ID)
+) "; SQL statement:
+# --- Created by Ebean DDL
+# To stop Ebean DDL generation, remove this comment and start using Evolutions
+
+# --- !Ups
+
+create table category (
+  category_id                   bigint not null,
+  constraint pk_category primary key (category_id)
+) [42000-191]
+2017-03-15 12:50:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (
+  ORDER_ID                      BIGINT NOT NULL,
+  DATE                          VARCHAR(255),
+  DISPATCHED                    VARCHAR(255),
+  USER_ID                       VARCHAR(255),
+  CONSTRAINT PK_ORDER PRIMARY KEY (ORDER_ID)
+) "; expected "identifier"; SQL statement:
+create table order (
+  order_id                      bigint not null,
+  date                          varchar(255),
+  dispatched                    varchar(255),
+  user_id                       varchar(255),
+  constraint pk_order primary key (order_id)
+) [42001-191]
+2017-03-15 12:50:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "[*]#           
+
+DROP TABLE IF EXISTS CATEGORY "; SQL statement:
+# --- !Downs
+
+drop table if exists category [42000-191]
+2017-03-15 12:50:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE IF EXISTS ORDER[*] "; expected "identifier"; SQL statement:
+drop table if exists order [42001-191]
+2017-03-15 12:51:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (
+  ORDER_ID                      BIGINT NOT NULL,
+  DATE                          VARCHAR(255),
+  DISPATCHED                    VARCHAR(255),
+  USER_ID                       VARCHAR(255),
+  CONSTRAINT PK_ORDER PRIMARY KEY (ORDER_ID)
+) "; expected "identifier"; SQL statement:
+create table order (
+  order_id                      bigint not null,
+  date                          varchar(255),
+  dispatched                    varchar(255),
+  user_id                       varchar(255),
+  constraint pk_order primary key (order_id)
+) [42001-191]
+2017-03-15 12:52:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO product (name, quantity, price, description) VALUES (1,'Pc Case',10,250.00,'Nice Pc Case') [21002-191]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:257)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1388)
+	at org.h2.server.web.WebApp.query(WebApp.java:1061)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1023)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1010)
+	at org.h2.server.web.WebThread.process(WebThread.java:164)
+	at org.h2.server.web.WebThread.run(WebThread.java:89)
+	at java.lang.Thread.run(Thread.java:745)
+2017-03-15 12:52:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO product  VALUES (1,'Pc Case',10,250.00,'Nice Pc Case') [21002-191]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:257)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1388)
+	at org.h2.server.web.WebApp.query(WebApp.java:1061)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1023)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1010)
+	at org.h2.server.web.WebThread.process(WebThread.java:164)
+	at org.h2.server.web.WebThread.run(WebThread.java:89)
+	at java.lang.Thread.run(Thread.java:745)

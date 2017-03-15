@@ -73,11 +73,19 @@ public class HomeController extends Controller {
         return ok(product.render(searchProductForm));
     }
 
+    public Result searchAllProducts() {
+        //Create a new Form object of type product, which will be passed to the view
+        Form<Search> searchProductForm = formFactory.form(Search.class);
+        //Passes a list of all products to search page
+        List<Product> allProducts = Product.findAll();
+
+        return ok(search.render(searchProductForm,allProducts));
+    }
+
     public Result searchProduct() {
         //Create a new Form object of type product, which will be passed to the view
         Form<Search> searchProductForm = formFactory.form(Search.class);
-
-        return ok(search.render(searchProductForm));
+        return ok(search.render(searchProductForm,null));
     }
 
     public Result cart() {

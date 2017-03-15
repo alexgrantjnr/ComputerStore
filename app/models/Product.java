@@ -23,6 +23,20 @@ public class Product extends Model {
     @Constraints.Required
     public byte[] productImage;
 
+    //Query helper to find object with id long
+    public static Finder<Long,Product> find = new Finder<Long,Product>(Product.class);
+
+    //Find all products
+    public static List<Product> findAll(){
+        return Product.find.all();
+    }
+
+    //Find products with specific name
+    public static List<Product> findByName(String productName){
+        return find.where().ilike("name","%" + productName + "%").findList();
+    }
+
+
     public long getProductId() {
         return productId;
     }
