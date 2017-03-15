@@ -9,8 +9,10 @@ import play.data.validation.*;
 @Entity
 public class Product extends Model {
 
+
+    @SequenceGenerator(name = "product_gen",allocationSize = 1, initialValue = 1)
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_gen")
     public long productId;
     @Constraints.Required
     public String name;
@@ -24,7 +26,7 @@ public class Product extends Model {
     public byte[] productImage;
 
     //Query helper to find object with id long
-    public static Finder<Long,Product> find = new Finder<Long,Product>(Product.class);
+    public static Finder<Long,Product> find = new Finder<>(Product.class);
 
     //Find all products
     public static List<Product> findAll(){

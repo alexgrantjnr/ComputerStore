@@ -2,14 +2,14 @@ name := """ComputerStore"""
 
 version := "1.0-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava,PlayEbean)
+lazy val root = (project in file(".")).enablePlugins(PlayJava, PlayEbean)
 
 scalaVersion := "2.11.7"
 
 libraryDependencies ++= Seq(
   javaJdbc,
-  cache,
   evolutions,
+  cache,
   javaWs,
   "com.loicdescotte.coffeebean" %% "html5tags" % "1.2.2"
 )

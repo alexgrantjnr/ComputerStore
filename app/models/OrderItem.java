@@ -10,8 +10,9 @@ import play.data.validation.*;
 @Entity
 public class OrderItem extends Model {
 
+    @SequenceGenerator(name = "orderitemn_gen",allocationSize = 1, initialValue = 1)
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orderitemn_gen")
     public long orderItemId;
     @Constraints.Required
     public int quantity;

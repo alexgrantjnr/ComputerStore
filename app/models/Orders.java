@@ -2,16 +2,17 @@ package models;
 
 import java.util.*;
 import javax.persistence.*;
-
 import com.avaje.ebean.Model;
 import play.data.format.*;
 import play.data.validation.*;
 
-@Entity
-public class Order extends Model{
 
+@Entity
+public class Orders extends Model{
+
+    @SequenceGenerator(name = "order_gen",allocationSize = 1, initialValue = 1)
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_gen")
     public long orderId;
     @Constraints.Required
     public String date;
@@ -20,8 +21,7 @@ public class Order extends Model{
     @Constraints.Required
     public String userId;
 
-    public Order(long orderId, String date, String dispatched, String userId) {
-        this.orderId = orderId;
+    public Orders(String date, String dispatched, String userId) {
         this.date = date;
         this.dispatched = dispatched;
         this.userId = userId;

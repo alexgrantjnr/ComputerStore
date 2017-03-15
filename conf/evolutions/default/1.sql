@@ -7,16 +7,7 @@ create table category (
   category_id                   bigint not null,
   constraint pk_category primary key (category_id)
 );
-create sequence category_seq;
-
-create table order (
-  order_id                      bigint not null,
-  date                          varchar(255),
-  dispatched                    varchar(255),
-  user_id                       varchar(255),
-  constraint pk_order primary key (order_id)
-);
-create sequence order_seq;
+create sequence category_seq increment by 1;
 
 create table order_item (
   order_item_id                 bigint not null,
@@ -26,7 +17,16 @@ create table order_item (
   product_id                    bigint,
   constraint pk_order_item primary key (order_item_id)
 );
-create sequence order_item_seq;
+create sequence order_item_seq increment by 1;
+
+create table orders (
+  order_id                      bigint not null,
+  date                          varchar(255),
+  dispatched                    varchar(255),
+  user_id                       varchar(255),
+  constraint pk_orders primary key (order_id)
+);
+create sequence orders_seq increment by 1;
 
 create table product (
   product_id                    bigint not null,
@@ -37,7 +37,7 @@ create table product (
   product_image                 varbinary(255),
   constraint pk_product primary key (product_id)
 );
-create sequence product_seq;
+create sequence product_seq increment by 1;
 
 create table search (
   search                        varchar(255) not null,
@@ -57,7 +57,7 @@ create table user (
   profile_pic                   varbinary(255),
   constraint pk_user primary key (user_id)
 );
-create sequence user_seq;
+create sequence user_seq increment by 1;
 
 create table wish_list (
   wishlist_id                   bigint not null,
@@ -66,7 +66,7 @@ create table wish_list (
   product_id                    bigint,
   constraint pk_wish_list primary key (wishlist_id)
 );
-create sequence wish_list_seq;
+create sequence wish_list_seq increment by 1;
 
 
 # --- !Downs
@@ -74,11 +74,11 @@ create sequence wish_list_seq;
 drop table if exists category;
 drop sequence if exists category_seq;
 
-drop table if exists order;
-drop sequence if exists order_seq;
-
 drop table if exists order_item;
 drop sequence if exists order_item_seq;
+
+drop table if exists orders;
+drop sequence if exists orders_seq;
 
 drop table if exists product;
 drop sequence if exists product_seq;

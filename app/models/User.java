@@ -10,8 +10,9 @@ import play.data.validation.*;
 @Entity
 public class User extends Model{
 
+    @SequenceGenerator(name = "user_gen",allocationSize = 1, initialValue = 1)
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_gen")
     public long userId;
     @Constraints.Required
     public String firstName;

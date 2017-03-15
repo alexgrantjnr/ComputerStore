@@ -10,8 +10,9 @@ import play.data.validation.*;
 @Entity
 public class WishList extends Model{
 
+    @SequenceGenerator(name = "wishlist_gen",allocationSize = 1, initialValue = 1)
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "wishlist_gen")
     public long wishlistId;
     @Constraints.Required
     public int numItems;
