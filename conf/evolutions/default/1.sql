@@ -24,6 +24,7 @@ create table user (
   first_name                    varchar(255),
   last_name                     varchar(255),
   email                         varchar(255),
+  password                      varchar(255),
   age                           varchar(255),
   phone                         varchar(255),
   mobile                        varchar(255),

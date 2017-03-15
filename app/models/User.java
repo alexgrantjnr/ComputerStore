@@ -19,17 +19,20 @@ public class User extends Model{
     @Constraints.Required
     public String email;
     @Constraints.Required
+    public String password;
+    @Constraints.Required
     public String age;
     @Constraints.Required
     public String phone,mobile;
     @Constraints.Required
     public byte[] profilePic;
 
-    public User(long id, String firstName, String lastName, String email, String age, String phone, String mobile, byte[] profilePic) {
+    public User(long id, String firstName, String lastName, String email, String password, String age, String phone, String mobile, byte[] profilePic) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.setPassword(password);
         this.age = age;
         this.phone = phone;
         this.mobile = mobile;
@@ -68,6 +71,14 @@ public class User extends Model{
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getAge() {
         return age;
     }
@@ -99,6 +110,17 @@ public class User extends Model{
     public void setProfilePic(byte[] profilePic) {
         this.profilePic = profilePic;
     }
+
+    public static Finder<String, User> find = new Finder<String, User>(User.class);
+
+    public static List<User> findAll() {
+        return User.find.all();
+    }
+
+    public static User authenticate(String email, String password){
+        return find.where().eq("email", email).eq("password", password).findUnique();
+    }
+
 
 }
 

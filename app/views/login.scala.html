@@ -1,0 +1,40 @@
+@import helper._
+@import html5.tags.html._
+
+
+@(searchProductForm: Form[models.Search], loginForm: Form[models.Login])
+@main("Login", searchProductForm){
+<div class="container">
+    <div class="container-login">
+        <div >
+
+        <div class="headerform">
+            <h3>Peecy Wurld</h3>
+        </div>
+        <h1>Log In</h1>
+
+        @if(loginForm.hasGlobalErrors) {
+            <p class="alert alert-warning">
+            @loginForm.globalError.message
+            </p>>
+        }
+
+        @if(flash.containsKey("error")) {
+            <div class="alert alert-warning">
+                @flash.get("loginRequired")
+            </div>>
+        }
+        <p>Login into your account or if you do not have an account click<a href="#"> here</a> to regester </p>
+
+
+            @inputText(loginForm("Email"), '_lable -> "",
+            'class -> "form-control input-xs", 'placeholder -> "Email")
+        @inputPassword(loginForm("Password"), '_lable -> "",
+            'class -> "form-control input-xs", 'placeholder -> "Password")
+
+        <a href="#">Forgot password?</a>
+        <br><br>
+        <button type="submit" id="loginbtn">Login</button>
+    </div>
+</div>
+}
