@@ -32,7 +32,7 @@ public class User extends Model{
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.setPassword(password);
+        this.password = password;
         this.age = age;
         this.phone = phone;
         this.mobile = mobile;
