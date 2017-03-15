@@ -1,6 +1,6 @@
 @import helper._
 @import html5.tags.html._
-@(addProductForm: Form[models.Product],searchProductForm: Form[models.Search])
+@(addProductForm: Form[models.Product],searchProductForm: Form[models.Search],allProducts:List[models.Product])
 @main("Admin Panel",searchProductForm){
 <div class="container-fluid">
     <div class="row" id="admin-panel-content">
@@ -102,20 +102,26 @@
                                                 <p class="text-center purpletext">Name</p>
                                             </th>
                                             <th>
-                                                <p class="text-center purpletext">Email</p>
+                                                <p class="text-center purpletext">Quantity</p>
+                                            </th>
+                                            <th>
+                                                <p class="text-center purpletext">Price</p>
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td align="center">
-                                                <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                                <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                            </td>
-                                            <td class="hidden-xs">1</td>
-                                            <td>John Doe</td>
-                                            <td>johndoe@@example.com</td>
-                                        </tr>
+                                        @for(p <- allProducts) {
+                                            <tr>
+                                                <td align="center">
+                                                    <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
+                                                    <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                                </td>
+                                                <td>p.getProductId()</td>
+                                                <td>p.getName()</td>
+                                                <td>p.getQuantity()</td>
+                                                <td>p.getPrice()</td>
+                                            </tr>
+                                        }
                                     </tbody>
                                 </table>
                             </div>

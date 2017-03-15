@@ -37,7 +37,9 @@ public class HomeController extends Controller {
         //Create a new Form object of type product, which will be passed to the view
         Form<Product> addProductForm = formFactory.form(Product.class);
 
-        return ok(adminpanel.render(addProductForm,searchProductForm));
+        List<Product> allProducts = Product.findAll();
+
+        return ok(adminpanel.render(addProductForm,searchProductForm,allProducts));
     }
 
     //Add a Product to the database
@@ -48,9 +50,12 @@ public class HomeController extends Controller {
         Form<Product> addProductForm = formFactory.form(Product.class);
         //Create a Form object which takes the form passed from the view
         Form<Product> newProduct = formFactory.form(Product.class).bindFromRequest();
+        //Passes a list of all products to search page
+        List<Product> allProducts = Product.findAll();
+
         //If the form has errors return a bad request
         if (newProduct.hasErrors()){
-            return badRequest(adminpanel.render(addProductForm,searchProductForm));
+            return badRequest(adminpanel.render(addProductForm,searchProductForm,allProducts));
         }
         //Making a new object of type Product and assigning the variables from the form to the object
         Product newProd = newProduct.get();
@@ -58,7 +63,6 @@ public class HomeController extends Controller {
         newProd.save();
         //Redirect to the admin panel
         return redirect(controllers.routes.HomeController.adminPanel());
-
     }
 
     public Result payment() {

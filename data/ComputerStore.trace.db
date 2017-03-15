@@ -209,3 +209,6 @@ insert into Product values ('Case',1,25.00,'hello',null) [21002-191]
 	at org.h2.server.web.WebThread.process(WebThread.java:164)
 	at org.h2.server.web.WebThread.run(WebThread.java:89)
 	at java.lang.Thread.run(Thread.java:745)
+2017-03-15 15:41:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM PRODUCT .[*]"; expected "identifier"; SQL statement:
+SELECT * FROM PRODUCT . [42001-191]
