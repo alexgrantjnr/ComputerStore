@@ -76,6 +76,10 @@ public class HomeController extends Controller {
 
     public Result searchProduct(String productName) {
         List<Product>products = Product.findByName(productName);
+        if (products.isEmpty()){
+            List<Product>productsAll = Product.findAll();
+            return ok(search.render(productsAll));
+        }
         return ok(search.render(products));
     }
 
