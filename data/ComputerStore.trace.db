@@ -1,0 +1,214 @@
+2017-03-15 13:50:34 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "PLAY_EVOLUTIONS" not found; SQL statement:
+select id, hash, apply_script, revert_script, state, last_problem from play_evolutions where state like 'applying_%' [42102-191]
+2017-03-15 13:50:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (
+ORDER_ID                      BIGINT NOT NULL,
+DATE                          VARCHAR(255),
+DISPATCHED                    VARCHAR(255),
+USER_ID                       VARCHAR(255),
+CONSTRAINT PK_ORDER PRIMARY KEY (ORDER_ID)
+) "; expected "identifier"; SQL statement:
+create table order (
+order_id                      bigint not null,
+date                          varchar(255),
+dispatched                    varchar(255),
+user_id                       varchar(255),
+constraint pk_order primary key (order_id)
+) [42001-191]
+2017-03-15 13:51:14 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Table "PRODUCT" not found; SQL statement:
+select t0.product_id c0, t0.name c1, t0.quantity c2, t0.price c3, t0.description c4, t0.product_image c5 from product t0 [42102-191]
+2017-03-15 13:51:44 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/wdd/Desktop/computerstore/data/ComputerStore.mv.db [1.4.191/7]" [50000-191]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:373)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:356)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2888)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2460)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:65)
+	at org.h2.engine.Engine.openSession(Engine.java:175)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:153)
+	at org.h2.engine.Engine.createSession(Engine.java:136)
+	at org.h2.engine.Engine.createSession(Engine.java:28)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:107)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:91)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:735)
+	at org.h2.server.web.WebApp.login(WebApp.java:955)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:133)
+	at org.h2.server.web.WebThread.run(WebThread.java:89)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/wdd/Desktop/computerstore/data/ComputerStore.mv.db [1.4.191/7]" [50000-191]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 28 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/wdd/Desktop/computerstore/data/ComputerStore.mv.db [1.4.191/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:342)
+	... 23 more
+2017-03-15 13:52:24 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/wdd/Desktop/computerstore/data/ComputerStore.mv.db [1.4.191/7]" [50000-191]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:373)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:356)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2888)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2460)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:65)
+	at org.h2.engine.Engine.openSession(Engine.java:175)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:153)
+	at org.h2.engine.Engine.createSession(Engine.java:136)
+	at org.h2.engine.Engine.createSession(Engine.java:28)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:107)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:91)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:735)
+	at org.h2.server.web.WebApp.login(WebApp.java:955)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:133)
+	at org.h2.server.web.WebThread.run(WebThread.java:89)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/wdd/Desktop/computerstore/data/ComputerStore.mv.db [1.4.191/7]" [50000-191]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 28 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/wdd/Desktop/computerstore/data/ComputerStore.mv.db [1.4.191/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:342)
+	... 23 more
+2017-03-15 13:53:29 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "PRODUCT" not found; SQL statement:
+select t0.product_id c0, t0.name c1, t0.quantity c2, t0.price c3, t0.description c4, t0.product_image c5 from product t0 [42102-191]
+2017-03-15 13:54:05 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE IF EXISTS ORDER[*] "; expected "identifier"; SQL statement:
+drop table if exists order [42001-191]
+2017-03-15 13:54:08 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (
+ORDER_ID                      BIGINT NOT NULL,
+DATE                          VARCHAR(255),
+DISPATCHED                    VARCHAR(255),
+USER_ID                       VARCHAR(255),
+CONSTRAINT PK_ORDER PRIMARY KEY (ORDER_ID)
+) "; expected "identifier"; SQL statement:
+create table order (
+order_id                      bigint not null,
+date                          varchar(255),
+dispatched                    varchar(255),
+user_id                       varchar(255),
+constraint pk_order primary key (order_id)
+) [42001-191]
+2017-03-15 13:54:25 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE IF EXISTS ORDER[*] "; expected "identifier"; SQL statement:
+drop table if exists order [42001-191]
+2017-03-15 13:54:26 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (
+ORDER_ID                      BIGINT NOT NULL,
+DATE                          VARCHAR(255),
+DISPATCHED                    VARCHAR(255),
+USER_ID                       VARCHAR(255),
+CONSTRAINT PK_ORDER PRIMARY KEY (ORDER_ID)
+) "; expected "identifier"; SQL statement:
+create table order (
+order_id                      bigint not null,
+date                          varchar(255),
+dispatched                    varchar(255),
+user_id                       varchar(255),
+constraint pk_order primary key (order_id)
+) [42001-191]
+2017-03-15 14:04:45 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE IF EXISTS ORDER[*] "; expected "identifier"; SQL statement:
+drop table if exists order [42001-191]
+2017-03-15 14:04:47 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (
+ORDER_ID                      BIGINT NOT NULL,
+DATE                          VARCHAR(255),
+DISPATCHED                    VARCHAR(255),
+USER_ID                       VARCHAR(255),
+CONSTRAINT PK_ORDER PRIMARY KEY (ORDER_ID)
+) "; expected "identifier"; SQL statement:
+create table order (
+order_id                      bigint not null,
+date                          varchar(255),
+dispatched                    varchar(255),
+user_id                       varchar(255),
+constraint pk_order primary key (order_id)
+) [42001-191]
+2017-03-15 14:07:54 jdbc[25]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE IF EXISTS ORDER[*] "; expected "identifier"; SQL statement:
+drop table if exists order [42001-191]
+2017-03-15 14:10:51 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE ORDER[*] (
+ORDER_ID                      BIGINT NOT NULL,
+DATE                          VARCHAR(255),
+DISPATCHED                    VARCHAR(255),
+USER_ID                       VARCHAR(255),
+CONSTRAINT PK_ORDER PRIMARY KEY (ORDER_ID)
+) "; expected "identifier"; SQL statement:
+create table order (
+order_id                      bigint not null,
+date                          varchar(255),
+dispatched                    varchar(255),
+user_id                       varchar(255),
+constraint pk_order primary key (order_id)
+) [42001-191]
+2017-03-15 14:15:34 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE IF EXISTS ORDER[*] "; expected "identifier"; SQL statement:
+drop table if exists order [42001-191]
+2017-03-15 14:16:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM ORDERS ORDER_ITEM PRODUCT[*]"; SQL statement:
+SELECT * FROM ORDERS ORDER_ITEM PRODUCT [42000-191]
+2017-03-15 14:17:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO PRODUCT ('Pc Case'[*],1,25.00,'hello',NULL) "; expected "identifier"; SQL statement:
+insert into Product ('Pc Case',1,25.00,'hello',null) [42001-191]
+2017-03-15 14:18:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO PRODUCT (1[*],'Case',1,25.00,'hello',NULL) "; expected "identifier"; SQL statement:
+insert into Product (1,'Case',1,25.00,'hello',null) [42001-191]
+2017-03-15 14:18:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO PRODUCT ('Case'[*],1,25.00,'hello',NULL) "; expected "identifier"; SQL statement:
+insert into Product ('Case',1,25.00,'hello',null) [42001-191]
+2017-03-15 14:18:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT INTO PRODUCT ('Case'[*],1,25.00,'hello',NULL) "; expected "identifier"; SQL statement:
+insert into Product ('Case',1,25.00,'hello',null) [42001-191]
+2017-03-15 14:18:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+insert into Product values ('Case',1,25.00,'hello',null) [21002-191]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:257)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1388)
+	at org.h2.server.web.WebApp.query(WebApp.java:1061)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1023)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1010)
+	at org.h2.server.web.WebThread.process(WebThread.java:164)
+	at org.h2.server.web.WebThread.run(WebThread.java:89)
+	at java.lang.Thread.run(Thread.java:745)
+2017-03-15 15:41:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM PRODUCT .[*]"; expected "identifier"; SQL statement:
+SELECT * FROM PRODUCT . [42001-191]

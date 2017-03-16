@@ -10,12 +10,16 @@ import play.data.validation.*;
 @Entity
 public class User extends Model{
 
+    @SequenceGenerator(name = "user_gen",allocationSize = 1, initialValue = 1)
     @Id
-    public long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_gen")
+    public long userId;
     @Constraints.Required
     public String firstName;
     @Constraints.Required
     public String lastName;
+    @Constraints.Required
+    public String role;
     @Constraints.Required
     public String email;
     @Constraints.Required
@@ -27,10 +31,13 @@ public class User extends Model{
     @Constraints.Required
     public byte[] profilePic;
 
-    public User(long id, String firstName, String lastName, String email, String password, String age, String phone, String mobile, byte[] profilePic) {
-        this.id = id;
+
+    public User(long userId, String firstName, String lastName, String role, String email, String password, String age, String phone, String mobile, byte[] profilePic) {
+        this.userId = userId;
+
         this.firstName = firstName;
         this.lastName = lastName;
+        this.role = role;
         this.email = email;
         this.password = password;
         this.age = age;
@@ -39,12 +46,12 @@ public class User extends Model{
         this.profilePic = profilePic;
     }
 
-    public long getId() {
-        return id;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
@@ -61,6 +68,14 @@ public class User extends Model{
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getEmail() {
@@ -110,7 +125,7 @@ public class User extends Model{
     public void setProfilePic(byte[] profilePic) {
         this.profilePic = profilePic;
     }
-
+  
     public static Finder<String, User> find = new Finder<String, User>(User.class);
 
     public static List<User> findAll() {
@@ -120,8 +135,6 @@ public class User extends Model{
     public static User authenticate(String email, String password){
         return find.where().eq("email", email).eq("password", password).findUnique();
     }
-
-
 }
 
 

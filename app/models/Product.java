@@ -9,8 +9,11 @@ import play.data.validation.*;
 @Entity
 public class Product extends Model {
 
+
+    @SequenceGenerator(name = "product_gen",allocationSize = 1, initialValue = 1)
     @Id
-    public long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_gen")
+    public long productId;
     @Constraints.Required
     public String name;
     @Constraints.Required
@@ -22,21 +25,26 @@ public class Product extends Model {
     @Constraints.Required
     public byte[] productImage;
 
-    public Product(long id, String name, int quantity, double price, String description, byte[] productImage) {
-        this.id = id;
-        this.name = name;
-        this.quantity = quantity;
-        this.price = price;
-        this.description = description;
-        this.productImage = productImage;
+    //Query helper to find object with id long
+    public static Finder<Long,Product> find = new Finder<>(Product.class);
+
+    //Find all products
+    public static List<Product> findAll(){
+        return Product.find.all();
     }
 
-    public long getId() {
-        return id;
+    //Find products with specific name
+    public static List<Product> findByName(String productName){
+        return find.where().ilike("name","%" + productName + "%").findList();
     }
 
-    public void setId(long id) {
-        this.id = id;
+
+    public long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(long productId) {
+        this.productId = productId;
     }
 
     public String getName() {
