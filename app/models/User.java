@@ -31,8 +31,10 @@ public class User extends Model{
     @Constraints.Required
     public byte[] profilePic;
 
+
     public User(long userId, String firstName, String lastName, String role, String email, String password, String age, String phone, String mobile, byte[] profilePic) {
         this.userId = userId;
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.role = role;
@@ -122,6 +124,16 @@ public class User extends Model{
 
     public void setProfilePic(byte[] profilePic) {
         this.profilePic = profilePic;
+    }
+  
+    public static Finder<String, User> find = new Finder<String, User>(User.class);
+
+    public static List<User> findAll() {
+        return User.find.all();
+    }
+
+    public static User authenticate(String email, String password){
+        return find.where().eq("email", email).eq("password", password).findUnique();
     }
 }
 
