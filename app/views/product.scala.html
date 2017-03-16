@@ -1,5 +1,6 @@
 @import helper._
 @import html5.tags.html._
+@(product: Product)
 @main("Product"){
 <div class="container">
     <div class="row" id="product-bounds">
@@ -35,17 +36,11 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <h1 class="text-left">Product Name</h1>
-                        <h4 class="text-left"><span class = "purpletext">€</span>Price here</h4>
-                        <h4 class="text-left"><span class = "purpletext">Quantity</span> Quantity</h4>
+                        <h1 class="text-left">@product.getName</h1>
+                        <h4 class="text-left"><span class = "purpletext">€</span>@product.getProductId</h4>
+                        <h4 class="text-left"><span class = "purpletext">Quantity </span>@product.getQuantity</h4>
                         <h4 class="text-left"><span class = "purpletext">  <i class="fa fa-bus" aria-hidden="true"></i></span> Free Delievery available</h4>
-                        <p class="text-left">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                        <h4 class="text-left purpletext">Features</h4>
-                        <ul>
-                            <li>Size :80 x 80 x 25 mm</li>
-                            <li>Sound volume</li>
-                            <li>200 rpm</li>
-                        </ul>
+                        <p class="text-left">@product.getDescription</p>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <button class="pull-right" id="product-add-to-cart">Add To Cart <i class="fa fa-shopping-basket" aria-hidden="true"></i></button>

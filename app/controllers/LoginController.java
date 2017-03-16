@@ -34,9 +34,7 @@ public class LoginController extends Controller {
     //Handle login submit
     public Result loginSubmit() {
         //Bind form instance to the values submitted from the form
-
         Form<Login> loginForm = formFactory.form(Login.class).bindFromRequest();
-
         //Check for errors
         //Uses the validation method in the Login class
         if(loginForm.hasErrors()) {

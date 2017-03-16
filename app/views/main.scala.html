@@ -45,8 +45,8 @@
                         <ul class="dropdown-menu" id = "search-dropdown">
                             <li>
                                 <h3 class = "text-center whitetext">Search <span class = "joined-font purpletext">Peecy Wurld</span></h3>
-                                <form action="@routes.HomeController.searchAllProducts()" class = "navbar-form navbar-left" id = "navbarsearchform">
-                                    <input type="text" name = "search" class = "navbar-form navbar-left" id = "form-white-outline" placeholder="Search">
+                                <form action="#" class = "navbar-form navbar-left" id = "navbarsearchform">
+                                    <input type="text" name = "search" class = "navbar-form navbar-left" id = "form-white-outline" placeholder="Search" value="">
                                     <input type="submit" value="Search" id="navbar-submit" class = "pull-right">
                                 </form>
                             </li>
@@ -64,22 +64,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <a href="@routes.HomeController.searchProduct()"><h4 class="text-center whitetext grow"><i class="fa fa-laptop" aria-hidden="true"></i> Laptops</h4></a>
+                    <a href="@routes.HomeController.searchProduct("Laptop")"><h4 class="text-center whitetext grow"><i class="fa fa-laptop" aria-hidden="true"></i> Laptops</h4></a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <a href="@routes.HomeController.searchProduct()"><h4 class="text-center whitetext grow"><i class="fa fa-desktop" aria-hidden="true"></i> Desktops</h4></a>
+                    <a href="@routes.HomeController.searchProduct("Desktop")"><h4 class="text-center whitetext grow"><i class="fa fa-desktop" aria-hidden="true"></i> Desktops</h4></a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <a href="@routes.HomeController.searchProduct()"><h4 class="text-center whitetext grow"> <i class="fa fa-television" aria-hidden="true"></i>Monitors</h4></a>
+                    <a href="@routes.HomeController.searchProduct("Monitor")"><h4 class="text-center whitetext grow"> <i class="fa fa-television" aria-hidden="true"></i>Monitors</h4></a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <a href="@routes.HomeController.searchProduct()"><h4 class="text-center whitetext grow"><i class="fa fa-tablet" aria-hidden="true"></i> Tablets</h4></a>
+                    <a href="@routes.HomeController.searchProduct("Tablet")"><h4 class="text-center whitetext grow"><i class="fa fa-tablet" aria-hidden="true"></i> Tablets</h4></a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <a href="@routes.HomeController.searchProduct()"><h4 class="text-center whitetext grow"><i class="fa fa-headphones" aria-hidden="true"></i> Accessories</h4></a>
+                    <a href="@routes.HomeController.searchProduct("Accessorie")"><h4 class="text-center whitetext grow"><i class="fa fa-headphones" aria-hidden="true"></i> Accessories</h4></a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <a href="@routes.HomeController.searchProduct()"><h4 class="text-center whitetext grow"><i class="fa fa-cog" aria-hidden="true"></i> Components</h4></a>
+                    <a href="@routes.HomeController.searchProduct("Component")"><h4 class="text-center whitetext grow"><i class="fa fa-cog" aria-hidden="true"></i> Components</h4></a>
                 </div>
                 <!--end of end of col-->
             </div>

@@ -34,8 +34,12 @@ public class Product extends Model {
     }
 
     //Find products with specific name
-    public static List<Product> findByName(String productName){
-        return find.where().ilike("name","%" + productName + "%").findList();
+    public static List<Product> findByName(String filter){
+        return Product.find.where().ilike("name","%" + filter + "%").orderBy("name asc").findList();
+    }
+
+    public static Product getProductById(Long productId){
+        return find.ref(productId);
     }
 
     public static void deleteProduct(Long productId){

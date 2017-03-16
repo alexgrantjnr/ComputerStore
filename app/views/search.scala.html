@@ -1,6 +1,6 @@
 @import helper._
 @import html5.tags.html._
-@(allProducts:List[models.Product])
+@(products:List[models.Product])
 @main("Search"){
 <div class="container-fluid">
     <div class="row">
@@ -35,12 +35,13 @@
             <div class="container-fluid">
                 <div class="row">
                         <!--Play will echo recults here-->
-                    @for(p<-allProducts){
+                    @for(p<-products){
+                        <a href="@routes.HomeController.product(p.getProductId)">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="product-search-results">
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                    <img src="@routes.Assets.versioned("images/amd.jpg")" class="img-responsive">
+                                    <img src=@p.getProductImage class="img-responsive">
                                 </div>
                                 <!--End of col-->
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -59,6 +60,7 @@
                         </div>
                         <!--End of container-->
                     </div>
+                            </a>
                     <!--End of col /product searchresults/Play Echo-->
                     }
                 </div>

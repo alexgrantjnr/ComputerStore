@@ -69,18 +69,14 @@ public class HomeController extends Controller {
         return ok(payment.render());
     }
 
-    public Result product() {
-        return ok(product.render());
+    public Result product(Long productId) {
+        Product prod = Product.getProductById(productId);
+        return ok(product.render(prod));
     }
 
-    public Result searchAllProducts() {
-        //Passes a list of all products to search page
-        List<Product> allProducts = Product.findAll();
-        return ok(search.render(allProducts));
-    }
-
-    public Result searchProduct() {
-        return ok(search.render(null));
+    public Result searchProduct(String productName) {
+        List<Product>products = Product.findByName(productName);
+        return ok(search.render(products));
     }
 
     public Result cart() {
