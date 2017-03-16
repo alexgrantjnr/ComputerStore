@@ -27,22 +27,20 @@ public class LoginController extends Controller {
         //Create a form by wrapping the Product class
         //in a FormFactory form instance
         Form<Login> loginForm = formFactory.form(Login.class);
-        Form<Search> searchProductForm = formFactory.form(Search.class);
-
         //Render the add Product view passing the form object
-        return ok(login.render(searchProductForm, loginForm));
+        return ok(login.render(loginForm));
     }
 
     //Handle login submit
     public Result loginSubmit() {
         //Bind form instance to the values submitted from the form
-        Form<Search> searchProductForm = formFactory.form(Search.class);
+
         Form<Login> loginForm = formFactory.form(Login.class).bindFromRequest();
 
         //Check for errors
         //Uses the validation method in the Login class
         if(loginForm.hasErrors()) {
-            return badRequest(login.render(searchProductForm, loginForm));
+            return badRequest(login.render(loginForm));
         }
         else {
             //User loged in successfully

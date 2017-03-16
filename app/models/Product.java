@@ -38,6 +38,10 @@ public class Product extends Model {
         return find.where().ilike("name","%" + productName + "%").findList();
     }
 
+    public static void deleteProduct(Long productId){
+        find.ref(productId).delete();
+    }
+
 
     public long getProductId() {
         return productId;

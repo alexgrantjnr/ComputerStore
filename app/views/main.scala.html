@@ -1,5 +1,5 @@
 @import helper._
-@(title: String,searchProductForm: Form[models.Search])(content: Html)
+@(title: String)(content: Html)
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,6 +36,8 @@
                     <a href = "@routes.HomeController.wishlist()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-heart-o" aria-hidden="true"></i> WishList </h3></a>
                     <a href = "@routes.HomeController.cart()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart </h3></a>
                     <a href = "@routes.HomeController.adminPanel()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-lock" aria-hidden="true"></i> Admin Panel</h3></a>
+                    <a href = "@routes.LoginController.login()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> login</h3></a>
+                    <a href = "@routes.HomeController.account()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> Account</h3></a>
 
                     <div class="dropdown">
 
@@ -43,24 +45,20 @@
                         <ul class="dropdown-menu" id = "search-dropdown">
                             <li>
                                 <h3 class = "text-center whitetext">Search <span class = "joined-font purpletext">Peecy Wurld</span></h3>
-                            @helper.form(action = routes.HomeController.searchProduct(), 'class -> "navbar-form navbar-left", 'id -> "navbarsearchform") {
-                                @inputText(searchProductForm("Search"), 'class -> "form-control pull-right", 'id -> "form-white-outline", 'placeholder -> "Search")
-                                <input type="submit" value="Search" id="navbar-submit" class = "pull-right">
-                                }
+                                <form action="@routes.HomeController.searchAllProducts()" class = "navbar-form navbar-left" id = "navbarsearchform">
+                                    <input type="text" name = "search" class = "navbar-form navbar-left" id = "form-white-outline" placeholder="Search">
+                                    <input type="submit" value="Search" id="navbar-submit" class = "pull-right">
+                                </form>
                             </li>
                         </ul>
                     </div>
-
                 </div><!--end of col-->
-
-
                 </div>
                 <!--end of row-->
             </div>
             <!--end of row-->
         </div>
         <!--end of container-->
-    </div>
     <!--end of end of topnav-->
     <div id="subnav">
         <div class="container">

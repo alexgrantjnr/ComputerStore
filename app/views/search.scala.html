@@ -1,7 +1,7 @@
 @import helper._
 @import html5.tags.html._
-@(searchProductForm: Form[models.Search],allProducts:List[models.Product])
-@main("Search",searchProductForm){
+@(allProducts:List[models.Product])
+@main("Search"){
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-3 col-sm-3 col-xs-12 col-md-3" id="product-filter-bounds">
@@ -39,20 +39,19 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="product-search-results">
                         <div class="container-fluid">
                             <div class="row">
-
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                     <img src="@routes.Assets.versioned("images/amd.jpg")" class="img-responsive">
                                 </div>
                                 <!--End of col-->
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <h3 class="text-center">p.getName</h3>
+                                    <h3 class="text-center">@p.getName</h3>
                                     <h4 class="text-center purpletext">Delivery Available</h4>
-                                    <h4 class="text-center">p.getQuantity</h4>
-                                    <p class="text-center text-muted">p.getDescription</p>
+                                    <h4 class="text-center">@p.getQuantity</h4>
+                                    <p class="text-center text-muted">@p.getDescription</p>
                                 </div>
                                 <!--End of col-->
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                    <h2 class="text-center" id="productprice"><span class="purpletext">€</span>p.getPrice</h2>
+                                    <h2 class="text-center" id="productprice"><span class="purpletext">€</span>@p.getPrice</h2>
                                     <button type="button" id="addtocartbutton">Add To Cart</button>
                                 </div>
                             </div>

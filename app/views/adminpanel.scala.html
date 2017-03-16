@@ -1,7 +1,7 @@
 @import helper._
 @import html5.tags.html._
-@(addProductForm: Form[models.Product],searchProductForm: Form[models.Search],allProducts:List[models.Product])
-@main("Admin Panel",searchProductForm){
+@(addProductForm: Form[models.Product],allProducts:List[models.Product])
+@main("Admin Panel"){
 <div class="container-fluid">
     <div class="row" id="admin-panel-content">
         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" id="admin-panel-settings">
@@ -114,12 +114,12 @@
                                             <tr>
                                                 <td align="center">
                                                     <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                                    <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                                    <a href = "@routes.HomeController.deleteProduct(p.getProductId)" class="btn btn-danger" ><em class="fa fa-trash"></em></a>
                                                 </td>
-                                                <td>p.getProductId()</td>
-                                                <td>p.getName()</td>
-                                                <td>p.getQuantity()</td>
-                                                <td>p.getPrice()</td>
+                                                <td>@p.getProductId()</td>
+                                                <td>@p.getName()</td>
+                                                <td>@p.getQuantity()</td>
+                                                <td>@p.getPrice()</td>
                                             </tr>
                                         }
                                     </tbody>

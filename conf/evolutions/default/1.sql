@@ -39,11 +39,6 @@ create table product (
 );
 create sequence product_seq increment by 1;
 
-create table search (
-  search                        varchar(255) not null,
-  constraint pk_search primary key (search)
-);
-
 create table user (
   user_id                       bigint not null,
   first_name                    varchar(255),
@@ -82,8 +77,6 @@ drop sequence if exists orders_seq;
 
 drop table if exists product;
 drop sequence if exists product_seq;
-
-drop table if exists search;
 
 drop table if exists user;
 drop sequence if exists user_seq;

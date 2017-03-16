@@ -21,32 +21,26 @@ public class HomeController extends Controller {
     }
 
     public Result index() {
-        //Create a new Form object of type product, which will be passed to the view
-        Form<Search> searchProductForm = formFactory.form(Search.class);
-        return ok(index.render(searchProductForm));
+
+        return ok(index.render());
     }
 
     public Result account() {
-        //Create a new Form object of type product, which will be passed to the view
-        Form<Search> searchProductForm = formFactory.form(Search.class);
-        return ok(account.render(searchProductForm));
+
+        return ok(account.render());
     }
 
     public Result adminPanel() {
-        //Create a new Form object of type product, which will be passed to the view
-        Form<Search> searchProductForm = formFactory.form(Search.class);
-        //Create a new Form object of type product, which will be passed to the view
+
         Form<Product> addProductForm = formFactory.form(Product.class);
 
         List<Product> allProducts = Product.findAll();
 
-        return ok(adminpanel.render(addProductForm,searchProductForm,allProducts));
+        return ok(adminpanel.render(addProductForm,allProducts));
     }
 
     //Add a Product to the database
     public Result addProductSubmit(){
-        //Create a new Form object of type product, which will be passed to the view
-        Form<Search> searchProductForm = formFactory.form(Search.class);
         //Create a new Form object of type product, which will be passed to the view
         Form<Product> addProductForm = formFactory.form(Product.class);
         //Create a Form object which takes the form passed from the view
@@ -56,7 +50,7 @@ public class HomeController extends Controller {
 
         //If the form has errors return a bad request
         if (newProduct.hasErrors()){
-            return badRequest(adminpanel.render(addProductForm,searchProductForm,allProducts));
+            return badRequest(adminpanel.render(addProductForm,allProducts));
         }
         //Making a new object of type Product and assigning the variables from the form to the object
         Product newProd = newProduct.get();
@@ -66,43 +60,35 @@ public class HomeController extends Controller {
         return redirect(controllers.routes.HomeController.adminPanel());
     }
 
+    public Result deleteProduct(Long productId){
+        Product.deleteProduct(productId);
+        return redirect(routes.HomeController.adminPanel());
+    }
+
     public Result payment() {
-        //Create a new Form object of type product, which will be passed to the view
-        Form<Search> searchProductForm = formFactory.form(Search.class);
-        return ok(payment.render(searchProductForm));
+        return ok(payment.render());
     }
 
     public Result product() {
-        //Create a new Form object of type product, which will be passed to the view
-        Form<Search> searchProductForm = formFactory.form(Search.class);
-        return ok(product.render(searchProductForm));
+        return ok(product.render());
     }
 
     public Result searchAllProducts() {
-        //Create a new Form object of type product, which will be passed to the view
-        Form<Search> searchProductForm = formFactory.form(Search.class);
         //Passes a list of all products to search page
         List<Product> allProducts = Product.findAll();
-
-        return ok(search.render(searchProductForm,allProducts));
+        return ok(search.render(allProducts));
     }
 
     public Result searchProduct() {
-        //Create a new Form object of type product, which will be passed to the view
-        Form<Search> searchProductForm = formFactory.form(Search.class);
-        return ok(search.render(searchProductForm,null));
+        return ok(search.render(null));
     }
 
     public Result cart() {
-        //Create a new Form object of type product, which will be passed to the view
-        Form<Search> searchProductForm = formFactory.form(Search.class);
-        return ok(cart.render(searchProductForm));
+        return ok(cart.render());
     }
 
     public Result wishlist() {
-        //Create a new Form object of type product, which will be passed to the view
-        Form<Search> searchProductForm = formFactory.form(Search.class);
-        return ok(wishlist.render(searchProductForm));
+        return ok(wishlist.render());
     }
 
 }

@@ -774,7 +774,6 @@ a:hover{
     }
 
 }
-
 /* End of Shopping-cart styles */
 
 /*Start of sign up CSS*/
@@ -787,14 +786,14 @@ a:hover{
     margin-top: 1.5em;
     border-radius: 70px;
     padding: 20px;
-    width: 600px;s
-height: auto;
+    width: 600px;
+    height: auto;
 }
 
 .container-form fieldset{
-    border:0px;
-    padding:0px;
-    margin:0px;
+    border:0;
+    padding:0;
+    margin:0;
 }
 
 .container-form p.contact {
@@ -822,7 +821,7 @@ height: auto;
 
 .container-form input.birthyear{
     width:120px;
-    padding-left: : 10px;
+    padding-left : 10px;
 }
 
 .container-form label {
@@ -977,14 +976,12 @@ p.agreement-text  label{
     letter-spacing: .7px;
     text-transform: uppercase;
     padding: 16px 22px 18px;
-
     font-size: 10px;
     color: white;
     background-image: linear-gradient(#4f47bc, #a24ef4);
     border: none;
     transition: all 0.4s ease;
     z-index: 10;
-
 }
 
 /* Extra style for the cancel button (red) */
@@ -995,12 +992,19 @@ p.agreement-text  label{
 }
 
 /* Add padding to containers */
-.container-login {
-    width: 30%;
+#container-login {
+    margin-bottom: 1em;
+    margin-top: 1em;
     padding: 16px;
     border-radius: 55px;
     border: solid #46349b;
+}
 
+#container-login input:focus {
+    border-color: #a24ef4;
+    box-shadow: 1px 1px 1px 1px #60cbfc inset, 0 0 8px #60cbfc;
+    outline: 0 none;
+    color: #a24ef4;
 }
 
 /* The "Forgot password" text */
