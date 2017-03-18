@@ -16,12 +16,12 @@
         <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" id="admin-panel-display">
             <div class="container-fluid admin-sections" id="charts-section">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-4 col-xs-4">
-                        <canvas id="myChart" width="400" height="400"></canvas>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <canvas id="barchart" width="400" height="400"></canvas>
                     </div>
                     <!--end of col -->
-                    <div class="col-lg-6 col-md-6 col-sm-4 col-xs-4">
-
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <canvas id="piechart" width="400" height="400"></canvas>
                     </div>
                     <!--end of col -->
                 </div>
@@ -209,11 +209,12 @@ $(document).ready(function() {
 });
 </script>
     <script>
-            var ctx = document.getElementById("myChart");
+        //Script for Barchart
+            var ctx = document.getElementById("barchart");
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                    labels: ["Laptops", "Desktops", "Monitors", "Tablets", "Accessories", "Components"],
                     datasets: [{
                         label: '# of Votes',
                         data: [12, 13, 3, 5, 2, 3],
@@ -248,4 +249,7 @@ $(document).ready(function() {
             });
     </script>
 
+    <script>
+        //Script for pie chart
+    </script>
 }
