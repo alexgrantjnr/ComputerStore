@@ -3,14 +3,14 @@
 
 GET     /                                  controllers.HomeController.index()
 GET     /account                           controllers.HomeController.account()
-GET     /adminpanel                        controllers.HomeController.adminPanel()
+GET     /adminpanel                        controllers.AdminController.adminPanel()
 GET     /payment                           controllers.HomeController.payment()
 GET     /product/:productId                controllers.HomeController.product(productId: Long)
 GET     /search/:productName               controllers.HomeController.searchProduct(productName: String)
 GET     /shoppingcart                      controllers.HomeController.cart()
 GET     /wishlist                          controllers.HomeController.wishlist()
-GET     /addproduct                        controllers.HomeController.addProductSubmit()
-GET     /deleteproduct/:productId          controllers.HomeController.deleteProduct(productId: Long)
+GET     /addproduct                        controllers.AdminController.addProductSubmit()
+GET     /deleteproduct/:productId          controllers.AdminController.deleteProduct(productId: Long)
 GET     /login                             controllers.LoginController.login
 POST    /loginSubmit                       controllers.LoginController.loginSubmit
 # Map static resources from the /public folder to the /assets URL path
