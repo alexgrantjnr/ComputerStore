@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.ArrayList;
 import views.html.*;
 import models.*;
+import java.io.*;
+import static play.mvc.Http.MultipartFormData;
 
 public class AdminController extends Controller {
 
@@ -41,10 +43,25 @@ public class AdminController extends Controller {
 
         //If the form has errors return a bad request
         if (newProduct.hasErrors()) {
+            flash("error","Please correct the form below");
             return badRequest(adminpanel.render(addProductForm, allProducts, getUserFromSession()));
         }
         //Making a new object of type Product and assigning the variables from the form to the object
         Product newProd = newProduct.get();
+
+        MultipartFormData body = request().body().asMultipartFormData();
+
+        MultipartFormData.FilePart part = body.getFile("ProductImage");
+
+        //If image form isnt equal to null then try get the file and convert to byte array
+        if(part != null){
+            File picture = (File) part.getFile();
+            try{
+                newProd.setProductImage(Files.toByteArray(picture));
+            }catch (IOException ex){
+                return internalServerError("Error reading file upload");
+            }
+        }
         //Persisting the object to the database
         newProd.save();
         //Redirect to the admin panel
@@ -61,5 +78,4 @@ public class AdminController extends Controller {
     private User getUserFromSession() {
         return User.getUserById(session().get("email"));
     }
-
 }
