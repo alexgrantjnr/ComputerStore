@@ -15,7 +15,6 @@ public class LoginController extends Controller {
     private FormFactory formFactory;
     private Environment env;
 
-
     @Inject
     public LoginController(Environment e, FormFactory f) {
         this.env = e;
@@ -28,7 +27,7 @@ public class LoginController extends Controller {
         //in a FormFactory form instance
         Form<Login> loginForm = formFactory.form(Login.class);
         //Render the add Product view passing the form object
-        return ok(login.render(loginForm));
+        return ok(login.render(loginForm,getUserFromSession()));
     }
 
     //Handle login submit
@@ -38,16 +37,28 @@ public class LoginController extends Controller {
         //Check for errors
         //Uses the validation method in the Login class
         if(loginForm.hasErrors()) {
-            return badRequest(login.render(loginForm));
+            return badRequest(login.render(loginForm,getUserFromSession()));
         }
         else {
-            //User loged in successfully
+            //User logged in successfully
             //clear the existing session - resets session id
             session().clear();
-            //Stor the logged in email in session cokie
+            //Store the logged in email in session cookie
             session("email", loginForm.get().getEmail());
         }
         //Return to home page
         return redirect(controllers.routes.HomeController.index());
+    }
+
+    public Result logout() {
+        session().clear();
+        flash("success", "You've been logged out");
+        return redirect(
+                routes.LoginController.login()
+        );
+    }
+
+    private User getUserFromSession() {
+        return User.getUserById(session().get("email"));
     }
 }

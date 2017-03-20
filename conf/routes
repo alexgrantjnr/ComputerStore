@@ -11,7 +11,8 @@ GET     /shoppingcart                      controllers.HomeController.cart()
 GET     /wishlist                          controllers.HomeController.wishlist()
 GET     /addproduct                        controllers.AdminController.addProductSubmit()
 GET     /deleteproduct/:productId          controllers.AdminController.deleteProduct(productId: Long)
-GET     /login                             controllers.LoginController.login
-POST    /loginSubmit                       controllers.LoginController.loginSubmit
+GET     /login                             controllers.LoginController.login()
+GET     /logout                            controllers.LoginController.logout()
+POST    /loginSubmit                       controllers.LoginController.loginSubmit()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

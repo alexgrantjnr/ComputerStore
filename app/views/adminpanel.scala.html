@@ -1,7 +1,7 @@
 @import helper._
 @import html5.tags.html._
-@(addProductForm: Form[models.Product],allProducts:List[models.Product])
-@main("Admin Panel"){
+@(addProductForm: Form[models.Product],allProducts:List[models.Product],user: models.User)
+@main("Admin Panel",user){
 <div class="container-fluid">
     <div class="row" id="admin-panel-content">
         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" id="admin-panel-settings">

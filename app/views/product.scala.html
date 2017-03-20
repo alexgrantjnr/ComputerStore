@@ -1,7 +1,7 @@
 @import helper._
 @import html5.tags.html._
-@(product: Product)
-@main("Product"){
+@(product: Product,user: models.User)
+@main("Product",user){
 <div class="container">
     <div class="row" id="product-bounds">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

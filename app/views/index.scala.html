@@ -1,6 +1,7 @@
 @import helper._
 @import html5.tags.html._
-@main("Home"){
+@(user: models.User)
+@main("Home", user){
 
 <div class="container-fluid">
     <div class="row">

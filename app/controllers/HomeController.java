@@ -22,38 +22,45 @@ public class HomeController extends Controller {
 
     public Result index() {
 
-        return ok(index.render());
+        return ok(index.render(getUserFromSession()));
     }
 
+    @Security.Authenticated(Secured.class)
     public Result account() {
 
-        return ok(account.render());
+        return ok(account.render(getUserFromSession()));
     }
 
+    @Security.Authenticated(Secured.class)
     public Result payment() {
-        return ok(payment.render());
+        return ok(payment.render(getUserFromSession()));
     }
 
     public Result product(Long productId) {
         Product prod = Product.getProductById(productId);
-        return ok(product.render(prod));
+        return ok(product.render(prod,getUserFromSession()));
     }
 
     public Result searchProduct(String productName) {
         List<Product>products = Product.findByName(productName);
         if (products.isEmpty()){
             List<Product>productsAll = Product.findAll();
-            return ok(search.render(productsAll));
+            return ok(search.render(productsAll,getUserFromSession()));
         }
-        return ok(search.render(products));
+        return ok(search.render(products,getUserFromSession()));
     }
 
+    @Security.Authenticated(Secured.class)
     public Result cart() {
-        return ok(cart.render());
+        return ok(cart.render(getUserFromSession()));
     }
 
+    @Security.Authenticated(Secured.class)
     public Result wishlist() {
-        return ok(wishlist.render());
+        return ok(wishlist.render(getUserFromSession()));
     }
 
+    private User getUserFromSession(){
+        return User.getUserById(session().get("email"));
+    }
 }

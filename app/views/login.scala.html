@@ -1,7 +1,7 @@
 @import helper._
 @import html5.tags.html._
-@(loginForm: Form[models.Login])
-@main("Login"){
+@(loginForm: Form[models.Login],user: models.User)
+@main("Login",user){
 <div class="container">
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-2" id ="container-login">

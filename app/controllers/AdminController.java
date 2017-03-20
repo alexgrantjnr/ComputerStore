@@ -19,17 +19,19 @@ public class AdminController extends Controller {
         this.formFactory = formFactory;
     }
 
+    @Security.Authenticated(Secured.class)
+    @With(AuthAdmin.class)
     public Result adminPanel() {
-
         Form<Product> addProductForm = formFactory.form(Product.class);
-
         List<Product> allProducts = Product.findAll();
-
-        return ok(adminpanel.render(addProductForm,allProducts));
+        return ok(adminpanel.render(addProductForm, allProducts, getUserFromSession()));
     }
 
+
+    @Security.Authenticated(Secured.class)
+    @With(AuthAdmin.class)
     //Add a Product to the database
-    public Result addProductSubmit(){
+    public Result addProductSubmit() {
         //Create a new Form object of type product, which will be passed to the view
         Form<Product> addProductForm = formFactory.form(Product.class);
         //Create a Form object which takes the form passed from the view
@@ -38,8 +40,8 @@ public class AdminController extends Controller {
         List<Product> allProducts = Product.findAll();
 
         //If the form has errors return a bad request
-        if (newProduct.hasErrors()){
-            return badRequest(adminpanel.render(addProductForm,allProducts));
+        if (newProduct.hasErrors()) {
+            return badRequest(adminpanel.render(addProductForm, allProducts, getUserFromSession()));
         }
         //Making a new object of type Product and assigning the variables from the form to the object
         Product newProd = newProduct.get();
@@ -49,8 +51,15 @@ public class AdminController extends Controller {
         return redirect(controllers.routes.AdminController.adminPanel());
     }
 
-    public Result deleteProduct(Long productId){
+    @Security.Authenticated(Secured.class)
+    @With(AuthAdmin.class)
+    public Result deleteProduct(Long productId) {
         Product.deleteProduct(productId);
         return redirect(routes.AdminController.adminPanel());
     }
+
+    private User getUserFromSession() {
+        return User.getUserById(session().get("email"));
+    }
+
 }

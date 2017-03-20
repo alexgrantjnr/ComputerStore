@@ -1,6 +1,7 @@
 @import helper._
 @import html5.tags.html._
-@main("Cart"){
+@(user: models.User)
+@main("Cart",user){
 
     <div class="container" id="shop-cart">
 

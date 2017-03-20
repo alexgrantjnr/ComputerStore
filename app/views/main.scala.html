@@ -1,5 +1,5 @@
 @import helper._
-@(title: String)(content: Html)
+@(title: String,user: models.User)(content: Html)
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,11 +35,15 @@
                 </div>
                 <!--end of col-->
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 pull-right">
-                    <a href = "@routes.HomeController.wishlist()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-heart-o" aria-hidden="true"></i> WishList </h3></a>
-                    <a href = "@routes.HomeController.cart()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart </h3></a>
-                    <a href = "@routes.AdminController.adminPanel()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-lock" aria-hidden="true"></i> Admin Panel</h3></a>
-                    <a href = "@routes.LoginController.login()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> login</h3></a>
-                    <a href = "@routes.HomeController.account()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> Account</h3></a>
+                <a href = "@routes.AdminController.adminPanel()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-lock" aria-hidden="true"></i> Admin Panel</h3></a>
+                    @if(ctx.session() != null){
+                        <a href = "@routes.HomeController.wishlist()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-heart-o" aria-hidden="true"></i> WishList</h3></a>
+                        <a href = "@routes.HomeController.cart()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</h3></a>
+                        <a href = "@routes.HomeController.account()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> Account</h3></a>
+                        <a href = "@routes.LoginController.logout()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> logout</h3></a>
+                    }else{
+                        <a href = "@routes.LoginController.login()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> login</h3></a>
+                    }
 
                     <div class="dropdown">
 
@@ -78,7 +82,7 @@
                     <a href="@routes.HomeController.searchProduct("Tablet")"><h4 class="text-center whitetext grow"><i class="fa fa-tablet" aria-hidden="true"></i> Tablets</h4></a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <a href="@routes.HomeController.searchProduct("Accessorie")"><h4 class="text-center whitetext grow"><i class="fa fa-headphones" aria-hidden="true"></i> Accessories</h4></a>
+                    <a href="@routes.HomeController.searchProduct("Accessories")"><h4 class="text-center whitetext grow"><i class="fa fa-headphones" aria-hidden="true"></i> Accessories</h4></a>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <a href="@routes.HomeController.searchProduct("Component")"><h4 class="text-center whitetext grow"><i class="fa fa-cog" aria-hidden="true"></i> Components</h4></a>

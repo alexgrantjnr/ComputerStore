@@ -1,6 +1,7 @@
 @import helper._
 @import html5.tags.html._
-@main("Account"){
+@(user: models.User)
+@main("Account",user){
 <div class="container">
     <div class="row">
         <!-- <div class="col-sm-12 col-md-12 user-details"> -->

@@ -1,6 +1,7 @@
 @import helper._
 @import html5.tags.html._
-@main("Payment"){
+@(user: models.User)
+@main("Payment",user){
 <div class="container">
     <div class="row">
         <!-- You can make it whatever width you want. I'm making it full width
