@@ -23,8 +23,8 @@ public class AdminController extends Controller {
         this.formFactory = formFactory;
     }
 
-    //@Security.Authenticated(Secured.class)
-    //@With(AuthAdmin.class)
+    @Security.Authenticated(Secured.class)
+    @With(AuthAdmin.class)
     public Result adminPanel() {
         Form<Product> addProductForm = formFactory.form(Product.class);
         List<Product> allProducts = Product.findAll();
@@ -32,8 +32,8 @@ public class AdminController extends Controller {
     }
 
 
-    //@Security.Authenticated(Secured.class)
-    //@With(AuthAdmin.class)
+    @Security.Authenticated(Secured.class)
+    @With(AuthAdmin.class)
     //Add a Product to the database
     public Result addProductSubmit() {
         //Create a new Form object of type product, which will be passed to the view
@@ -58,7 +58,6 @@ public class AdminController extends Controller {
         //If image form isnt equal to null then try get the file and convert to byte array
         if(part != null){
             File picture = (File) part.getFile();
-
             try{
                 byte[] imageArray = new byte[(int) picture.length()];
                 FileInputStream fileStream= new FileInputStream(picture);
@@ -75,8 +74,8 @@ public class AdminController extends Controller {
         return redirect(controllers.routes.AdminController.adminPanel());
     }
 
-    //@Security.Authenticated(Secured.class)
-    //@With(AuthAdmin.class)
+    @Security.Authenticated(Secured.class)
+    @With(AuthAdmin.class)
     public Result deleteProduct(Long productId) {
         Product.deleteProduct(productId);
         return redirect(routes.AdminController.adminPanel());

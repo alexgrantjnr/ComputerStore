@@ -1,14 +1,17 @@
 package models;
 
-public class Login{
-    public String email;
-    public String password;
+// A view Model class to back the Login form
+public class Login {
 
-    //Validate method - invoked during error checking
-    //after form based on a Login object has been submited
+    private String email;
+    private String password;
 
-    public String validate () {
-        if (User.authenticate(getEmail(), getPassword()) == null) {
+    // Validate method - invoked during error checking
+    // after form based on a Login object has been submitted
+    public String validate() {
+
+        // Call the static authenticate method in User
+        if (User.authenticate(email, password) == null) {
             return "Invalid user or password";
         }
         return null;

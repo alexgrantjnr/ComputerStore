@@ -1,0 +1,1 @@
+insert into user(EMAIL,FIRST_NAME,LAST_NAME,ROLE,PASSWORD,AGE,PHONE,MOBILE,PROFILE_PIC) values ('i@pw.ie','Ian','Daly','Admin','pc',1,1,1,null)

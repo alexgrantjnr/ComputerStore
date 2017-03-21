@@ -40,19 +40,17 @@ create table product (
 create sequence product_seq increment by 1;
 
 create table user (
-  user_id                       bigint not null,
+  email                         varchar(255) not null,
   first_name                    varchar(255),
   last_name                     varchar(255),
   role                          varchar(255),
-  email                         varchar(255),
   password                      varchar(255),
   age                           varchar(255),
   phone                         varchar(255),
   mobile                        varchar(255),
   profile_pic                   varbinary(255),
-  constraint pk_user primary key (user_id)
+  constraint pk_user primary key (email)
 );
-create sequence user_seq increment by 1;
 
 create table wish_list (
   wishlist_id                   bigint not null,
@@ -79,7 +77,6 @@ drop table if exists product;
 drop sequence if exists product_seq;
 
 drop table if exists user;
-drop sequence if exists user_seq;
 
 drop table if exists wish_list;
 drop sequence if exists wish_list_seq;

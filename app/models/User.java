@@ -6,52 +6,30 @@ import javax.persistence.*;
 import com.avaje.ebean.Model;
 import play.data.format.*;
 import play.data.validation.*;
+import play.Logger;
 
 @Entity
 public class User extends Model{
 
-    @SequenceGenerator(name = "user_gen",allocationSize = 1, initialValue = 1)
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_gen")
-    public long userId;
+    private String email;
     @Constraints.Required
-    public String firstName;
+    private String firstName;
     @Constraints.Required
-    public String lastName;
+    private String lastName;
     @Constraints.Required
-    public String role;
+    private String role;
     @Constraints.Required
-    public String email;
+    private String password;
     @Constraints.Required
-    public String password;
+    private String age;
     @Constraints.Required
-    public String age;
+    private String phone,mobile;
     @Constraints.Required
-    public String phone,mobile;
-    @Constraints.Required
-    public byte[] profilePic;
+    private byte[] profilePic;
 
-
-    public User(long userId, String firstName, String lastName, String role, String email, String password, String age, String phone, String mobile, byte[] profilePic) {
-        this.userId = userId;
-
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.role = role;
-        this.email = email;
-        this.password = password;
-        this.age = age;
-        this.phone = phone;
-        this.mobile = mobile;
-        this.profilePic = profilePic;
-    }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public User(){
     }
 
     public String getFirstName() {
@@ -125,8 +103,8 @@ public class User extends Model{
     public void setProfilePic(byte[] profilePic) {
         this.profilePic = profilePic;
     }
-  
-    public static Finder<String, User> find = new Finder<String, User>(User.class);
+
+    public static Finder<String,User> find = new Finder<String,User>(User.class);
 
     public static List<User> findAll() {
         return User.find.all();

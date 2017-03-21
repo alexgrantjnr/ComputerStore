@@ -25,6 +25,7 @@
         }
         <p>Login into your account or if you do not have an account click<a href="#"> here</a> to register</p>
 
+    @helper.form(action = routes.LoginController.loginSubmit()){
 
             @inputText(loginForm("Email"), '_lable -> "",
             'class -> "form-control input-xs", 'placeholder -> "Email")
@@ -33,7 +34,8 @@
 
         <a href="#">Forgot password?</a>
         <br><br>
-        <button type="submit" id="loginbtn">Login</button>
+        <input type="submit" id="loginbtn" value = "Submit">
+        }
         </div>
 
         </div>

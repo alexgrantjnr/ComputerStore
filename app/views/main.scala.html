@@ -35,12 +35,14 @@
                 </div>
                 <!--end of col-->
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 pull-right">
-                <a href = "@routes.AdminController.adminPanel()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-lock" aria-hidden="true"></i> Admin Panel</h3></a>
-                    @if(ctx.session() != null){
+                    @if(user != null){
                         <a href = "@routes.HomeController.wishlist()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-heart-o" aria-hidden="true"></i> WishList</h3></a>
                         <a href = "@routes.HomeController.cart()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</h3></a>
                         <a href = "@routes.HomeController.account()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> Account</h3></a>
                         <a href = "@routes.LoginController.logout()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> logout</h3></a>
+                    @if(user.getRole.equals("Admin")) {
+                        <a href = "@routes.AdminController.adminPanel()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-lock" aria-hidden="true"></i>Admin Panel</h3></a>
+                    }
                     }else{
                         <a href = "@routes.LoginController.login()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> login</h3></a>
                     }
