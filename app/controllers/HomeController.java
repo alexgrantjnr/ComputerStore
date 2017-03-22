@@ -52,8 +52,8 @@ public class HomeController extends Controller {
         return ok(product.render(prod,getUserFromSession()));
     }
 
-    public Result searchCategory(String productName) {
-        List<Product>products = Product.findByName(productName);
+    public Result searchCategory(String categoryName) {
+        List<Product>products = Product.findByCategory(categoryName);
         if (products.isEmpty()){
             List<Product>productsAll = Product.findAll();
             return ok(search.render(productsAll,getUserFromSession()));

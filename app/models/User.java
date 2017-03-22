@@ -18,7 +18,7 @@ public class User extends Model{
     private String firstName;
     @Constraints.Required
     private String lastName;
-    @Constraints.Required
+    //@Constraints.Required
     private String role;
     @Constraints.Required
     private String password;

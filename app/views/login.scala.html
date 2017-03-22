@@ -23,7 +23,7 @@
                 @flash.get("loginRequired")
             </div>
         }
-        <p>Login into your account or if you do not have an account click<a href="#"> here</a> to register</p>
+        <p>Login into your account or if you do not have an account click<a href="@routes.HomeController.register()"> here</a> to register</p>
 
     @helper.form(action = routes.LoginController.loginSubmit()){
 
