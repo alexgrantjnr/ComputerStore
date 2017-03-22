@@ -34,7 +34,6 @@ create table product (
   quantity                      integer,
   price                         double,
   description                   varchar(255),
-  product_image                 varbinary(255),
   constraint pk_product primary key (product_id)
 );
 create sequence product_seq increment by 1;
@@ -45,10 +44,9 @@ create table user (
   last_name                     varchar(255),
   role                          varchar(255),
   password                      varchar(255),
-  age                           varchar(255),
+  age                           integer,
   phone                         varchar(255),
   mobile                        varchar(255),
-  profile_pic                   varbinary(255),
   constraint pk_user primary key (email)
 );
 

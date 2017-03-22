@@ -1,18 +1,12 @@
 package controllers;
 
 import play.mvc.*;
-import play.api.Environment;
 import play.data.*;
-import play.*;
-import play.db.ebean.Transactional;
 import javax.inject.Inject;
 import java.util.List;
-import java.util.ArrayList;
 import views.html.*;
 import models.*;
-import java.io.*;
-import java.nio.file.Files;
-import static play.mvc.Http.MultipartFormData;
+
 
 public class AdminController extends Controller {
 
@@ -23,8 +17,8 @@ public class AdminController extends Controller {
         this.formFactory = formFactory;
     }
 
-    @Security.Authenticated(Secured.class)
-    @With(AuthAdmin.class)
+    //@Security.Authenticated(Secured.class)
+    //@With(AuthAdmin.class)
     public Result adminPanel() {
         Form<Product> addProductForm = formFactory.form(Product.class);
         List<Product> allProducts = Product.findAll();
@@ -32,8 +26,8 @@ public class AdminController extends Controller {
     }
 
 
-    @Security.Authenticated(Secured.class)
-    @With(AuthAdmin.class)
+    //@Security.Authenticated(Secured.class)
+    //@With(AuthAdmin.class)
     //Add a Product to the database
     public Result addProductSubmit() {
         //Create a new Form object of type product, which will be passed to the view
@@ -51,31 +45,14 @@ public class AdminController extends Controller {
         //Making a new object of type Product and assigning the variables from the form to the object
         Product newProd = newProduct.get();
 
-        MultipartFormData body = request().body().asMultipartFormData();
-
-        MultipartFormData.FilePart part = body.getFile("ProductImage");
-
-        //If image form isnt equal to null then try get the file and convert to byte array
-        if(part != null){
-            File picture = (File) part.getFile();
-            try{
-                byte[] imageArray = new byte[(int) picture.length()];
-                FileInputStream fileStream= new FileInputStream(picture);
-                fileStream.read(imageArray);
-                fileStream.close();
-                newProd.setProductImage(imageArray);
-            }catch (IOException ex){
-                return internalServerError("Error reading file upload");
-            }
-        }
         //Persisting the object to the database
         newProd.save();
         //Redirect to the admin panel
         return redirect(controllers.routes.AdminController.adminPanel());
     }
 
-    @Security.Authenticated(Secured.class)
-    @With(AuthAdmin.class)
+    //@Security.Authenticated(Secured.class)
+    //@With(AuthAdmin.class)
     public Result deleteProduct(Long productId) {
         Product.deleteProduct(productId);
         return redirect(routes.AdminController.adminPanel());

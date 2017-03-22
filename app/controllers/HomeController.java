@@ -30,7 +30,11 @@ public class HomeController extends Controller {
     }
 
     public Result registerSubmit(){
-
+        Form<User> newUser = formFactory.form(User.class).bindFromRequest();
+        User newRegisteredUser = newUser.get();
+        newRegisteredUser.setRole("Customer");
+        newRegisteredUser.save();
+        return redirect(routes.LoginController.login());
     }
 
     @Security.Authenticated(Secured.class)
@@ -46,6 +50,15 @@ public class HomeController extends Controller {
     public Result product(Long productId) {
         Product prod = Product.getProductById(productId);
         return ok(product.render(prod,getUserFromSession()));
+    }
+
+    public Result searchCategory(String productName) {
+        List<Product>products = Product.findByName(productName);
+        if (products.isEmpty()){
+            List<Product>productsAll = Product.findAll();
+            return ok(search.render(productsAll,getUserFromSession()));
+        }
+        return ok(search.render(products,getUserFromSession()));
     }
 
     public Result searchProduct(String productName) {

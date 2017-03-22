@@ -26,8 +26,6 @@ public class User extends Model{
     private int age;
     @Constraints.Required
     private String phone,mobile;
-    @Constraints.Required
-    private byte[] profilePic;
 
     public User(){
     }
@@ -94,14 +92,6 @@ public class User extends Model{
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
-    }
-
-    public byte[] getProfilePic() {
-        return profilePic;
-    }
-
-    public void setProfilePic(byte[] profilePic) {
-        this.profilePic = profilePic;
     }
 
     public static Finder<String,User> find = new Finder<String,User>(User.class);

@@ -22,11 +22,10 @@ public class Product extends Model {
     public double price;
     @Constraints.Required
     public String description;
-    @Constraints.Required
-    public byte[] productImage;
 
     //Query helper to find object with id long
     public static Finder<Long,Product> find = new Finder<>(Product.class);
+    public static Finder<String,Product> findS = new Finder<>(Product.class);
 
     //Find all products
     public static List<Product> findAll(){
@@ -36,6 +35,10 @@ public class Product extends Model {
     //Find products with specific name
     public static List<Product> findByName(String filter){
         return Product.find.where().ilike("name","%" + filter + "%").orderBy("name asc").findList();
+    }
+
+    public static List<Product> findByCategory(String category){
+        return Product.find.where().ilike("category","%" + category + "%").findList();
     }
 
     public static Product getProductById(Long productId){
@@ -87,11 +90,4 @@ public class Product extends Model {
         this.description = description;
     }
 
-    public byte[] getProductImage() {
-        return productImage;
-    }
-
-    public void setProductImage(byte[] productImage) {
-        this.productImage = productImage;
-    }
 }

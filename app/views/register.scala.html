@@ -15,7 +15,10 @@
         @password(addUserForm("password"), 'class -> "form-control", 'placeholder -> "First Name")
         @number(addUserForm("age"),'type -> "number", 'class -> "form-control", 'min -> "1", 'step -> "1", 'max -> "9999", 'value -> "0")
         @file(addUserForm("profilePic"), 'class -> "form-control")
-        <input type="submit" class="form-control" id="add-product-submit" value="Submit">
+        @text(addUserForm("phone"), 'class -> "form-control", 'placeholder -> "Phone")
+        @text(addUserForm("mobile"), 'class -> "form-control", 'placeholder -> "Mobile")
+
+        <input type="submit" class="form-control pull-right" id="add-product-submit" value="Submit" style="width: 30%; margin-bottom: 2em;">
     }
             </div>
         </div>

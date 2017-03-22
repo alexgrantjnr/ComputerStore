@@ -9,6 +9,7 @@ GET     /adminpanel                        controllers.AdminController.adminPane
 GET     /payment                           controllers.HomeController.payment()
 GET     /product/:productId                controllers.HomeController.product(productId: Long)
 GET     /search/:productName               controllers.HomeController.searchProduct(productName: String)
+GET     /search/:categoryName              controllers.HomeController.searchCategory(categoryName: String)
 GET     /shoppingcart                      controllers.HomeController.cart()
 GET     /wishlist                          controllers.HomeController.wishlist()
 GET     /addproduct                        controllers.AdminController.addProductSubmit()

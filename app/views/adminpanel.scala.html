@@ -16,14 +16,18 @@
         <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" id="admin-panel-display">
             <div class="container-fluid admin-sections" id="charts-section">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <canvas id="barchart" width="400" height="400"></canvas>
                     </div>
                     <!--end of col -->
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <canvas id="linechart" width="400" height="400"></canvas>
                     </div>
                     <!--end of col -->
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <canvas id="radarChart" width="400" height="400"></canvas>
+                    </div>
+                        <!--end of col -->
                 </div>
                 <!--end of end of row -->
             </div>
@@ -214,7 +218,7 @@ $(document).ready(function() {
     <script>
         //Script for Barchart
             var ctx = document.getElementById("barchart");
-            var myChart = new Chart(ctx, {
+            var barChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: ["Laptops", "Desktops", "Monitors", "Tablets", "Accessories", "Components"],
@@ -255,7 +259,7 @@ $(document).ready(function() {
     <script>
         //Script for pie chart
         var ctx = document.getElementById('linechart').getContext('2d');
-        var myChart = new Chart(ctx, {
+        var lineChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: ['Jan', 'Feb', 'Mar', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -270,5 +274,28 @@ $(document).ready(function() {
                 }]
             }
         });
+    </script>
+
+    <script>
+            var ctx = document.getElementById("radarChart");
+            var radarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ["M", "T", "W", "T", "F", "S", "S"],
+                    datasets: [{
+                        label: 'Products',
+                        backgroundColor: "rgba(153,255,51,0.4)",
+                        borderColor: "rgba(153,255,51,1)",
+                        data: [12, 19, 3, 17, 28, 24, 7]
+                    }, {
+                        label: 'Sales',
+                        backgroundColor: "rgba(255,153,0,0.4)",
+                        borderColor: "rgba(255,153,0,1)",
+                        data: [30, 29, 5, 5, 20, 3, 10]
+                    }]
+                }
+            });
+
+
     </script>
 }

@@ -45,7 +45,7 @@
                     }
                     }else{
                         <a href = "@routes.LoginController.login()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> login</h3></a>
-                        <a href = "@routes.HomeController.register()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-heart-o" aria-hidden="true"></i> Register</h3></a>
+                        <a href = "@routes.HomeController.register()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> Register</h3></a>
 
                     }
 
@@ -55,7 +55,7 @@
                         <ul class="dropdown-menu" id = "search-dropdown">
                             <li>
                                 <h3 class = "text-center whitetext">Search <span class = "joined-font purpletext">Peecy Wurld</span></h3>
-                                <form action="#" class = "navbar-form navbar-left" id = "navbarsearchform">
+                                <form action="@routes.HomeController.searchProduct()" class = "navbar-form navbar-left" id = "navbarsearchform">
                                     <input type="text" name = "search" class = "navbar-form navbar-left" id = "form-white-outline" placeholder="Search" value="">
                                     <input type="submit" value="Search" id="navbar-submit" class = "pull-right">
                                 </form>
