@@ -21,13 +21,20 @@ public class HomeController extends Controller {
     }
 
     public Result index() {
-
         return ok(index.render(getUserFromSession()));
+    }
+
+    public Result register(){
+        Form<User> addUserForm = formFactory.form(User.class);
+        return ok(register.render(addUserForm,getUserFromSession()));
+    }
+
+    public Result registerSubmit(){
+
     }
 
     @Security.Authenticated(Secured.class)
     public Result account() {
-
         return ok(account.render(getUserFromSession()));
     }
 

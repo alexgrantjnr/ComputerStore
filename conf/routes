@@ -2,6 +2,8 @@
 
 
 GET     /                                  controllers.HomeController.index()
+GET     /register                          controllers.HomeController.register()
+GET     /registerSubmit                    controllers.HomeController.registerSubmit()
 GET     /account                           controllers.HomeController.account()
 GET     /adminpanel                        controllers.AdminController.adminPanel()
 GET     /payment                           controllers.HomeController.payment()

@@ -23,7 +23,7 @@ public class User extends Model{
     @Constraints.Required
     private String password;
     @Constraints.Required
-    private String age;
+    private int age;
     @Constraints.Required
     private String phone,mobile;
     @Constraints.Required
@@ -72,11 +72,11 @@ public class User extends Model{
         this.password = password;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
