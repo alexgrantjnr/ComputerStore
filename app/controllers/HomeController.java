@@ -21,7 +21,8 @@ public class HomeController extends Controller {
     }
 
     public Result index() {
-        return ok(index.render(getUserFromSession()));
+        List<Product> indexProducts = Product.findRandomProducts();
+        return ok(index.render(getUserFromSession(),indexProducts));
     }
 
     public Result register(){

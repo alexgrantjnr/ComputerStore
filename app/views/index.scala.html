@@ -1,6 +1,6 @@
 @import helper._
 @import html5.tags.html._
-@(user: models.User)
+@(user: models.User,indexProducts:List[models.Product])
 @main("Home", user){
 
 <div class="container-fluid">
@@ -21,22 +21,6 @@
     <!--end of row-->
 </div>
 <!--end of end of container fluid-->
-<!-- parallax pc parts-->
-<br>
-<div class="container" id="pc-customise">
-    <div class="row">
-        <h2 class="text-center bluetext">ALL OUR PC'S ARE FULLY CUSTOMISABLE<br><small class = "purpletext">WE CATER TO ALL YOUR NEEDS</small></h2>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3">
-            <div id="wrapper">
-                <img src="@routes.Assets.versioned("images/pccase.png")" alt="pccase" class="img-responsive" id="pccase-parallax" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-                <img src="@routes.Assets.versioned("images/motherboard.png")" class="img-responsive" id="motherboard-parallax">
-                <img src="@routes.Assets.versioned("images/graphicscard.png")" alt="graphicscard" class="img-responsive" id="graphicscard-parallax">
-                <img src="@routes.Assets.versioned("images/cpucooler.png")" alt="cpucooler" class="img-responsive" id="cpucooler-parallax">
-            </div>
-        </div>
-    </div>
-</div>
-<!--End of  parallax pc parts-->
 <div class="container">
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -58,15 +42,19 @@
     </div>
     <!--end of end of row-->
     <div class="row">
+        @for(p <- indexProducts){
         <!--Play will render these elements for the   -->
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="index-products">
-            <h3 class="text-center text-muted">Name Variable Here</h3>
-            <h4 class="text-center text-muted"><span class = "purpletext">€</span>Price Variable Here</h4>
+            <a href="@routes.HomeController.product(p.getProductId)">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="index-products">
+            <h3 class="text-center text-muted">@p.getName</h3>
+            <h4 class="text-center text-muted"><span class = "purpletext">€</span>@p.getPrice</h4>
             <img class="img-responsive" src="@routes.Assets.versioned("images/cpucooler.png")">
             <p class="text-center">
                 <button type="button" id="addtocartbutton">Add To Cart <i class="fa fa-1x fa-shopping-cart" aria-hidden="true"></i></button>
             </p>
         </div>
+            </a>
+        }
         <!--End of index products-->
     </div>
     <!--end of end of row-->
@@ -74,25 +62,6 @@
 <!--end of end of container -->
 
 <script>
-//This script moves the parts when the user scrolls to them 
-$(window).scroll(function() {
-    var y_scroll_pos = window.pageYOffset;
-    var scroll_pos_test = 1000;
-    // set to whatever you want it to be
-
-    if (y_scroll_pos > scroll_pos_test) {
-        $("#motherboard-parallax").animate({
-                left: '25%'
-            }, 700),
-            $("#graphicscard-parallax").animate({
-                left: '20%'
-            }, 700),
-            $("#cpucooler-parallax").animate({
-                left: '32%'
-            }, 700);
-    }
-});
-
 $(document).ready(function() {
  $("label").remove();
 });
