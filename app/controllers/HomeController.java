@@ -21,8 +21,8 @@ public class HomeController extends Controller {
     }
 
     public Result index() {
-        List<Product> indexProducts = Product.findRandomProducts();
-        return ok(index.render(getUserFromSession(),indexProducts));
+        //List<Product> indexProducts = Product.findRandomProducts();
+        return ok(index.render(getUserFromSession(),null));
     }
 
     public Result register(){
@@ -79,6 +79,20 @@ public class HomeController extends Controller {
     @Security.Authenticated(Secured.class)
     public Result wishlist() {
         return ok(wishlist.render(getUserFromSession()));
+    }
+
+    public Result blog(){
+        List<BlogPost> blogPosts = BlogPost.findAll();
+        return ok(blog.render(getUserFromSession(),blogPosts));
+    }
+
+    @Security.Authenticated(Secured.class)
+    public Result updatePostLikes(Long blogPostId){
+        BlogPost update = BlogPost.getBlogPostById(blogPostId);
+        int likeNumUpdate = (update.getNumLikes()+1);
+        update.setNumLikes(likeNumUpdate);
+        update.update();
+        return redirect(controllers.routes.HomeController.blog());
     }
 
     private User getUserFromSession(){

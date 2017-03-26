@@ -3,6 +3,16 @@
 
 # --- !Ups
 
+create table blog_post (
+  blog_id                       bigint not null,
+  blog_title                    varchar(255),
+  blog_description              varchar(255),
+  num_likes                     integer,
+  post_date                     timestamp,
+  constraint pk_blog_post primary key (blog_id)
+);
+create sequence blog_post_seq increment by 1;
+
 create table category (
   category_id                   bigint not null,
   constraint pk_category primary key (category_id)
@@ -61,6 +71,9 @@ create sequence wish_list_seq increment by 1;
 
 
 # --- !Downs
+
+drop table if exists blog_post;
+drop sequence if exists blog_post_seq;
 
 drop table if exists category;
 drop sequence if exists category_seq;

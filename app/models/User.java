@@ -11,7 +11,6 @@ import play.Logger;
 @Entity
 public class User extends Model{
 
-
     @Id
     private String email;
     @Constraints.Required
@@ -110,6 +109,9 @@ public class User extends Model{
         }else{
             return find.byId(id);
         }
+    }
+    public static void deleteUser(String email){
+        find.ref(email).delete();
     }
 }
 

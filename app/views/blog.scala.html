@@ -1,0 +1,20 @@
+@import helper._
+@import html5.tags.html._
+@(user: models.User,blogPosts:List[models.BlogPost])
+@main("Blog",user){
+    <div class="container">
+        <div class="row" id = "blogbounds">
+            <h1 class = "text-center purpletext joined-font">Peecy Wurld Blog</h1>
+            @for(b <- blogPosts) {
+                <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2" id = "blogpost">
+                    <h2 class = "text-center">@b.getBlogTitle</h2>
+                    <p class = "text-center">@b.getBlogDescription</p>
+                    <h5 class = "pull-right text-muted">@b.getPostDate</h5>
+                    <a href="@routes.HomeController.updatePostLikes(b.getBlogId)">
+                    <h3 class = "pull-left"><i class="fa fa-heart" id = "blogheart" aria-hidden="true"></i></a>@b.getNumLikes</h3>
+
+                </div>
+            }
+        </div>
+    </div>
+}

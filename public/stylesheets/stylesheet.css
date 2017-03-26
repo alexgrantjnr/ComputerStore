@@ -1004,5 +1004,25 @@ p.agreement-text  label{
         width: 100%;
     }
 }
-
 /*End of login css*/
+
+/*Blog Styling*/
+#blogpost{
+    margin-bottom: 0.5em;
+    margin-top:  0.5em;
+    padding: 0.3em;
+    border: 5px solid #a24ef4;
+}
+
+#blogbounds{
+    margin-bottom: 1em;
+}
+
+#blogpost h3{
+    margin-left: 0.3em;
+}
+
+#blogheart{
+    color: firebrick;
+}
+/*End of blog styling*/

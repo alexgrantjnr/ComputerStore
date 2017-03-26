@@ -43,16 +43,16 @@ public class Product extends Model {
     }
 
     //return random products based
-    public static List<Product> findRandomProducts(){
+    /*public static List<Product> findRandomProducts(){
         int range = findAll().size();
         Random rand = new Random();
         List<Product> randomProducts = findRandomProducts();
         for (int i = 0; i < 8; i++){
-            randomProducts.add(getProductById((long)rand.nextInt(range)));
+            randomProducts.add(getProductById((long)i));
         }
         return randomProducts;
     }
-
+    */
     public static Product getProductById(Long productId){
         return find.ref(productId);
     }

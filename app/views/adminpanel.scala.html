@@ -1,16 +1,17 @@
-@import helper._
+
 @import html5.tags.html._
-@(addProductForm: Form[models.Product],allProducts:List[models.Product],user: models.User)
+@(addProductForm: Form[models.Product],allProducts:List[models.Product],user: models.User,addBlogPostForm:Form[models.BlogPost],allUsers:List[models.User])
 @main("Admin Panel",user){
 <div class="container-fluid">
     <div class="row" id="admin-panel-content">
         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" id="admin-panel-settings">
-            <h3 class="text-center whitetext">Admin Panel</h3>
+            <h3 class="text-center whitetext">@user.getFirstName</h3>
             <img src="@routes.Assets.versioned("images/blank_profile.jpg")" class="img-responsive img-circle">
             <p class="text-center whitetext admin-menu-item" id="admin-charts-button">Charts <i class="fa fa-line-chart" aria-hidden="true"></i></p>
             <p class="text-center whitetext admin-menu-item" id="admin-users-button">Users <i class="fa fa-user" aria-hidden="true"></i></p>
             <p class="text-center whitetext admin-menu-item" id="admin-product-button">Products <i class="fa fa-tags" aria-hidden="true"></i></p>
             <p class="text-center whitetext admin-menu-item" id="admin-add-product-button">Add A Product <i class="fa fa-tags" aria-hidden="true"></i></p>
+            <p class="text-center whitetext admin-menu-item" id="admin-blog-button">Add A Blog Post <i class="fa fa-pencil" aria-hidden="true"></i></p>
         </div>
         <!--end of col -->
         <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" id="admin-panel-display">
@@ -51,26 +52,45 @@
                                                 <p class="text-center purpletext">Action <i class="fa fa-cog" aria-hidden="true"></i></p>
                                             </th>
                                             <th class="hidden-xs">
-                                                <p class="text-center purpletext">ID</p>
-                                            </th>
-                                            <th>
-                                                <p class="text-center purpletext">Name</p>
-                                            </th>
-                                            <th>
                                                 <p class="text-center purpletext">Email</p>
+                                            </th>
+                                            <th>
+                                                <p class="text-center purpletext">First Name</p>
+                                            </th>
+                                            <th>
+                                                <p class="text-center purpletext">Last Name</p>
+                                            </th>
+                                            <th>
+                                                <p class="text-center purpletext">Age</p>
+                                            </th>
+                                            <th>
+                                                <p class="text-center purpletext">Role</p>
+                                            </th>
+                                            <th>
+                                                <p class="text-center purpletext">Phone</p>
+                                            </th>
+                                            <th>
+                                                <p class="text-center purpletext">Mobile</p>
                                             </th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
+                                    @for(u <- allUsers) {
                                         <tr>
                                             <td align="center">
                                                 <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                                <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                                <a href = "@routes.AdminController.deleteUser(u.getEmail)" class="btn btn-danger" ><em class="fa fa-trash"></em></a>
                                             </td>
-                                            <td class="hidden-xs">1</td>
-                                            <td>John Doe</td>
-                                            <td>johndoe@@example.com</td>
+                                            <td>@u.getEmail()</td>
+                                            <td>@u.getFirstName()</td>
+                                            <td>@u.getLastName()</td>
+                                            <td>@u.getAge()</td>
+                                            <td>@u.getRole()</td>
+                                            <td>@u.getPhone()</td>
+                                            <td>@u.getMobile()</td>
                                         </tr>
+                                    }
                                     </tbody>
                                 </table>
                             </div>
@@ -157,7 +177,6 @@
                                     @file(addProductForm("ProductImage"), 'class -> "form-control")
 
                                     <input type="submit" class="form-control" id="add-product-submit" value="Submit">
-
                         }
                         </div>
                         <!--end of inner col-->
@@ -170,6 +189,31 @@
                 </div>
                     <!--end of row-->
             </div> <!--end of col-->
+            <div class="container-fluid admin-sections" id="add-blogpost-section">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="admin-add-product">
+
+                        <h2 class="text-center purpletext">Add A Blog Post <span class = "joined-font">Peecy Wurld</span></h2>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4" >
+                                @helper.form(action = routes.AdminController.addBlogSubmit()) {
+                                    @text(addBlogPostForm("blogTitle"),'name ->"blogTitle", 'class -> "form-control", 'id -> "blogtitle", 'placeholder -> "Blog Title")
+                                    @textarea(addBlogPostForm("blogDescription"), 'name ->"blogDescription", 'class -> "form-control", 'id -> "blogdescription", 'placeholder -> "Blog Description")
+                                    <input type="submit" class="form-control" id="add-product-submit" value="Submit">
+                                    }
+
+                                </div>
+                                    <!--end of inner col-->
+                            </div>
+                                <!--end of row-->
+                        </div>
+                            <!--end of inner container-->
+                    </div>
+                        <!--end of add user form-->
+                </div>
+                    <!--end of row-->
+            </div> <!--end of blog post section-->
         </div>
         <!--end of admin panel display -->
     </div>
@@ -185,12 +229,14 @@ $(document).ready(function() {
     $("#users-section").hide();
     $("#products-section").hide();
     $("#add-products-section").hide();
+    $("#add-blogpost-section").hide();
 
     $("#admin-charts-button").click(function() {
         $("#charts-section").show();
         $("#products-section").hide();
         $("#users-section").hide();
         $("#add-products-section").hide();
+        $("#add-blogpost-section").hide();
     });
 
     $("#admin-users-button").click(function() {
@@ -198,6 +244,7 @@ $(document).ready(function() {
         $("#products-section").hide();
         $("#users-section").show();
         $("#add-products-section").hide();
+        $("#add-blogpost-section").hide();
     });
 
     $("#admin-product-button").click(function() {
@@ -205,6 +252,7 @@ $(document).ready(function() {
         $("#products-section").show();
         $("#users-section").hide();
         $("#add-products-section").hide();
+        $("#add-blogpost-section").hide();
     });
 
     $("#admin-add-product-button").click(function() {
@@ -212,7 +260,17 @@ $(document).ready(function() {
         $("#products-section").hide();
         $("#users-section").hide();
         $("#add-products-section").show();
+        $("#add-blogpost-section").hide();
     });
+
+    $("#admin-blog-button").click(function() {
+        $("#charts-section").hide();
+        $("#products-section").hide();
+        $("#users-section").hide();
+        $("#add-products-section").hide();
+        $("#add-blogpost-section").show();
+    });
+
 });
 </script>
     <script>
