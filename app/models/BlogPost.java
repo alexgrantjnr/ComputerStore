@@ -44,6 +44,9 @@ public class BlogPost extends Model{
         return find.ref(blogPostId);
     }
 
+    public static void deleteBlogPost(Long blogId){
+        find.ref(blogId).delete();
+    }
 
     public long getBlogId() {
         return blogId;

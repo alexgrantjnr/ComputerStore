@@ -4,6 +4,8 @@ import play.mvc.*;
 import play.data.*;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.prefs.BackingStoreException;
+
 import views.html.*;
 import models.*;
 
@@ -23,8 +25,9 @@ public class AdminController extends Controller {
         Form<Product> addProductForm = formFactory.form(Product.class);
         Form<BlogPost> addBlogPostForm = formFactory.form(BlogPost.class);
         List<Product> allProducts = Product.findAll();
+        List<BlogPost> allBlogPosts = BlogPost.findAll();
         List<User> allUsers = User.findAll();
-        return ok(adminpanel.render(addProductForm, allProducts, getUserFromSession(),addBlogPostForm,allUsers));
+        return ok(adminpanel.render(addProductForm, allProducts, getUserFromSession(),addBlogPostForm,allUsers,allBlogPosts));
     }
 
     public Result addBlogSubmit(){
@@ -48,11 +51,13 @@ public class AdminController extends Controller {
         List<Product> allProducts = Product.findAll();
         //List of all Users
         List<User> allUsers = User.findAll();
+        //List of all blog posts
+        List<BlogPost> allBlogPosts = BlogPost.findAll();
 
         //If the form has errors return a bad request
         if (newProduct.hasErrors()) {
             flash("error","Please correct the form below");
-            return badRequest(adminpanel.render(addProductForm, allProducts, getUserFromSession(),addBlogPostForm,allUsers));
+            return badRequest(adminpanel.render(addProductForm, allProducts, getUserFromSession(),addBlogPostForm,allUsers,allBlogPosts));
         }
         //Making a new object of type Product and assigning the variables from the form to the object
         Product newProd = newProduct.get();
@@ -67,6 +72,11 @@ public class AdminController extends Controller {
     //@With(AuthAdmin.class)
     public Result deleteProduct(Long productId) {
         Product.deleteProduct(productId);
+        return redirect(routes.AdminController.adminPanel());
+    }
+
+    public Result deleteBlogPost(Long blogId) {
+        BlogPost.deleteBlogPost(blogId);
         return redirect(routes.AdminController.adminPanel());
     }
 

@@ -1,6 +1,6 @@
 
 @import html5.tags.html._
-@(addProductForm: Form[models.Product],allProducts:List[models.Product],user: models.User,addBlogPostForm:Form[models.BlogPost],allUsers:List[models.User])
+@(addProductForm: Form[models.Product],allProducts:List[models.Product],user: models.User,addBlogPostForm:Form[models.BlogPost],allUsers:List[models.User],allBlogPosts:List[models.BlogPost])
 @main("Admin Panel",user){
 <div class="container-fluid">
     <div class="row" id="admin-panel-content">
@@ -10,6 +10,7 @@
             <p class="text-center whitetext admin-menu-item" id="admin-charts-button">Charts <i class="fa fa-line-chart" aria-hidden="true"></i></p>
             <p class="text-center whitetext admin-menu-item" id="admin-users-button">Users <i class="fa fa-user" aria-hidden="true"></i></p>
             <p class="text-center whitetext admin-menu-item" id="admin-product-button">Products <i class="fa fa-tags" aria-hidden="true"></i></p>
+            <p class="text-center whitetext admin-menu-item" id="admin-blogposts-button">Blog Posts <i class="fa fa-pencil" aria-hidden="true"></i></p>
             <p class="text-center whitetext admin-menu-item" id="admin-add-product-button">Add A Product <i class="fa fa-tags" aria-hidden="true"></i></p>
             <p class="text-center whitetext admin-menu-item" id="admin-blog-button">Add A Blog Post <i class="fa fa-pencil" aria-hidden="true"></i></p>
         </div>
@@ -120,7 +121,7 @@
                                                 <p class="text-center purpletext">Action <i class="fa fa-cog" aria-hidden="true"></i></p>
                                             </th>
                                             <th class="hidden-xs">
-                                                <p class="text-center purpletext">ID</p>
+                                                <p class="text-center purpletext">#</p>
                                             </th>
                                             <th>
                                                 <p class="text-center purpletext">Name</p>
@@ -155,6 +156,62 @@
                 </div>
                 <!--end of end of row -->
             </div>
+
+            <div class="container-fluid admin-sections" id="blogposts-section">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="panel panel-default panel-table" id="admin-users-panel">
+                            <div class="panel-heading" id="admin-users-panel-heading">
+                                <div class="row">
+                                    <div class="col col-xs-12">
+                                        <h3 class="panel-title">Blog Posts <i class="fa fa-tags" aria-hidden="true"></i></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-striped table-bordered table-list">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <p class="text-center purpletext">Action <i class="fa fa-cog" aria-hidden="true"></i></p>
+                                            </th>
+                                            <th class="hidden-xs">
+                                                <p class="text-center purpletext">#</p>
+                                            </th>
+                                            <th>
+                                                <p class="text-center purpletext">Title</p>
+                                            </th>
+                                            <th>
+                                                <p class="text-center purpletext">Description</p>
+                                            </th>
+                                            <th>
+                                                <p class="text-center purpletext">Likes <i class="fa fa-heart" aria-hidden="true"></i></p>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @for(bp <- allBlogPosts) {
+                                        <tr>
+                                            <td align="center">
+                                                <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
+                                                <a href = "@routes.AdminController.deleteBlogPost(bp.getBlogId)" class="btn btn-danger" ><em class="fa fa-trash"></em></a>
+                                            </td>
+                                            <td>@bp.getBlogId()</td>
+                                            <td>@bp.getBlogTitle()</td>
+                                            <td>@bp.getBlogDescription()</td>
+                                            <td>@bp.getNumLikes()</td>
+                                        </tr>
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                        <!--end of col -->
+                </div>
+                    <!--end of end of row -->
+            </div>
+
             <!--end of end of admin-products-section -->
             <div class="container-fluid admin-sections" id="add-products-section">
                 <div class="row">
@@ -230,6 +287,9 @@ $(document).ready(function() {
     $("#products-section").hide();
     $("#add-products-section").hide();
     $("#add-blogpost-section").hide();
+    $("#blogposts-section").hide();
+
+
 
     $("#admin-charts-button").click(function() {
         $("#charts-section").show();
@@ -237,6 +297,8 @@ $(document).ready(function() {
         $("#users-section").hide();
         $("#add-products-section").hide();
         $("#add-blogpost-section").hide();
+        $("#blogposts-section").hide();
+
     });
 
     $("#admin-users-button").click(function() {
@@ -245,6 +307,7 @@ $(document).ready(function() {
         $("#users-section").show();
         $("#add-products-section").hide();
         $("#add-blogpost-section").hide();
+        $("#blogposts-section").hide();
     });
 
     $("#admin-product-button").click(function() {
@@ -253,6 +316,7 @@ $(document).ready(function() {
         $("#users-section").hide();
         $("#add-products-section").hide();
         $("#add-blogpost-section").hide();
+        $("#blogposts-section").hide();
     });
 
     $("#admin-add-product-button").click(function() {
@@ -261,6 +325,7 @@ $(document).ready(function() {
         $("#users-section").hide();
         $("#add-products-section").show();
         $("#add-blogpost-section").hide();
+        $("#blogposts-section").hide();
     });
 
     $("#admin-blog-button").click(function() {
@@ -269,7 +334,18 @@ $(document).ready(function() {
         $("#users-section").hide();
         $("#add-products-section").hide();
         $("#add-blogpost-section").show();
+        $("#blogposts-section").hide();
     });
+
+    $("#admin-blogposts-button").click(function() {
+        $("#charts-section").hide();
+        $("#products-section").hide();
+        $("#users-section").hide();
+        $("#add-products-section").hide();
+        $("#add-blogpost-section").hide();
+        $("#blogposts-section").show();
+    });
+
 
 });
 </script>
