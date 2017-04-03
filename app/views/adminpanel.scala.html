@@ -223,15 +223,28 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4" >
                         @helper.form(action = routes.AdminController.addProductSubmit(),'enctype -> "multipart/form-data") {
 
-                                    @text(addProductForm("Name"), 'class -> "form-control", 'id -> "productname", 'placeholder -> "Product Name")
+                                    @text(addProductForm("Name"), 'class -> "form-control", 'id -> "productname", 'placeholder -> "Product Name", '_label -> "Product Name : ")
 
-                                    @number(addProductForm("Quantity"), 'class -> "form-control", 'id -> "productquantity", 'placeholder -> "Quantity")
+                                    @number(addProductForm("Quantity"), 'class -> "form-control", 'id -> "productquantity", 'placeholder -> "Quantity", '_label -> "Quantity : ")
 
-                                    @number(addProductForm("Price"),'type -> "number", 'class -> "form-control", 'min -> "0.01", 'step -> "0.01", 'max -> "9999", 'value -> "00.00")
+                                    @number(addProductForm("Price"),'type -> "number", 'class -> "form-control", 'min -> "0.01", 'step -> "0.01", 'max -> "9999", 'value -> "00.00" , '_label -> "Price : ")
 
-                                    @text(addProductForm("Description"), 'class -> "form-control", 'id -> "add-product-textarea", 'placeholder -> "Description")
+                                    @select(
+                                        addProductForm("category"),
+                                        options(
+                                            "Laptops" -> "Laptops",
+                                            "Desktops" -> "Desktops",
+                                            "Monitors" -> "Monitors",
+                                            "Tablets" -> "Tablets",
+                                            "Accessories" -> "Accessories",
+                                            "Components" -> "Components"
+                                        ),
+                                        '_label -> "Category :"
+                                    )
 
-                                    @file(addProductForm("ProductImage"), 'class -> "form-control")
+                                    @text(addProductForm("Description"), 'class -> "form-control", 'id -> "add-product-textarea", 'placeholder -> "Description", '_label -> "Description : ")
+
+                                    @file(addProductForm("ProductImage"), 'class -> "form-control", '_label -> "Product Image : ")
 
                                     <input type="submit" class="form-control" id="add-product-submit" value="Submit">
                         }

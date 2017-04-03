@@ -23,6 +23,10 @@ public class Product extends Model {
     public double price;
     @Constraints.Required
     public String description;
+    @Constraints.Required
+    public String category;
+
+
 
     //Query helper to find object with id long
     public static Finder<Long,Product> find = new Finder<>(Product.class);

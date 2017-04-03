@@ -67,16 +67,20 @@
                         <!--a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i>                 Continue Shopping</a></td> Button Below-->
                         <tr>
                             <td>
+                                <a href = "@routes.HomeController.searchProduct("")">
                                 <button type="button" class="btn btn-default">
+
                                 <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-                                </button>
+                                </button></a>
                             </td>
 
                             <td colspan="2" class="hidden-xs">
                             </td>
 
                             <td class="hidden-xs text-center">
+                            @if(user.getBasket() != null) {
                                 <strong>Total @user.getBasket().getBasketTotal()</strong>
+                            }
                             </td>
 
                             <td><a href="@routes.HomeController.payment()" class="btn btn-success btn-block">

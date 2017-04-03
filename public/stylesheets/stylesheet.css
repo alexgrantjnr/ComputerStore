@@ -449,6 +449,10 @@ body {
     text-align: center;
 }
 
+#user-account{
+    margin-top: 1.5em;
+}
+
 .user-image img {
     clear: both;
     margin: auto;

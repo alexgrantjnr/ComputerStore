@@ -18,21 +18,23 @@ public class User extends Model{
     private String firstName;
     @Constraints.Required
     private String lastName;
-    //@Constraints.Required
     private String role;
     @Constraints.Required
     private String password;
     @Constraints.Required
+    private String address;
+    @Constraints.Required
     private int age;
     @Constraints.Required
     private String phone,mobile;
+    @Formats.DateTime(pattern="dd/MM/yyyy")
+    private Date joinDate = new Date();
 
     @OneToOne(mappedBy="user", cascade = CascadeType.ALL)
     private Basket basket;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<ShopOrder> orders;
-
 
     public User(){
     }
@@ -107,6 +109,22 @@ public class User extends Model{
 
     public void setBasket(Basket basket) {
         this.basket = basket;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Date getJoinDate() {
+        return joinDate;
+    }
+
+    public void setJoinDate(Date joinDate) {
+        this.joinDate = joinDate;
     }
 
     public List<ShopOrder> getOrders() {

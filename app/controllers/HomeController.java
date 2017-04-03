@@ -40,7 +40,17 @@ public class HomeController extends Controller {
 
     @Security.Authenticated(Secured.class)
     public Result account() {
-        return ok(account.render(getUserFromSession()));
+        User userDetails = getUserFromSession();
+        Form<User> updateDetailsForm = formFactory.form(User.class).fill(userDetails);
+        return ok(account.render(getUserFromSession(),updateDetailsForm));
+    }
+
+    @Security.Authenticated(Secured.class)
+    public Result updateDetails(){
+        Form<User> newDetails = formFactory.form(User.class).bindFromRequest();
+        User userUpdated = newDetails.get();
+        userUpdated.update();
+        return redirect(routes.HomeController.account());
     }
 
     @Security.Authenticated(Secured.class)

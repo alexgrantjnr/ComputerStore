@@ -21,12 +21,6 @@ create table blog_post (
 );
 create sequence blog_post_seq increment by 1;
 
-create table category (
-  category_id                   bigint not null,
-  constraint pk_category primary key (category_id)
-);
-create sequence category_seq increment by 1;
-
 create table order_item (
   id                            bigint not null,
   order_id                      bigint,
@@ -53,6 +47,7 @@ create table product (
   quantity                      integer,
   price                         double,
   description                   varchar(255),
+  category                      varchar(255),
   constraint pk_product primary key (product_id)
 );
 create sequence product_seq increment by 1;
@@ -71,20 +66,13 @@ create table user (
   last_name                     varchar(255),
   role                          varchar(255),
   password                      varchar(255),
+  address                       varchar(255),
   age                           integer,
   phone                         varchar(255),
   mobile                        varchar(255),
+  join_date                     timestamp,
   constraint pk_user primary key (email)
 );
-
-create table wish_list (
-  wishlist_id                   bigint not null,
-  num_items                     integer,
-  user_id                       bigint,
-  product_id                    bigint,
-  constraint pk_wish_list primary key (wishlist_id)
-);
-create sequence wish_list_seq increment by 1;
 
 alter table basket add constraint fk_basket_user_email foreign key (user_email) references user (email) on delete restrict on update restrict;
 
@@ -123,9 +111,6 @@ drop sequence if exists basket_seq;
 drop table if exists blog_post;
 drop sequence if exists blog_post_seq;
 
-drop table if exists category;
-drop sequence if exists category_seq;
-
 drop table if exists order_item;
 drop sequence if exists order_item_seq;
 
@@ -139,7 +124,4 @@ drop table if exists shop_order;
 drop sequence if exists shop_order_seq;
 
 drop table if exists user;
-
-drop table if exists wish_list;
-drop sequence if exists wish_list_seq;
 
