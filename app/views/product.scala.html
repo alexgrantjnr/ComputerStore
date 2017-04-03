@@ -43,7 +43,9 @@
                         <p class="text-left">@product.getDescription</p>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <a href="@routes.ShoppingController.addToBasket(product.getProductId)">
                         <button class="pull-right" id="product-add-to-cart">Add To Cart <i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+                        </a>
                     </div>
                     <!--end of col -->
                 </div>

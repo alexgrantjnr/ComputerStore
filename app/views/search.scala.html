@@ -53,14 +53,16 @@
                                 <!--End of col-->
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                     <h2 class="text-center" id="productprice"><span class="purpletext">€</span>@p.getPrice</h2>
+                                    <a href = "@routes.ShoppingController.addToBasket(p.getProductId)"></a>
                                     <button type="button" id="addtocartbutton">Add To Cart</button>
+                                    </a>
                                 </div>
                             </div>
                             <!--End of row-->
                         </div>
                         <!--End of container-->
                     </div>
-                            </a>
+                    </a>
                     <!--End of col /product searchresults/Play Echo-->
                     }
                 </div>

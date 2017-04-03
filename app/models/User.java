@@ -2,11 +2,12 @@ package models;
 
 import java.util.*;
 import javax.persistence.*;
-
 import com.avaje.ebean.Model;
 import play.data.format.*;
 import play.data.validation.*;
 import play.Logger;
+import models.*;
+import models.*;
 
 @Entity
 public class User extends Model{
@@ -25,6 +26,13 @@ public class User extends Model{
     private int age;
     @Constraints.Required
     private String phone,mobile;
+
+    @OneToOne(mappedBy="user", cascade = CascadeType.ALL)
+    private Basket basket;
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<ShopOrder> orders;
+
 
     public User(){
     }
@@ -91,6 +99,22 @@ public class User extends Model{
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    public Basket getBasket() {
+        return basket;
+    }
+
+    public void setBasket(Basket basket) {
+        this.basket = basket;
+    }
+
+    public List<ShopOrder> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<ShopOrder> orders) {
+        this.orders = orders;
     }
 
     public static Finder<String,User> find = new Finder<String,User>(User.class);

@@ -1,42 +1,93 @@
 package models;
-
 import java.util.*;
 import javax.persistence.*;
-
-import com.avaje.ebean.Model;
 import play.data.format.*;
 import play.data.validation.*;
+import com.avaje.ebean.*;
 
+
+// OrderItem entity managed by Ebean
 @Entity
 public class OrderItem extends Model {
 
-    @SequenceGenerator(name = "orderitemn_gen",allocationSize = 1, initialValue = 1)
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orderitemn_gen")
-    public long orderItemId;
-    @Constraints.Required
-    public int quantity;
-    @Constraints.Required
-    public double totalPrice;
-    @Constraints.Required
-    public long orderId;
-    @Constraints.Required
-    public long productId;
+    private Long id;
 
-    public OrderItem(long orderItemId, int quantity, double totalPrice, long orderId, long productId) {
-        this.orderItemId = orderItemId;
-        this.quantity = quantity;
-        this.totalPrice = totalPrice;
-        this.orderId = orderId;
-        this.productId = productId;
+    @ManyToOne
+    private ShopOrder order;
+
+    @ManyToOne
+    private Basket basket;
+
+    @ManyToOne
+    private Product product;
+
+    private int quantity;
+    private double price;
+
+    // Default constructor
+    public  OrderItem() {
     }
 
-    public long getOrderItemId() {
-        return orderItemId;
+    public OrderItem(Product p) {
+        product = p;
+        quantity = 1;
+        price = p.getPrice();
     }
 
-    public void setOrderItemId(long orderItemId) {
-        this.orderItemId = orderItemId;
+    // Increment quantity
+    public void increaseQty() {
+        quantity += 1;
+    }
+
+    // Decrement quantity
+    public void decreaseQty() {
+        quantity -= 1;
+    }
+
+    // Calculate and return total price for this order item
+    public double getItemTotal() {
+        return this.price * this.quantity;
+    }
+
+    //Generic query helper
+    public static Finder<Long,OrderItem> find = new Finder<Long,OrderItem>(OrderItem.class);
+
+    //Find all Products in the database
+    public static List<OrderItem> findAll() {
+        return OrderItem.find.all();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public ShopOrder getOrder() {
+        return order;
+    }
+
+    public void setOrder(ShopOrder order) {
+        this.order = order;
+    }
+
+    public Basket getBasket() {
+        return basket;
+    }
+
+    public void setBasket(Basket basket) {
+        this.basket = basket;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getQuantity() {
@@ -47,28 +98,11 @@ public class OrderItem extends Model {
         this.quantity = quantity;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
+    public double getPrice() {
+        return price;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public long getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(long orderId) {
-        this.orderId = orderId;
-    }
-
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
-
