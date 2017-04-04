@@ -52,6 +52,7 @@ public class HomeController extends Controller {
     public Result updateDetails(){
         Form<User> newDetails = formFactory.form(User.class).bindFromRequest();
         User userUpdated = newDetails.get();
+        userUpdated.setPassword(BCrypt.hashpw(userUpdated.getPassword(), BCrypt.gensalt()));
         userUpdated.update();
         return redirect(routes.HomeController.account());
     }

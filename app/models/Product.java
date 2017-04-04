@@ -27,7 +27,6 @@ public class Product extends Model {
     public String category;
 
 
-
     //Query helper to find object with id long
     public static Finder<Long,Product> find = new Finder<>(Product.class);
     public static Finder<String,Product> findS = new Finder<>(Product.class);
@@ -106,4 +105,11 @@ public class Product extends Model {
         this.description = description;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }
