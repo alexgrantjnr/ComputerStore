@@ -1,5 +1,7 @@
 package controllers;
 
+
+import org.mindrot.jbcrypt.BCrypt;
 import play.mvc.*;
 import play.api.Environment;
 import play.data.*;
@@ -34,6 +36,7 @@ public class HomeController extends Controller {
         Form<User> newUser = formFactory.form(User.class).bindFromRequest();
         User newRegisteredUser = newUser.get();
         newRegisteredUser.setRole("Customer");
+        newRegisteredUser.setPassword(BCrypt.hashpw(newRegisteredUser.getPassword(), BCrypt.gensalt()));
         newRegisteredUser.save();
         return redirect(routes.LoginController.login());
     }

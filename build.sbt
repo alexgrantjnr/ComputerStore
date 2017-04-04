@@ -11,7 +11,8 @@ libraryDependencies ++= Seq(
   evolutions,
   cache,
   javaWs,
-  "com.loicdescotte.coffeebean" %% "html5tags" % "1.2.2"
+  "com.loicdescotte.coffeebean" %% "html5tags" % "1.2.2",
+  "org.mindrot" % "jbcrypt" % "0.3m"
 )
 
 resolvers += Resolver.url("github repo for html5tags", url("http://loicdescotte.github.io/Play2-HTML5Tags/releases/"))(Resolver.ivyStylePatterns)

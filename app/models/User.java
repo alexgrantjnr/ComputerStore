@@ -3,6 +3,7 @@ package models;
 import java.util.*;
 import javax.persistence.*;
 import com.avaje.ebean.Model;
+import org.mindrot.jbcrypt.BCrypt;
 import play.data.format.*;
 import play.data.validation.*;
 import play.Logger;
@@ -142,7 +143,12 @@ public class User extends Model{
     }
 
     public static User authenticate(String email, String password){
-        return find.where().eq("email", email).eq("password", password).findUnique();
+        User user = User.find.where().eq("email", email).findUnique();
+        if (user != null && BCrypt.checkpw(password, user.password)) {
+            return user;
+        } else {
+            return null;
+        }
     }
 
     public static User getUserById(String id){
