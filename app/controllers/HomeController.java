@@ -1,6 +1,5 @@
 package controllers;
 
-
 import org.mindrot.jbcrypt.BCrypt;
 import play.mvc.*;
 import play.api.Environment;
@@ -15,7 +14,6 @@ import models.*;
 public class HomeController extends Controller {
 
     private FormFactory formFactory;
-
 
     @Inject
     public HomeController(FormFactory f){
@@ -70,8 +68,8 @@ public class HomeController extends Controller {
     public Result searchCategory(String categoryName) {
         List<Product>products = Product.findByCategory(categoryName);
         if (products.isEmpty()){
-            List<Product>productsAll = Product.findAll();
-            return ok(search.render(productsAll,getUserFromSession()));
+           flash("noproducts", "No Products Found");
+            return ok(search.render(products,getUserFromSession()));
         }
         return ok(search.render(products,getUserFromSession()));
     }
