@@ -18,7 +18,6 @@ public class ShoppingController extends Controller{
     public Result addToBasket(Long id){
 
         Product p = Product.find.byId(id);
-
         User user = getUserFromSession();
 
         if (user.getBasket() == null){
@@ -52,7 +51,6 @@ public class ShoppingController extends Controller{
 
     @Transactional
     public Result addOne(Long itemId) {
-
         // Get the order item
         OrderItem item = OrderItem.find.byId(itemId);
         // Increment quantity

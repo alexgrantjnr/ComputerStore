@@ -24,9 +24,10 @@ public class OrderItem extends Model {
 
     private int quantity;
     private double price;
+    private double priceQuantity;
 
     // Default constructor
-    public  OrderItem() {
+    public OrderItem() {
     }
 
     public OrderItem(Product p) {
@@ -34,6 +35,8 @@ public class OrderItem extends Model {
         quantity = 1;
         price = p.getPrice();
     }
+
+
 
     // Increment quantity
     public void increaseQty() {

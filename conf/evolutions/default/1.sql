@@ -28,6 +28,7 @@ create table order_item (
   product_product_id            bigint,
   quantity                      integer,
   price                         double,
+  price_quantity                double,
   constraint pk_order_item primary key (id)
 );
 create sequence order_item_seq;

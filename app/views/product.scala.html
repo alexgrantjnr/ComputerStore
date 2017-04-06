@@ -1,6 +1,6 @@
 @import helper._
 @import html5.tags.html._
-@(product: Product,user: models.User)
+@(product: Product,user: models.User,env: play.api.Environment)
 @main("Product",user){
 <div class="container">
     <div class="row" id="product-bounds">
@@ -37,7 +37,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <h1 class="text-left">@product.getName</h1>
-                        <h4 class="text-left"><span class = "purpletext">€</span>@product.getProductId</h4>
+                        <h4 class="text-left"><span class = "purpletext">€</span>@product.getPrice</h4>
                         <h4 class="text-left"><span class = "purpletext">Quantity </span>@product.getQuantity</h4>
                         <h4 class="text-left"><span class = "purpletext">  <i class="fa fa-bus" aria-hidden="true"></i></span> Free Delievery available</h4>
                         <p class="text-left">@product.getDescription</p>

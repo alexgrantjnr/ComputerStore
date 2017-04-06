@@ -25,6 +25,7 @@
                         <tr> <!-- Row One -->
                             <td data-th="Product">
                                 <div class="row">
+                                    <a href = "@routes.HomeController.product(i.getProduct.getProductId)" style = "color: inherit !important;">
                                     <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/>
                                     </div>
 
@@ -38,18 +39,29 @@
                             </td>
                             <td data-th="Price">@i.getProduct().getPrice()</td>
                             <td data-th="Quantity">
-                                <input type="number" class="form-control text-center" value="@i.getProduct().getQuantity()">
+                                <p class="nomargin text-center">@i.getQuantity</p>
                             </td>
-                            <td data-th="Subtotal" class="text-center">€1.99</td>
+                            <td data-th="Subtotal" class="text-center">@i.getItemTotal</td>
+
                             <td class="actions" data-th="">
-                                <a href = "@routes.ShoppingController.addOne(i.getProduct().productId)">
-                                <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+                                @if(i.getProduct().getQuantity > i.getQuantity()) {
+                                    <a href = "@routes.ShoppingController.addOne(i.getId)">
+                                        <button class="btn btn-info btn-sm"><i class="fa fa-plus" aria-hidden="true"></i>
+                                        </button>
                                     </a>
-                                <a href = "@routes.ShoppingController.removeOne(i.getProduct().productId)">
-                                <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>                                
+                                }
+
+                            </td>
+
+                        <td class="actions" data-th="">
+                        @if(i.getProduct().getQuantity >= 0 ) {
+                                <a href = "@routes.ShoppingController.removeOne(i.getId)">
+                                <button class="btn btn-danger btn-sm"><i class="fa fa-minus" aria-hidden="true"></i></button>
                                 </a>
                             </td>
                         </tr>
+                                </a>
+                            }
                         <!-- End Row One -->
                             }
 
@@ -69,9 +81,16 @@
                             <td>
                                 <a href = "@routes.HomeController.searchProduct("")">
                                 <button type="button" class="btn btn-default">
-
                                 <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
                                 </button></a>
+                            </td>
+
+                            <td>
+                                <a href = "@routes.ShoppingController.emptyBasket()">
+                                    <button type="button" class="btn btn-danger">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    Empty Basket
+                                    </button></a>
                             </td>
 
                             <td colspan="2" class="hidden-xs">

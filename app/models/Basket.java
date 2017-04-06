@@ -47,6 +47,16 @@ public class Basket extends Model {
         }
     }
 
+//    public double getSubTotal(){
+//        double total = 0;
+//        for(OrderItem i : this.basketItems){
+//            total = i.getProduct().getPrice() * i.getQuantity();
+//            //@i.getQuantity * @i.getProduct.getPrice
+//            //total += i.getPrice();
+//        }
+//        return total;
+//    }
+
     // Add product to basket
 // Either update existing order item or ad a new one.
     public void addProduct(Product p) {

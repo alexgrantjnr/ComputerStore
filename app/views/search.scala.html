@@ -1,6 +1,6 @@
 @import helper._
 @import html5.tags.html._
-@(products:List[models.Product],user: models.User)
+@(products:List[models.Product],user: models.User,env: play.api.Environment)
 @main("Search",user){
 <div class="container-fluid">
     <div class="row">

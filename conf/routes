@@ -20,6 +20,7 @@ GET     /deleteproduct/:productId          controllers.AdminController.deletePro
 GET     /addtobasket/:productId            controllers.ShoppingController.addToBasket(productId: Long)
 GET     /removeitem/:productId             controllers.ShoppingController.removeOne(productId: Long)
 GET     /additem/:productId                controllers.ShoppingController.addOne(productId: Long)
+GET     /emptybasket                       controllers.ShoppingController.emptyBasket()
 GET     /deleteuser/:email                 controllers.AdminController.deleteUser(email: String)
 GET     /deleteblogpost/:blogpost          controllers.AdminController.deleteBlogPost(blogpost: Long)
 GET     /likeBlogPost/:blogPostId          controllers.HomeController.updatePostLikes(blogPostId: Long)

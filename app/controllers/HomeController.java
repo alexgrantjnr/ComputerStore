@@ -14,14 +14,16 @@ import models.*;
 public class HomeController extends Controller {
 
     private FormFactory formFactory;
+    private Environment env;
 
     @Inject
-    public HomeController(FormFactory f){
-    this.formFactory = f;
+    public HomeController(FormFactory formFactory, Environment env) {
+        this.formFactory = formFactory;
+        this.env = env;
     }
 
     public Result index() {
-        //List<Product> indexProducts = Product.findRandomProducts();
+        //List<Product> indexProducts = Product.indexProducts();
         return ok(index.render(getUserFromSession(),null));
     }
 
@@ -62,25 +64,25 @@ public class HomeController extends Controller {
 
     public Result product(Long productId) {
         Product prod = Product.getProductById(productId);
-        return ok(product.render(prod,getUserFromSession()));
+        return ok(product.render(prod,getUserFromSession(),env));
     }
 
     public Result searchCategory(String categoryName) {
         List<Product>products = Product.findByCategory(categoryName);
         if (products.isEmpty()){
            flash("noproducts", "No Products Found");
-            return ok(search.render(products,getUserFromSession()));
+            return ok(search.render(products,getUserFromSession(),env));
         }
-        return ok(search.render(products,getUserFromSession()));
+        return ok(search.render(products,getUserFromSession(),env));
     }
 
     public Result searchProduct(String productName) {
         List<Product>products = Product.findByName(productName);
         if (products.isEmpty()){
             List<Product>productsAll = Product.findAll();
-            return ok(search.render(productsAll,getUserFromSession()));
+            return ok(search.render(productsAll,getUserFromSession(),env));
         }
-        return ok(search.render(products,getUserFromSession()));
+        return ok(search.render(products,getUserFromSession(),env));
     }
 
     @Security.Authenticated(Secured.class)
