@@ -21,7 +21,7 @@ import org.im4java.core.ConvertCmd;
 import org.im4java.core.IMOperation;
 
 // File upload and image editing dependencies
-
+//test
 public class AdminController extends Controller {
 
     // Declare a private FormFactory instance
