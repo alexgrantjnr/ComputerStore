@@ -42,19 +42,21 @@
     </div>
     <!--end of end of row-->
     <div class="row">
-
+    @for(p <- indexProducts){
         <!--Play will render these elements for the   -->
             <a href="@routes.HomeController.product(1)">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="index-products">
-            <h3 class="text-center text-muted">p.getName</h3>
-            <h4 class="text-center text-muted"><span class = "purpletext">€</span>p.getPrice</h4>
+            <h3 class="text-center text-muted">@p.getName</h3>
+            <h4 class="text-center text-muted"><span class = "purpletext">€</span>@p.getPrice</h4>
             <img class="img-responsive" src="@routes.Assets.versioned("images/cpucooler.png")">
+                <a href = "@routes.ShoppingController.addToBasket(p.getProductId)">
             <p class="text-center">
                 <button type="button" id="addtocartbutton">Add To Cart <i class="fa fa-1x fa-shopping-cart" aria-hidden="true"></i></button>
             </p>
+                </a>
         </div>
             </a>
-
+    }
         <!--End of index products-->
     </div>
     <!--end of end of row-->

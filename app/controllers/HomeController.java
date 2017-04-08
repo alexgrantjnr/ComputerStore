@@ -23,8 +23,8 @@ public class HomeController extends Controller {
     }
 
     public Result index() {
-        //List<Product> indexProducts = Product.indexProducts();
-        return ok(index.render(getUserFromSession(),null));
+        List<Product> indexProducts = Product.indexProducts();
+        return ok(index.render(getUserFromSession(),indexProducts));
     }
 
     public Result register(){
@@ -63,8 +63,9 @@ public class HomeController extends Controller {
     }
 
     public Result product(Long productId) {
+        List<Product> relatedProducts = Product.indexProducts();
         Product prod = Product.getProductById(productId);
-        return ok(product.render(prod,getUserFromSession(),env));
+        return ok(product.render(prod,getUserFromSession(),env,relatedProducts));
     }
 
     public Result searchCategory(String categoryName) {
@@ -81,6 +82,17 @@ public class HomeController extends Controller {
         if (products.isEmpty()){
             List<Product>productsAll = Product.findAll();
             return ok(search.render(productsAll,getUserFromSession(),env));
+        }
+        return ok(search.render(products,getUserFromSession(),env));
+    }
+
+    public Result filterProduct(String filter,String min,String max){
+        double minimum = Double.parseDouble(min);
+        double maximum = Double.parseDouble(max);
+        List<Product>products = Product.filterProduct(filter,minimum,maximum);
+        if (products.isEmpty()){
+            flash("noproducts", "No Products Found");
+            return ok(search.render(products,getUserFromSession(),env));
         }
         return ok(search.render(products,getUserFromSession(),env));
     }

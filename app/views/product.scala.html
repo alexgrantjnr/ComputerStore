@@ -1,6 +1,6 @@
 @import helper._
 @import html5.tags.html._
-@(product: Product,user: models.User,env: play.api.Environment)
+@(product: Product,user: models.User,env: play.api.Environment,relatedProducts: List[models.Product])
 @main("Product",user){
 <div class="container">
     <div class="row" id="product-bounds">
@@ -59,47 +59,25 @@
 </div>
 <!--end of end of container -->
 <div class="container">
-    <h1 class="text-center purpletext">CUSTOMERS ALSO PURCHASED</h1>
+    <h4 class="text-center purpletext">Customers Also Purchased</h4>
     <div class="row">
+        @for(r <- relatedProducts){
         <!--Play will render these elements for the related products  -->
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pull-left" id="related-products">
-            <h3 class="text-center text-muted">Name Variable Here</h3>
-            <h4 class="text-center text-muted"><span class = "purpletext">€</span>Price Variable Here</h4>
-            <img class="img-responsive" src="@routes.Assets.versioned("images/cpucooler.png")">
+            <h3 class="text-center text-muted">@r.getName</h3>
+            <h4 class="text-center text-muted"><span class = "purpletext">€</span>@r.getPrice</h4>
+            @if(env.resource("public/images/productImages/thumbnails/" + r.getProductId + ".jpg").isDefined){
+                <img class="img-responsive" src="/assets/images/productImages/thumbnails/@(r.getProductId + ".jpg")">
+            }else{
+                <img class="img-responsive" src="/assets/images/productImages/noImage.jpg">
+            }
+            <a href = "@routes.ShoppingController.addToBasket(r.getProductId)">
             <p class="text-center">
                 <button type="button" id="addtocartbutton">Add To Cart <i class="fa fa-1x fa-shopping-cart" aria-hidden="true"></i></button>
             </p>
+            </a>
         </div>
-        <!--End of related products rendered-->
-        <!--Play will render these elements for the related products  -->
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pull-left" id="related-products">
-            <h3 class="text-center text-muted">Name Variable Here</h3>
-            <h4 class="text-center text-muted"><span class = "purpletext">€</span>Price Variable Here</h4>
-            <img class="img-responsive" src="@routes.Assets.versioned("images/cpucooler.png")">
-            <p class="text-center">
-                <button type="button" id="addtocartbutton">Add To Cart <i class="fa fa-1x fa-shopping-cart" aria-hidden="true"></i></button>
-            </p>
-        </div>
-        <!--End of related products rendered-->
-        <!--Play will render these elements for the related products  -->
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pull-left" id="related-products">
-            <h3 class="text-center text-muted">Name Variable Here</h3>
-            <h4 class="text-center text-muted"><span class = "purpletext">€</span>Price Variable Here</h4>
-            <img class="img-responsive" src="@routes.Assets.versioned("images/cpucooler.png")"">
-            <p class="text-center">
-                <button type="button" id="addtocartbutton">Add To Cart <i class="fa fa-1x fa-shopping-cart" aria-hidden="true"></i></button>
-            </p>
-        </div>
-        <!--End of related products rendered-->
-        <!--Play will render these elements for the related products  -->
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pull-left" id="related-products">
-            <h3 class="text-center text-muted">Name Variable Here</h3>
-            <h4 class="text-center text-muted"><span class = "purpletext">€</span>Price Variable Here</h4>
-            <img class="img-responsive" src="@routes.Assets.versioned("images/cpucooler.png")">
-            <p class="text-center">
-                <button type="button" id="addtocartbutton">Add To Cart <i class="fa fa-1x fa-shopping-cart" aria-hidden="true"></i></button>
-            </p>
-        </div>
+        }
         <!--End of related products rendered-->
     </div>
     <!--End of row-->

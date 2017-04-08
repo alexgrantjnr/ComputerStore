@@ -46,6 +46,14 @@ public class Product extends Model {
         return Product.find.where().ilike("category","%" + category + "%").findList();
     }
 
+    public static List<Product> indexProducts(){
+        return Product.find.where().between("productId",0,3).findList();
+    }
+
+    public static List<Product> filterProduct(String filter,double min,double max){
+        return Product.find.where().ilike("name",filter).where().between("price",min,max).findList();
+    }
+
 
     public static Product getProductById(Long productId){
         return find.ref(productId);

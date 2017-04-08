@@ -82,20 +82,15 @@ public class AdminController extends Controller {
         //Making a new object of type Product and assigning the variables from the form to the object
         Product newProd = newProduct.get();
 
-        //Persisting the object to the database
         newProd.save();
 
-        // Save image
-        // Get image data
-        //MultipartFormData data = request().body().asMultipartFormData();
+        MultipartFormData data = request().body().asMultipartFormData();
 
-        //FilePart image = data.getFile("upload");
-        // Save the image file
-        //saveImageMsg = saveFile(newProd.getProductId(), image);
+        FilePart image = data.getFile("upload");
 
-        // Set a success message in temporary flash
-        // for display in return view
-        //flash("success", "Product " + newProd.getName() + " has been created/ updated " + saveImageMsg);
+        saveImageMsg = saveFile(newProd.getProductId(), image);
+
+        flash("success", "Product " + newProd.getName() + " has been created/ updated " + saveImageMsg);
 
 
         //Redirect to the admin panel
