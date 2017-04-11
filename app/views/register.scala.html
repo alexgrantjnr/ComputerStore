@@ -8,14 +8,14 @@
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
 
                 <h2 class="text-center purpletext">Register For <span class = "joined-font">Peecy Wurld</span></h2>
-    @helper.form(action = routes.HomeController.registerSubmit()){
+    @helper.form(action = routes.HomeController.registerSubmit() ,'enctype -> "multipart/form-data", 'method -> "POST"){
         @text(addUserForm("Email"), 'class -> "form-control", 'placeholder -> "Email")
         @text(addUserForm("firstName"), 'class -> "form-control", 'placeholder -> "First Name")
         @text(addUserForm("lastName"), 'class -> "form-control", 'placeholder -> "Last Name")
         @password(addUserForm("password"), 'class -> "form-control", 'placeholder -> "First Name")
         @text(addUserForm("address"), 'class -> "form-control", 'placeholder -> "Address")
         @number(addUserForm("age"),'type -> "number", 'class -> "form-control", 'min -> "1", 'step -> "1", 'max -> "9999", 'value -> "0")
-        @file(addUserForm("profilePic"), 'class -> "form-control")
+        <input type="file" name = "profilePic" class = "form-control">
         @text(addUserForm("phone"), 'class -> "form-control", 'placeholder -> "Phone")
         @text(addUserForm("mobile"), 'class -> "form-control", 'placeholder -> "Mobile")
 

@@ -1,12 +1,15 @@
-@import helper._
-@import html5.tags.html._
-@(user: models.User,blogPosts:List[models.BlogPost])
+@(user: models.User,blogPosts:List[models.BlogPost],env: play.api.Environment)
 @main("Blog",user){
     <div class="container">
         <div class="row" id = "blogbounds">
             <h1 class = "text-center purpletext joined-font">Peecy Wurld Blog</h1>
             @for(b <- blogPosts) {
                 <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2" id = "blogpost">
+                    @if(env.resource("public/images/BlogPost_Images/" + b.getBlogId + ".jpg").isDefined){
+                        <img class="img-responsive" src="/assets/images/BlogPost_Images/@(b.getBlogId + ".jpg")">
+                    }else{
+
+                    }
                     <h2 class = "text-center">@b.getBlogTitle</h2>
                     <p class = "text-center">@b.getBlogDescription</p>
                     <h5 class = "pull-right text-muted">@b.getPostDate</h5>

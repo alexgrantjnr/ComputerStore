@@ -1,13 +1,17 @@
 @import helper._
 @import html5.tags.html._
-@(user: models.User,updateDetailsForm: Form[models.User])
+@(user: models.User,updateDetailsForm: Form[models.User],env: play.api.Environment)
 @main("Account",user){
 <div class="container" id = "user-account">
     <div class="row">
         <!-- <div class="col-sm-12 col-md-12 user-details"> -->
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-0">
             <div class="user-image">
-                <img src="http://www.gravatar.com/avatar/2ab7b2009d27ec37bffee791819a090c?s=100&d=mm&r=g" alt="Bren" title="Karan Singh Sisodia" class="img-circle" width="130px" height="130px">
+                @if(env.resource("public/images/user_profiles/" +user.getEmail + ".jpg").isDefined){
+                    < <img class="img-responsive img-circle"  src="/assets/images/user_profiles/@(user.getEmail + ".jpg")">
+                }else{
+                    <img class="img-responsive" src="/assets/images/blank_profile.jpg">
+                }
             </div>
             <div class="user-info-block">
                 <div class="user-heading">
@@ -61,7 +65,7 @@
         </div>
         <div class=" col-md-12 col-lg-12 col-lg-12 col-xs-12 " id="account-settings">
             <div class="container">
-            @helper.form(action = routes.HomeController.updateDetails()){
+            @helper.form(action = routes.HomeController.updateDetails() ,'enctype -> "multipart/form-data", 'method -> "POST"){
                 @text(updateDetailsForm("email"), 'class -> "form-control", 'placeholder -> "Email")
                 @text(updateDetailsForm("firstName"), 'class -> "form-control", 'placeholder -> "First Name")
                 @text(updateDetailsForm("lastName"), 'class -> "form-control", 'placeholder -> "Last Name")

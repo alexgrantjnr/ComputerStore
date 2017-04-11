@@ -43,14 +43,22 @@ public class AdminController extends Controller {
         List<Product> allProducts = Product.findAll();
         List<BlogPost> allBlogPosts = BlogPost.findAll();
         List<User> allUsers = User.findAll();
-        return ok(adminpanel.render(addProductForm, allProducts, getUserFromSession(),addBlogPostForm,allUsers,allBlogPosts,env));
+        return ok(adminpanel.render(addProductForm, allProducts, getUserFromSession(), addBlogPostForm, allUsers, allBlogPosts, env));
     }
 
-    public Result addBlogSubmit(){
-        Form<BlogPost>addBlogPost = formFactory.form(BlogPost.class).bindFromRequest();
+    public Result addBlogSubmit() {
+        String saveImageMsg = "";
+        Form<BlogPost> addBlogPost = formFactory.form(BlogPost.class).bindFromRequest();
         BlogPost newBlog = addBlogPost.get();
         newBlog.setNumLikes(0);
         newBlog.save();
+        MultipartFormData data = request().body().asMultipartFormData();
+
+        FilePart image = data.getFile("upload");
+
+        saveImageMsg = saveFile(newBlog.getBlogId(), image, "BlogPost_Images", false);
+
+        flash("success", "Blog " + newBlog.getBlogTitle() + " has been created/ updated " + saveImageMsg);
         return redirect(controllers.routes.AdminController.adminPanel());
     }
 
@@ -76,8 +84,8 @@ public class AdminController extends Controller {
 
         //If the form has errors return a bad request
         if (newProduct.hasErrors()) {
-            flash("error","Please correct the form below");
-            return badRequest(adminpanel.render(addProductForm, allProducts, getUserFromSession(),addBlogPostForm,allUsers,allBlogPosts,env));
+            flash("error", "Please correct the form below");
+            return badRequest(adminpanel.render(addProductForm, allProducts, getUserFromSession(), addBlogPostForm, allUsers, allBlogPosts, env));
         }
         //Making a new object of type Product and assigning the variables from the form to the object
         Product newProd = newProduct.get();
@@ -88,10 +96,9 @@ public class AdminController extends Controller {
 
         FilePart image = data.getFile("upload");
 
-        saveImageMsg = saveFile(newProd.getProductId(), image);
+        saveImageMsg = saveFile(newProd.getProductId(), image, "productImages", true);
 
         flash("success", "Product " + newProd.getName() + " has been created/ updated " + saveImageMsg);
-
 
         //Redirect to the admin panel
         return redirect(controllers.routes.AdminController.adminPanel());
@@ -119,7 +126,7 @@ public class AdminController extends Controller {
     }
 
     // Save an image file
-    public String saveFile(Long id, FilePart<File> image) {
+    public String saveFile(Long id, FilePart<File> image, String folder, boolean thumbnail) {
         if (image != null) {
             // Get mimetype from image
             String mimeType = image.getContentType();
@@ -134,26 +141,34 @@ public class AdminController extends Controller {
                 // Get the uploaded image file
                 op.addImage(file.getAbsolutePath());
                 // Resize using height and width constraints
-                op.resize(300,200);
+                op.resize(600, 400);
                 // Save the  image
-                op.addImage("public/images/productImages/" + id + ".jpg");
-                // thumbnail
-                IMOperation thumb = new IMOperation();
-                // Get the uploaded image file
-                thumb.addImage(file.getAbsolutePath());
-                thumb.thumbnail(60);
-                // Save the  image
-                thumb.addImage("public/images/productImages/thumbnails/" + id + ".jpg");
-                // execute the operation
-                try{
-                    cmd.run(op);
-                    cmd.run(thumb);
+                op.addImage("public/images/" + folder + "/" + id + ".jpg");
+                if (thumbnail == true) {
+                    // thumbnail
+                    IMOperation thumb = new IMOperation();
+                    // Get the uploaded image file
+                    thumb.addImage(file.getAbsolutePath());
+                    thumb.thumbnail(180);
+                    // Save the  image
+                    thumb.addImage("public/images/" + folder + "/thumbnails/" + id + ".jpg");
+                    // execute the operation
+                    try {
+                        cmd.run(op);
+                        cmd.run(thumb);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        cmd.run(op);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    return " and image saved";
                 }
-                catch(Exception e){
-                    e.printStackTrace();
-                }
-                return " and image saved";
             }
+            return "image file missing";
         }
         return "image file missing";
     }

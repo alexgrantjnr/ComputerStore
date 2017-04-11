@@ -30,7 +30,6 @@ public class Product extends Model {
 
     //Query helper to find object with id long
     public static Finder<Long,Product> find = new Finder<>(Product.class);
-    public static Finder<String,Product> findS = new Finder<>(Product.class);
 
     //Find all products
     public static List<Product> findAll(){
@@ -51,9 +50,8 @@ public class Product extends Model {
     }
 
     public static List<Product> filterProduct(String filter,double min,double max){
-        return Product.find.where().ilike("name",filter).where().between("price",min,max).findList();
+        return Product.find.where().ilike("name","%" + filter + "%").between("price",min,max).findList();
     }
-
 
     public static Product getProductById(Long productId){
         return find.ref(productId);
@@ -62,7 +60,6 @@ public class Product extends Model {
     public static void deleteProduct(Long productId){
         find.ref(productId).delete();
     }
-
 
     public long getProductId() {
         return productId;

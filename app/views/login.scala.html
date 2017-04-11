@@ -15,7 +15,7 @@
         @if(loginForm.hasGlobalErrors) {
             <p class="alert alert-warning">
             @loginForm.globalError.message
-            </p>>
+            </p>
         }
 
         @if(flash.containsKey("error")) {
@@ -23,6 +23,11 @@
                 @flash.get("loginRequired")
             </div>
         }
+            @if(flash.containsKey("sucess")) {
+                <div class="alert alert-success">
+                @flash.get("success")
+                </div>
+            }
         <p>Login into your account or if you do not have an account click<a href="@routes.HomeController.register()"> here</a> to register</p>
 
     @helper.form(action = routes.LoginController.loginSubmit()){
