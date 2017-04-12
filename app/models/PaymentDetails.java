@@ -13,7 +13,11 @@ import models.*;
 
 @Entity
 public class PaymentDetails extends Model {
+
+    @SequenceGenerator(name = "payment_gen",allocationSize = 1, initialValue = 1)
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "payment_gen")
+    public long paymentId;
     public String holdersEmail;
     @Constraints.Required
     public String cardNumber;
@@ -25,8 +29,13 @@ public class PaymentDetails extends Model {
     public String holdersName;
     public double total;
 
-
     public PaymentDetails(){
+    }
+
+    public static Finder<String,PaymentDetails> find = new Finder<>(PaymentDetails.class);
+
+    public static List<PaymentDetails> findByUser(String email){
+        return find.where().eq("holdersEmail",email).findList();
     }
 
     public String getCardNumber() {
@@ -75,5 +84,13 @@ public class PaymentDetails extends Model {
 
     public void setHoldersEmail(String holdersEmail) {
         this.holdersEmail = holdersEmail;
+    }
+
+    public long getPaymentId() {
+        return paymentId;
+    }
+
+    public void setPaymentId(long paymentId) {
+        this.paymentId = paymentId;
     }
 }

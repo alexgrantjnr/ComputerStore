@@ -1,6 +1,6 @@
 @import helper._
 @import html5.tags.html._
-@(user: models.User,updateDetailsForm: Form[models.User],env: play.api.Environment)
+@(user: models.User,updateDetailsForm: Form[models.User],env: play.api.Environment,userOrders: List[models.PaymentDetails])
 @main("Account",user){
 <div class="container" id = "user-account">
     <div class="row">
@@ -97,27 +97,20 @@
                                         <th>
                                             <p class="text-center purpletext">Order No: <i class="fa fa-list" aria-hidden="true"></i></p>
                                         </th>
-                                        <th class="hidden-xs">
-                                            <p class="text-center purpletext">ID</p>
-                                        </th>
                                         <th>
-                                            <p class="text-center purpletext">Name</p>
-                                        </th>
-                                        <th>
-                                            <p class="text-center purpletext">Email</p>
+                                            <p class="text-center purpletext">Order Total</p>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td align="center">
-                                            <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                            <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
-                                        </td>
-                                        <td class="hidden-xs">1</td>
-                                        <td>John Doe</td>
-                                        <td>johndoe@@example.com</td>
-                                    </tr>
+                                    @if(!userOrders.isEmpty) {
+                                        @for(o <- userOrders) {
+                                            <tr>
+                                                <td>@o.getPaymentId</td>
+                                                <td>@o.getTotal</td>
+                                            </tr>
+                                        }
+                                    }
                                 </tbody>
                             </table>
                         </div>

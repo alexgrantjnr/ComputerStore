@@ -55,9 +55,10 @@ public class HomeController extends Controller {
 
     @Security.Authenticated(Secured.class)
     public Result account() {
+        List<PaymentDetails>userOrders = PaymentDetails.findByUser(getUserFromSession().getEmail());
         User userDetails = getUserFromSession();
         Form<User> updateDetailsForm = formFactory.form(User.class).fill(userDetails);
-        return ok(account.render(getUserFromSession(),updateDetailsForm,env));
+        return ok(account.render(getUserFromSession(),updateDetailsForm,env,userOrders));
     }
 
     @Security.Authenticated(Secured.class)
