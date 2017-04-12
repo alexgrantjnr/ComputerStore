@@ -4,11 +4,11 @@
 <div class="container-fluid">
     <div class="row" id="admin-panel-content">
         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" id="admin-panel-settings">
-            <h3 class="text-center whitetext">@user.getFirstName</h3>
+            <h3 class="text-center whitetext">@user.getFirstName @user.getLastName</h3>
             @if(env.resource("public/images/user_profiles/" +user.getEmail + ".jpg").isDefined){
-                <img class="img-responsive img-circle" src="/assets/images/user_profiles/@(user.getEmail + ".jpg")">
+                <img class="img-responsive img-circle" id = "admin-panel-profile" src="/assets/images/user_profiles/@(user.getEmail + ".jpg")">
             }else{
-                <img class="img-responsive img-circle" src="/assets/images/blank_profile.jpg">
+                <img class="img-responsive img-circle" id = "admin-panel-profile" src="/assets/images/blank_profile.jpg">
             }
             <p class="text-center whitetext admin-menu-item" id="admin-charts-button">Charts <i class="fa fa-line-chart" aria-hidden="true"></i></p>
             <p class="text-center whitetext admin-menu-item" id="admin-users-button">Users <i class="fa fa-user" aria-hidden="true"></i></p>

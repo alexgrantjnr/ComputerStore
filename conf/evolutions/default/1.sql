@@ -42,6 +42,16 @@ create table orders (
 );
 create sequence orders_seq increment by 1;
 
+create table payment_details (
+  holders_email                 varchar(255) not null,
+  card_number                   varchar(255),
+  expiry_date                   varchar(255),
+  cvv_num                       varchar(255),
+  holders_name                  varchar(255),
+  total                         double,
+  constraint pk_payment_details primary key (holders_email)
+);
+
 create table product (
   product_id                    bigint not null,
   name                          varchar(255),
@@ -117,6 +127,8 @@ drop sequence if exists order_item_seq;
 
 drop table if exists orders;
 drop sequence if exists orders_seq;
+
+drop table if exists payment_details;
 
 drop table if exists product;
 drop sequence if exists product_seq;

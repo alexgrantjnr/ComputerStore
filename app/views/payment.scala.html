@@ -1,6 +1,6 @@
 @import helper._
 @import html5.tags.html._
-@(user: models.User)
+@(user: models.User,paymentForm: Form[models.PaymentDetails])
 @main("Payment",user){
 <div class="container">
     <div class="row">
@@ -12,13 +12,14 @@
                 <div class="panel-heading display-table" id="paymentheading">
                     <div class="row display-tr">
                         <h2 class="panel-title display-td text-center whitetext">Enter Your Payment Details</h2>
+                        <h2 class="panel-title display-td text-center whitetext">Order Total : €@user.getBasket.getBasketTotal</h2>
                         <div class="display-td">
                             <img class="img-responsive" src="http://i76.imgup.net/accepted_c22e0.png">
                         </div>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <form role="form" id="payment-form">
+                    <form role="form" action = "@routes.PaymentController.paymentSubmit" id="payment-form" name = "paymentForm">
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
@@ -33,29 +34,29 @@
                         <div class="row">
                             <div class="col-xs-7 col-md-7">
                                 <div class="form-group">
-                                    <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
-                                    <input type="tel" class="form-control" name="cardExpiry" placeholder="MM / YY" autocomplete="cc-exp" required />
+                                    <label for="expiryDate"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                                    <input type="tel" class="form-control" name="expiryDate" placeholder="MM / YY" autocomplete="cc-exp" required />
                                 </div>
                             </div>
                             <div class="col-xs-5 col-md-5 pull-right">
                                 <div class="form-group">
-                                    <label for="cardCVC">CV CODE</label>
-                                    <input type="tel" class="form-control" name="cardCVC" placeholder="CVC" autocomplete="cc-csc" required />
+                                    <label for="cvvNum">CV CODE</label>
+                                    <input type="tel" class="form-control" name="cvvNum" placeholder="CVC" autocomplete="cc-csc" required />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <label for="couponCode">Cardholders Name</label>
-                                    <input type="text" class="form-control" name="couponCode" />
+                                    <label for="holdersName">Cardholders Name</label>
+                                    <input type="text" class="form-control" name="holdersName" />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
                                 <p class="text-center">
-                                    <button id="paybutton" type="button">Buy Now</button>
+                                    <input type="submit" id = "paybutton" value = "Pay Now">
                                 </p>
                             </div>
                         </div>
@@ -72,7 +73,6 @@
 
 <script>
 $(document).ready(function() {
-
 
     $("#paymentinfo").effect("bounce", {
         times: 4

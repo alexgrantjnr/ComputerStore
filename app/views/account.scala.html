@@ -7,11 +7,11 @@
         <!-- <div class="col-sm-12 col-md-12 user-details"> -->
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-0">
             <div class="user-image">
-                @if(env.resource("public/images/user_profiles/" +user.getEmail + ".jpg").isDefined){
-                    < <img class="img-responsive img-circle"  src="/assets/images/user_profiles/@(user.getEmail + ".jpg")">
+                @if(env.resource("public/images/user_profiles/" + user.getEmail + ".jpg").isDefined){
+                    <a href = "/assets/images/user_profiles/@(user.getEmail + ".jpg")" data-lightbox="image-1" data-title="@(user.getFirstName + user.getLastName)"><img class="img-responsive img-circle" src="/assets/images/user_profiles/@(user.getEmail + ".jpg")"></a>
                 }else{
-                    <img class="img-responsive" src="/assets/images/blank_profile.jpg">
-                }
+                    <img class="img-responsive" src="/assets/images/productImages/noImage.jpg">
+                    }
             </div>
             <div class="user-info-block">
                 <div class="user-heading">
@@ -20,13 +20,13 @@
                 </div>
                 <ul class="navigation">
                     <li id="user-info-list">
-                        <p class="text-center"><span class="glyphicon glyphicon-user" id="user-info-button"></span></p>
+                        <p class="text-center"><span class="glyphicon glyphicon-user purple-to-blue" id="user-info-button"></span></p>
                     </li>
                     <li id="user-setting-list">
-                        <p class="text-center"><span class="glyphicon glyphicon-cog" id="user-settings-button"></span></p>
+                        <p class="text-center"><span class="glyphicon glyphicon-cog purple-to-blue" id="user-settings-button"></span></p>
                     </li>
                     <li id="order-info-list">
-                        <p class="text-center"><span class="glyphicon glyphicon-calendar" id="order-info-button"></span></p>
+                        <p class="text-center"><span class="glyphicon glyphicon-calendar purple-to-blue" id="order-info-button"></span></p>
                     </li>
                 </ul>
             </div>

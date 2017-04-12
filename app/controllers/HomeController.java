@@ -74,11 +74,6 @@ public class HomeController extends Controller {
         return redirect(routes.HomeController.account());
     }
 
-    @Security.Authenticated(Secured.class)
-    public Result payment() {
-        return ok(payment.render(getUserFromSession()));
-    }
-
     public Result product(Long productId) {
         List<Product> relatedProducts = Product.indexProducts();
         Product prod = Product.getProductById(productId);
