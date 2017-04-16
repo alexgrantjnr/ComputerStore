@@ -34,6 +34,9 @@ public class User extends Model{
     @OneToOne(mappedBy="user", cascade = CascadeType.ALL)
     private Basket basket;
 
+    @OneToOne(mappedBy="user", cascade = CascadeType.ALL)
+    private Wishlist wishlist;
+
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<ShopOrder> orders;
 
@@ -104,6 +107,14 @@ public class User extends Model{
         this.mobile = mobile;
     }
 
+    public Wishlist getWishlist() {
+        return wishlist;
+    }
+
+    public void setWishlist(Wishlist wishlist) {
+        this.wishlist = wishlist;
+    }
+
     public Basket getBasket() {
         return basket;
     }
@@ -162,5 +173,4 @@ public class User extends Model{
         find.ref(email).delete();
     }
 }
-
 

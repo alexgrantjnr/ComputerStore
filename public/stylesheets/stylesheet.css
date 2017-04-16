@@ -13,6 +13,41 @@ a:hover, a:visited, a:link, a:active
     position: relative;
 }
 
+.parallax {
+    background-image: url("../images/parallax.jpg");
+    height: 35em;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0;
+}
+
+.parallax-text{
+    padding-top: 4em;
+    font-size: 3em;
+    margin-left: 2em;
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.indexlinetext {
+    width: 100%;
+    color: #9d9d9d;
+    text-align: center;
+    border-bottom: 1px solid #9d9d9d;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+    padding-right: 60%;
+}
+
+.indexlinetext span {
+    color: #9d9d9d;
+    background-color: white;
+    padding:0 10px;
+}
+
+
 .dropdown-menu {
     position: absolute;
     padding-bottom: 4em;

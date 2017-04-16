@@ -11,7 +11,6 @@ import java.util.Random;
 @Entity
 public class Product extends Model {
 
-
     @SequenceGenerator(name = "product_gen",allocationSize = 1, initialValue = 1)
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_gen")
@@ -46,11 +45,11 @@ public class Product extends Model {
     }
 
     public static List<Product> indexProducts(){
-        return Product.find.where().between("productId",0,3).findList();
+        return Product.find.where().between("productId",0,8).findList();
     }
 
     public static List<Product> filterProduct(String filter,double min,double max){
-        return Product.find.where().ilike("name","%" + filter + "%").between("price",min,max).findList();
+        return Product.find.where().ilike("name","%" + filter + "%").and().between("price",min,max).findList();
     }
 
     public static Product getProductById(Long productId){

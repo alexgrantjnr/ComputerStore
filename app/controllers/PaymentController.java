@@ -40,17 +40,20 @@ public class PaymentController extends Controller{
                         userDetails.setTotal(getUserFromSession().getBasket().getBasketTotal());
                         userDetails.save();
                     }else{
+                        flash("declined", "Payment Has Been Declined");
                         return badRequest(payment.render(getUserFromSession(), paymentForm));
                     }
                 }else{
+                    flash("declined", "Payment Has Been Declined");
                     return badRequest(payment.render(getUserFromSession(), paymentForm));
                 }
             }else{
+                flash("declined", "Payment Has Been Declined");
                 return badRequest(payment.render(getUserFromSession(), paymentForm));
             }
         }
         List<Product> indexProducts = Product.indexProducts();
-        return ok(index.render(getUserFromSession(),indexProducts));
+        return ok(index.render(getUserFromSession(),indexProducts,env));
     }
 
     private User getUserFromSession(){

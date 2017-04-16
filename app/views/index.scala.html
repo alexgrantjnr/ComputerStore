@@ -1,6 +1,6 @@
 @import helper._
 @import html5.tags.html._
-@(user: models.User,indexProducts:List[models.Product])
+@(user: models.User,indexProducts:List[models.Product],env: play.api.Environment)
 @main("Home", user){
 
 <div class="container-fluid">
@@ -10,27 +10,23 @@
         </div>
     </div>
     <!--end of row-->
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id = "#bigbanner">
-            <img class="img-responsive" src="@routes.Assets.versioned("images/macbook.png")" alt="macbook" />
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 " id = "#bigbanner">
-            <img class="img-responsive" src="@routes.Assets.versioned("images/headphones.png")" alt="headphones" />
-        </div>
-    </div>
-    <!--end of row-->
 </div>
 <!--end of end of container fluid-->
 <div class="container">
     <br>
     <div class="row">
+        <h2 class = "indexlinetext"><span>UNBEATABLE DEALS</span></h2>
     @for(p <- indexProducts){
         <!--Play will render these elements for the   -->
             <a href="@routes.HomeController.product(1)">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="index-products">
             <h3 class="text-center text-muted">@p.getName</h3>
             <h4 class="text-center text-muted"><span class = "purpletext">€</span>@p.getPrice</h4>
-            <img class="img-responsive" src="@routes.Assets.versioned("images/cpucooler.png")">
+                @if(env.resource("public/images/productImages/" + p.getProductId + ".jpg").isDefined){
+                    <img class="img-responsive" src="/assets/images/productImages/@(p.getProductId + ".jpg")"
+                }else{
+                    <img class="img-responsive" src="/assets/images/productImages/noImage.jpg">
+                }
                 <a href = "@routes.ShoppingController.addToBasket(p.getProductId)">
             <p class="text-center">
                 <button type="button" id="addtocartbutton">Add To Cart <i class="fa fa-1x fa-shopping-cart" aria-hidden="true"></i></button>
@@ -45,9 +41,13 @@
 </div>
 <!--end of end of container -->
 
-<script>
-$(document).ready(function() {
- $("label").remove();
-});
-</script>
+    <div class="container-fluid">
+        <div class="row">
+<div class="parallax">
+    <h2 class = "parallax-text">The Latest Apple Products <i class="fa fa-apple" aria-hidden="true"></i>
+    </h2>
+</div>
+        </div>
+
+    </div>
 }

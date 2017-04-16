@@ -23,6 +23,7 @@
     <!--Custom font-->
     <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <!--Jquery UI-->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 </head>
@@ -37,21 +38,21 @@
                 <!--end of col-->
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 pull-right">
                     @if(user != null){
-                        <a href = "@routes.HomeController.wishlist()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-heart-o" aria-hidden="true"></i> WishList</h3></a>
-                        <a href = "@routes.HomeController.cart()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</h3></a>
-                        <a href = "@routes.HomeController.account()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> Account</h3></a>
-                        <a href = "@routes.LoginController.logout()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> logout</h3></a>
+                        <a href = "@routes.LoginController.logout()"><h4 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> logout</h4></a>
+                        <a href = "@routes.HomeController.wishlist()"><h4 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-heart" aria-hidden="true"></i> WishList</h4></a>
+                        <a href = "@routes.HomeController.cart()"><h4 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</h4></a>
+                        <a href = "@routes.HomeController.account()"><h4 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> Account</h4></a>
                     @if(user.getRole.equals("Admin")) {
-                        <a href = "@routes.AdminController.adminPanel()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-lock" aria-hidden="true"></i>Admin Panel</h3></a>
+                        <a href = "@routes.AdminController.adminPanel()"><h4 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-lock" aria-hidden="true"></i>Admin Panel</h4></a>
                     }
                     }else{
-                        <a href = "@routes.LoginController.login()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> login</h3></a>
-                        <a href = "@routes.HomeController.register()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> Register</h3></a>
+                        <a href = "@routes.LoginController.login()"><h4 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> login</h4></a>
+                        <a href = "@routes.HomeController.register()"><h4 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-user" aria-hidden="true"></i> Register</h4></a>
 
                     }
-                    <a href = "@routes.HomeController.blog()"><h3 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-pencil" aria-hidden="true"></i> Blog</h3></a>
+                    <a href = "@routes.HomeController.blog()"><h4 class="purple-to-blue pull-right navbarlinks"><i class="fa fa-pencil" aria-hidden="true"></i> Blog</h4></a>
                     <div class="dropdown">
-                        <a href = "#" data-toggle="dropdown" class="dropdown-toggle pull-right" id = "dropdown-click"><h3 class="purple-to-blue pull-left navbarlinks "><i class="fa fa-search" aria-hidden="true"></i> Search</h3></a>
+                        <a href = "#" data-toggle="dropdown" class="dropdown-toggle pull-right" id = "dropdown-click"><h4 class="purple-to-blue pull-left navbarlinks "><i class="fa fa-search" aria-hidden="true"></i> Search</h4></a>
                         <ul class="dropdown-menu" id = "search-dropdown">
                             <li>
                                 <h3 class = "text-center whitetext">Search <span class = "joined-font purpletext">Peecy Wurld</span></h3>

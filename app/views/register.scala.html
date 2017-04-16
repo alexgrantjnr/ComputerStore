@@ -9,7 +9,7 @@
 
                 <h2 class="text-center purpletext">Register For <span class = "joined-font">Peecy Wurld</span></h2>
     @helper.form(action = routes.HomeController.registerSubmit() ,'enctype -> "multipart/form-data", 'method -> "POST"){
-        @text(addUserForm("Email"), 'class -> "form-control", 'placeholder -> "Email")
+        @text(addUserForm("email"), 'class -> "form-control", 'placeholder -> "Email")
         @text(addUserForm("firstName"), 'class -> "form-control", 'placeholder -> "First Name")
         @text(addUserForm("lastName"), 'class -> "form-control", 'placeholder -> "Last Name")
         @password(addUserForm("password"), 'class -> "form-control", 'placeholder -> "First Name")

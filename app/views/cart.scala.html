@@ -26,7 +26,8 @@
                             <td data-th="Product">
                                 <div class="row">
                                     <a href = "@routes.HomeController.product(i.getProduct.getProductId)" style = "color: inherit !important;">
-                                    <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/>
+                                    <div class="col-sm-2 hidden-xs"><img class="img-responsive" src="/assets/images/productImages/thumbnails/@(i.getProduct().productId + ".jpg")">
+
                                     </div>
 
                                     <div class="col-sm-10">
@@ -85,12 +86,13 @@
                                 </button></a>
                             </td>
 
-                            <td>
+                            <td>@if(user.getBasket() != null) {
                                 <a href = "@routes.ShoppingController.emptyBasket()">
                                     <button type="button" class="btn btn-danger">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
-                                    Empty Basket
+                                        Empty Basket
                                     </button></a>
+                            }
                             </td>
 
                             <td colspan="2" class="hidden-xs">

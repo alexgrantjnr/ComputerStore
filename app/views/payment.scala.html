@@ -11,8 +11,8 @@
             <div class="panel panel-default credit-card-box">
                 <div class="panel-heading display-table" id="paymentheading">
                     <div class="row display-tr">
-                        <h2 class="panel-title display-td text-center whitetext">Enter Your Payment Details</h2>
-                        <h2 class="panel-title display-td text-center whitetext">Order Total : €@user.getBasket.getBasketTotal</h2>
+                        <h2 class="panel-title display-td text-center" style="color: white !important;">Enter Your Payment Details</h2>
+                        <h2 class="panel-title display-td text-center" style="color: white !important;">Order Total : €@user.getBasket.getBasketTotal</h2>
                         <div class="display-td">
                             <img class="img-responsive" src="http://i76.imgup.net/accepted_c22e0.png">
                         </div>
@@ -21,6 +21,11 @@
                 <div class="panel-body">
                     <form role="form" action = "@routes.PaymentController.paymentSubmit" id="payment-form" name = "paymentForm">
                         <div class="row">
+                            @if(flash.containsKey("declined")) {
+                                <div class="alert alert-danger">
+                                @flash.get("declined")
+                                </div>
+                            }
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label for="cardNumber">CARD NUMBER</label>

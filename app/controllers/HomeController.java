@@ -31,7 +31,7 @@ public class HomeController extends Controller {
 
     public Result index() {
         List<Product> indexProducts = Product.indexProducts();
-        return ok(index.render(getUserFromSession(),indexProducts));
+        return ok(index.render(getUserFromSession(),indexProducts,env));
     }
 
     public Result register(){
