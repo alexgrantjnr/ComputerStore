@@ -1,6 +1,7 @@
 package controllers;
 
 import models.BlogPost;
+import models.PaymentDetails;
 import models.Product;
 import models.User;
 import play.api.Environment;
@@ -15,6 +16,7 @@ import play.mvc.Result;
 import views.html.*;
 import javax.inject.Inject;
 import java.io.File;
+import java.util.Calendar;
 import java.util.List;
 
 import org.im4java.core.ConvertCmd;
@@ -43,7 +45,14 @@ public class AdminController extends Controller {
         List<Product> allProducts = Product.findAll();
         List<BlogPost> allBlogPosts = BlogPost.findAll();
         List<User> allUsers = User.findAll();
-        return ok(adminpanel.render(addProductForm, allProducts, getUserFromSession(), addBlogPostForm, allUsers, allBlogPosts, env));
+        int[] barChartData = barChartData();
+        int[] userJoinDate = userJoinDate();
+        double[] revenuePerMonth = revenuePerMonth();
+        Double[] temp = new Double[revenuePerMonth.length];
+        for (int i = 0; i< temp.length; i++){
+            temp[i] = revenuePerMonth[i];
+        }
+        return ok(adminpanel.render(addProductForm, allProducts, getUserFromSession(), addBlogPostForm, allUsers, allBlogPosts, env, barChartData, userJoinDate, temp));
     }
 
     public Result addBlogSubmit() {
@@ -72,6 +81,14 @@ public class AdminController extends Controller {
         Form<Product> addProductForm = formFactory.form(Product.class);
         Form<BlogPost> addBlogPostForm = formFactory.form(BlogPost.class);
         //Create a Form object which takes the form passed from the view
+        int[] barChartData = barChartData();
+        int[] userJoinDate = userJoinDate();
+        double[] revenuePerMonth = revenuePerMonth();
+
+        Double[] temp = new Double[revenuePerMonth.length];
+        for (int i = 0; i< temp.length; i++){
+            temp[i] = revenuePerMonth[i];
+        }
 
         Form<Product> newProduct = formFactory.form(Product.class).bindFromRequest();
 
@@ -85,7 +102,7 @@ public class AdminController extends Controller {
         //If the form has errors return a bad request
         if (newProduct.hasErrors()) {
             flash("error", "Please correct the form below");
-            return badRequest(adminpanel.render(addProductForm, allProducts, getUserFromSession(), addBlogPostForm, allUsers, allBlogPosts, env));
+            return badRequest(adminpanel.render(addProductForm, allProducts, getUserFromSession(), addBlogPostForm, allUsers, allBlogPosts, env, barChartData, userJoinDate, temp));
         }
         //Making a new object of type Product and assigning the variables from the form to the object
         Product newProd = newProduct.get();
@@ -171,5 +188,60 @@ public class AdminController extends Controller {
             return "image file missing";
         }
         return "image file missing";
+    }
+
+    //Gets barchart data based on stock per category
+    public int[] barChartData() {
+        int[] barChartData = new int[6];
+        List<Product> products = Product.findAll();
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getCategory().equals("Laptops")) {
+                barChartData[0] += products.get(i).getQuantity();
+            } else if (products.get(i).getCategory().equals("Desktops")) {
+                barChartData[1] += products.get(i).getQuantity();
+            } else if (products.get(i).getCategory().equals("Monitors")) {
+                barChartData[2] += products.get(i).getQuantity();
+            } else if (products.get(i).getCategory().equals("Tablets")) {
+                barChartData[3] += products.get(i).getQuantity();
+            } else if (products.get(i).getCategory().equals("Accessories")) {
+                barChartData[4] += products.get(i).getQuantity();
+            } else {
+                barChartData[5] += products.get(i).getQuantity();
+            }
+        }
+        return barChartData;
+    }
+
+    //Gets users joined per month
+    public int[] userJoinDate() {
+        int joinDate[] = new int[12];
+        Calendar cal = Calendar.getInstance();
+        List<User> userJoins = User.findAll();
+        for (int i = 0; i < userJoins.size(); i++) {
+            cal.setTime(userJoins.get(i).getJoinDate());
+            int month = cal.get(Calendar.MONTH);
+            for (int j = 0; j < joinDate.length; j++) {
+                if (month == j) {
+                    joinDate[j]++;
+                }
+            }
+        }
+        return joinDate;
+    }
+
+    public double[] revenuePerMonth() {
+        double[] revenuePerMonth = new double[12];
+        Calendar cal = Calendar.getInstance();
+        List<PaymentDetails> payments = PaymentDetails.findAll();
+        for (int i = 0; i < payments.size(); i++) {
+            cal.setTime(payments.get(i).getPaymentDate());
+            int month = cal.get(Calendar.MONTH);
+            for (int j = 0; j < revenuePerMonth.length; j++) {
+                if (month == j) {
+                    revenuePerMonth[j] += payments.get(i).getTotal();
+                }
+            }
+        }
+        return revenuePerMonth;
     }
 }

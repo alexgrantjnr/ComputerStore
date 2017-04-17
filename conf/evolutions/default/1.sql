@@ -49,6 +49,7 @@ create table payment_details (
   card_number                   varchar(255),
   expiry_date                   varchar(255),
   cvv_num                       varchar(255),
+  payment_date                  timestamp,
   holders_name                  varchar(255),
   total                         double,
   constraint pk_payment_details primary key (payment_id)

@@ -39,6 +39,7 @@ public class PaymentController extends Controller{
                     if (userDetails.getExpiryDate().matches("[0-9]+")) {
                         userDetails.setTotal(getUserFromSession().getBasket().getBasketTotal());
                         userDetails.save();
+                        getUserFromSession().getBasket().removeAllItems();
                     }else{
                         flash("declined", "Payment Has Been Declined");
                         return badRequest(payment.render(getUserFromSession(), paymentForm));

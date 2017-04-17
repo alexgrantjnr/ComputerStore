@@ -25,6 +25,8 @@ public class PaymentDetails extends Model {
     public String expiryDate;
     @Constraints.Required
     public String cvvNum;
+    @Formats.DateTime(pattern="dd/MM/yyyy")
+    private Date paymentDate = new Date();
     @Constraints.Required
     public String holdersName;
     public double total;
@@ -33,6 +35,10 @@ public class PaymentDetails extends Model {
     }
 
     public static Finder<String,PaymentDetails> find = new Finder<>(PaymentDetails.class);
+
+    public static List<PaymentDetails> findAll() {
+    return PaymentDetails.find.all();
+    }
 
     public static List<PaymentDetails> findByUser(String email){
         return find.where().eq("holdersEmail",email).findList();
@@ -92,5 +98,13 @@ public class PaymentDetails extends Model {
 
     public void setPaymentId(long paymentId) {
         this.paymentId = paymentId;
+    }
+
+    public Date getPaymentDate() {
+        return paymentDate;
+    }
+
+    public void setPaymentDate(Date paymentDate) {
+        this.paymentDate = paymentDate;
     }
 }
