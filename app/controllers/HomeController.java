@@ -62,6 +62,7 @@ public class HomeController extends Controller {
     }
 
     @Security.Authenticated(Secured.class)
+    @Transactional
     public Result updateDetails(){
         String saveImageMsg = "";
         Form<User> newDetails = formFactory.form(User.class).bindFromRequest();

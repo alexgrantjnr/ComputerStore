@@ -18,7 +18,7 @@
         <h2 class = "indexlinetext"><span>UNBEATABLE DEALS</span></h2>
     @for(p <- indexProducts){
         <!--Play will render these elements for the   -->
-            <a href="@routes.HomeController.product(1)">
+            <a href="@routes.HomeController.product(p.getProductId)">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="index-products">
             <h3 class="text-center text-muted">@p.getName</h3>
             <h4 class="text-center text-muted"><span class = "purpletext">€</span>@p.getPrice</h4>
@@ -48,6 +48,5 @@
     </h2>
 </div>
         </div>
-
     </div>
 }

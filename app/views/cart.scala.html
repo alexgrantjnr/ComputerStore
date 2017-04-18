@@ -104,8 +104,10 @@
                             }
                             </td>
 
-                            <td><a href="@routes.PaymentController.payment()" class="btn btn-success btn-block">
-                                Checkout <i class="fa fa-angle-right"></i></a>
+                            <td>@if(user.getBasket() != null) {
+                                <a href="@routes.PaymentController.payment()" class="btn btn-success btn-block">
+                                    Checkout <i class="fa fa-angle-right"></i></a>
+                            }
                             </td>
 
                         </tr>

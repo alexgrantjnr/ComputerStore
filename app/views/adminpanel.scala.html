@@ -84,8 +84,13 @@
                                     @for(u <- allUsers) {
                                         <tr>
                                             <td align="center">
-                                                <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                                <a href = "@routes.AdminController.deleteUser(u.getEmail)" class="btn btn-danger" ><em class="fa fa-trash"></em></a>
+                                                @if(u.getRole.equals("Admin")) {
+                                                    <a href = "@routes.AdminController.removeAdmin(u.getEmail)" class="btn btn-default"><i class="fa fa-unlock-alt" aria-hidden="true"></i></a>
+                                                }
+                                                @if(u.getRole.equals("Customer")){
+                                                    <a href = "@routes.AdminController.giveAdmin(u.getEmail)" class="btn btn-default"><i class="fa fa-lock" aria-hidden="true"></i></a>
+                                                }
+                                                    <a href = "@routes.AdminController.deleteUser(u.getEmail)" class="btn btn-danger" ><em class="fa fa-trash"></em></a>
                                             </td>
                                             <td>@u.getEmail()</td>
                                             <td>@u.getFirstName()</td>

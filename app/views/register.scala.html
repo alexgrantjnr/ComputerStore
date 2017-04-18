@@ -9,22 +9,34 @@
 
                 <h2 class="text-center purpletext">Register For <span class = "joined-font">Peecy Wurld</span></h2>
     @helper.form(action = routes.HomeController.registerSubmit() ,'enctype -> "multipart/form-data", 'method -> "POST"){
+        <p><b>Email</b></p>
         @text(addUserForm("email"), 'class -> "form-control", 'placeholder -> "Email")
+        <p><b>First Name</b></p>
         @text(addUserForm("firstName"), 'class -> "form-control", 'placeholder -> "First Name")
+        <p><b>Last Name</b></p>
         @text(addUserForm("lastName"), 'class -> "form-control", 'placeholder -> "Last Name")
+        <p><b>Password</b></p>
         @password(addUserForm("password"), 'class -> "form-control", 'placeholder -> "First Name")
+        <p><b>Address</b></p>
         @text(addUserForm("address"), 'class -> "form-control", 'placeholder -> "Address")
+        <p><b>Age</b></p>
         @number(addUserForm("age"),'type -> "number", 'class -> "form-control", 'min -> "1", 'step -> "1", 'max -> "9999", 'value -> "0")
-        <input type="file" name = "profilePic" class = "form-control">
+        <p><b>Profile Image</b></p>
+        @file(addUserForm("profilePic"), 'class -> "form-control")
+        <p><b>Phone</b></p>
         @text(addUserForm("phone"), 'class -> "form-control", 'placeholder -> "Phone")
+        <p><b>Mobile</b></p>
         @text(addUserForm("mobile"), 'class -> "form-control", 'placeholder -> "Mobile")
-
         <input type="submit" class="form-control pull-right" id="add-product-submit" value="Submit" style="width: 30%; margin-bottom: 2em;">
     }
             </div>
         </div>
     </div>
 
-
+    <script>
+            $(document).ready(function() {
+                $("label").remove();
+            });
+    </script>
 
 }

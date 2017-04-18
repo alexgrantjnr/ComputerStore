@@ -66,14 +66,23 @@
         <div class=" col-md-12 col-lg-12 col-lg-12 col-xs-12 " id="account-settings">
             <div class="container">
             @helper.form(action = routes.HomeController.updateDetails() ,'enctype -> "multipart/form-data", 'method -> "POST"){
+                <p><b>Email</b></p>
                 @text(updateDetailsForm("email"), 'class -> "form-control", 'placeholder -> "Email")
+                <p><b>First Name</b></p>
                 @text(updateDetailsForm("firstName"), 'class -> "form-control", 'placeholder -> "First Name")
+                <p><b>Last Name</b></p>
                 @text(updateDetailsForm("lastName"), 'class -> "form-control", 'placeholder -> "Last Name")
+                <p><b>Password</b></p>
                 @password(updateDetailsForm("password"), 'class -> "form-control", 'placeholder -> "First Name")
+                <p><b>Address</b></p>
                 @text(updateDetailsForm("address"), 'class -> "form-control", 'placeholder -> "Address")
+                <p><b>Age</b></p>
                 @number(updateDetailsForm("age"),'type -> "number", 'class -> "form-control", 'min -> "1", 'step -> "1", 'max -> "9999", 'value -> "0")
+                <p><b>Profile Image</b></p>
                 @file(updateDetailsForm("profilePic"), 'class -> "form-control")
+                <p><b>Phone</b></p>
                 @text(updateDetailsForm("phone"), 'class -> "form-control", 'placeholder -> "Phone")
+                <p><b>Mobile</b></p>
                 @text(updateDetailsForm("mobile"), 'class -> "form-control", 'placeholder -> "Mobile")
                 <input type="submit" class="form-control pull-right" id="add-product-submit" value="Submit" style="width: 30%; margin-bottom: 2em;">
                 }
@@ -162,4 +171,10 @@ $(document).ready(function() {
     });
 });
 </script>
+
+    <script>
+            $(document).ready(function() {
+                     $("label").remove();
+                    });
+            </script>
 }

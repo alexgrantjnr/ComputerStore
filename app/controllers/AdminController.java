@@ -138,6 +138,22 @@ public class AdminController extends Controller {
         return redirect(routes.AdminController.adminPanel());
     }
 
+    @Transactional
+    public Result giveAdmin(String email){
+        User u = User.find.byId(email);
+        u.setRole("Admin");
+        u.update();
+        return redirect(routes.AdminController.adminPanel());
+    }
+
+    @Transactional
+    public Result removeAdmin(String email){
+        User u = User.find.byId(email);
+        u.setRole("Customer");
+        u.update();
+        return redirect(routes.AdminController.adminPanel());
+    }
+
     private User getUserFromSession() {
         return User.getUserById(session().get("email"));
     }

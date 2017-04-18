@@ -27,6 +27,8 @@ GET     /removeitem/:productId             controllers.ShoppingController.remove
 GET     /additem/:productId                controllers.ShoppingController.addOne(productId: Long)
 GET     /emptybasket                       controllers.ShoppingController.emptyBasket()
 GET     /deleteuser/:email                 controllers.AdminController.deleteUser(email: String)
+GET     /giveadmin/:email                  controllers.AdminController.giveAdmin(email: String)
+GET     /removeadmin/:email                controllers.AdminController.removeAdmin(email: String)
 GET     /deleteblogpost/:blogpost          controllers.AdminController.deleteBlogPost(blogpost: Long)
 GET     /likeBlogPost/:blogPostId          controllers.HomeController.updatePostLikes(blogPostId: Long)
 GET     /login                             controllers.LoginController.login()
