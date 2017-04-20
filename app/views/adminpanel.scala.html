@@ -19,6 +19,14 @@
         </div>
         <!--end of col -->
         <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12" id="admin-panel-display">
+
+            @if(flash.containsKey("editproduct")) {
+                <br>
+                <div class="alert alert-info">
+                    <b>@flash.get("editproduct")</b>
+                </div>
+            }
+
             <h2 class="text-center purpletext">Welcome @user.getFirstName @user.getLastName to the Admin Panel</h2>
             <div class="container-fluid admin-sections" id="charts-section">
                 <div class="row">
@@ -147,7 +155,7 @@
                                         @for(p <- allProducts) {
                                             <tr>
                                                 <td align="center">
-                                                    <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
+                                                    <a href = "@routes.AdminController.updateProduct(p.getProductId)" class="btn btn-default"><em class="fa fa-pencil"></em></a>
                                                     <a href = "@routes.AdminController.deleteProduct(p.getProductId)" class="btn btn-danger" ><em class="fa fa-trash"></em></a>
                                                 </td>
                                                 <td>@p.getProductId()</td>
@@ -157,6 +165,7 @@
                                             </tr>
                                         }
                                     </tbody>
+
                                 </table>
                             </div>
                         </div>
@@ -202,7 +211,6 @@
                                     @for(bp <- allBlogPosts) {
                                         <tr>
                                             <td align="center">
-                                                <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
                                                 <a href = "@routes.AdminController.deleteBlogPost(bp.getBlogId)" class="btn btn-danger" ><em class="fa fa-trash"></em></a>
                                             </td>
                                             <td>@bp.getBlogId()</td>
@@ -254,7 +262,16 @@
 
                                     @text(addProductForm("description"), 'class -> "form-control", 'id -> "add-product-textarea", 'placeholder -> "Description", '_label -> "Description : ")
 
-                                    <input type="file" name = "upload">
+                            <input type="file" accept="image/*" onchange="loadFile(event)" name = "upload">
+                            <img id="output" class = "img-responsive">
+                            <script>
+                                    var loadFile = function(event) {
+                                        var output = document.getElementById('output');
+                                        output.src = URL.createObjectURL(event.target.files[0]);
+                                    };
+                            </script>
+
+                            @text(addProductForm("productId"), '_label -> "", 'hidden -> "hidden")
 
                                     <input type="submit" class="form-control" id="add-product-submit" value="Submit">
                         }
@@ -280,7 +297,14 @@
                                 @helper.form(action = routes.AdminController.addBlogSubmit(), 'enctype -> "multipart/form-data", 'method -> "POST") {
                                     @text(addBlogPostForm("blogTitle"),'name ->"blogTitle", 'class -> "form-control", 'id -> "blogtitle", 'placeholder -> "Blog Title")
                                     @textarea(addBlogPostForm("blogDescription"), 'name ->"blogDescription", 'class -> "form-control", 'id -> "blogdescription", 'placeholder -> "Blog Description")
-                                    <input type = "file" name = "upload" class = "form-control">
+                                    <input type="file" accept="image/*" onchange="loadFile(event)" name = "upload">
+                                    <img id="output" class = "img-responsive">
+                                    <script>
+                                            var loadFile = function(event) {
+                                                var output = document.getElementById('output');
+                                                output.src = URL.createObjectURL(event.target.files[0]);
+                                            };
+                                    </script>
                                     <input type="submit" class="form-control" id="add-product-submit" value="Submit">
                                     }
 

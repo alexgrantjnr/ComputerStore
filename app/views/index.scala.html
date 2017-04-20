@@ -1,6 +1,6 @@
 @import helper._
 @import html5.tags.html._
-@(user: models.User,indexProducts:List[models.Product],env: play.api.Environment)
+@(user: models.User,indexProducts:List[models.Product],env: play.api.Environment,appleProducts:List[models.Product])
 @main("Home", user){
 
 <div class="container-fluid">
@@ -23,7 +23,7 @@
             <h3 class="text-center text-muted">@p.getName</h3>
             <h4 class="text-center text-muted"><span class = "purpletext">€</span>@p.getPrice</h4>
                 @if(env.resource("public/images/productImages/" + p.getProductId + ".jpg").isDefined){
-                    <img class="img-responsive" src="/assets/images/productImages/@(p.getProductId + ".jpg")"
+                    <img class="img-responsive" src="/assets/images/productImages/@(p.getProductId + ".jpg")">
                 }else{
                     <img class="img-responsive" src="/assets/images/productImages/noImage.jpg">
                 }
@@ -44,8 +44,33 @@
     <div class="container-fluid">
         <div class="row">
 <div class="parallax">
-    <h2 class = "parallax-text">The Latest Apple Products <i class="fa fa-apple" aria-hidden="true"></i>
-    </h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-lg-6 col-md-6 col-sm-6">
+                <h2 class = "parallax-text text-center">The Latest Apple Products <i class="fa fa-apple" aria-hidden="true"></i></h2>
+            </div>
+
+            @for(a <- appleProducts){
+                    <!--Play will render these elements for the   -->
+                <a href="@routes.HomeController.product(a.getProductId)">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="apple-products">
+                        <h3 class="text-center text-muted">@a.getName</h3>
+                        <h4 class="text-center text-muted"><span class = "purpletext">€</span>@a.getPrice</h4>
+                        @if(env.resource("public/images/productImages/" + a.getProductId + ".jpg").isDefined){
+                            <img class="img-responsive" src="/assets/images/productImages/@(a.getProductId + ".jpg")">
+                        }else{
+                            <img class="img-responsive" src="/assets/images/productImages/noImage.jpg">
+                        }
+                        <a href = "@routes.ShoppingController.addToBasket(a.getProductId)">
+                            <p class="text-center">
+                                <button type="button" id="addtocartbutton">Add To Cart <i class="fa fa-1x fa-shopping-cart" aria-hidden="true"></i></button>
+                            </p>
+                        </a>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
 </div>
         </div>
     </div>

@@ -13,6 +13,8 @@ import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
+import play.mvc.Security;
+import play.mvc.With;
 import views.html.*;
 import javax.inject.Inject;
 import java.io.File;
@@ -37,8 +39,8 @@ public class AdminController extends Controller {
         this.env = e;
     }
 
-    //@Security.Authenticated(Secured.class)
-    //@With(AuthAdmin.class)
+    @Security.Authenticated(Secured.class)
+    @With(AuthAdmin.class)
     public Result adminPanel() {
         Form<Product> addProductForm = formFactory.form(Product.class);
         Form<BlogPost> addBlogPostForm = formFactory.form(BlogPost.class);
@@ -55,6 +57,8 @@ public class AdminController extends Controller {
         return ok(adminpanel.render(addProductForm, allProducts, getUserFromSession(), addBlogPostForm, allUsers, allBlogPosts, env, barChartData, userJoinDate, temp));
     }
 
+    @Security.Authenticated(Secured.class)
+    @With(AuthAdmin.class)
     public Result addBlogSubmit() {
         String saveImageMsg = "";
         Form<BlogPost> addBlogPost = formFactory.form(BlogPost.class).bindFromRequest();
@@ -71,9 +75,28 @@ public class AdminController extends Controller {
         return redirect(controllers.routes.AdminController.adminPanel());
     }
 
-    //@Security.Authenticated(Secured.class)
-    //@With(AuthAdmin.class)
+    public Result updateProduct(Long productId){
+        Product update = Product.getProductById(productId);
+        Form<Product> addProductForm = formFactory.form(Product.class).fill(update);
+        Form<BlogPost> addBlogPostForm = formFactory.form(BlogPost.class);
+        List<Product> allProducts = Product.findAll();
+        List<BlogPost> allBlogPosts = BlogPost.findAll();
+        List<User> allUsers = User.findAll();
+        int[] barChartData = barChartData();
+        int[] userJoinDate = userJoinDate();
+        double[] revenuePerMonth = revenuePerMonth();
+        Double[] temp = new Double[revenuePerMonth.length];
+        for (int i = 0; i< temp.length; i++){
+            temp[i] = revenuePerMonth[i];
+        }
+
+        flash("editproduct","Please click Add A Product section to update your selected product");
+        return ok(adminpanel.render(addProductForm, allProducts, getUserFromSession(), addBlogPostForm, allUsers, allBlogPosts, env, barChartData, userJoinDate, temp));
+    }
+
     //Add a Product to the database
+    @Security.Authenticated(Secured.class)
+    @With(AuthAdmin.class)
     @Transactional
     public Result addProductSubmit() {
         String saveImageMsg;
@@ -107,7 +130,11 @@ public class AdminController extends Controller {
         //Making a new object of type Product and assigning the variables from the form to the object
         Product newProd = newProduct.get();
 
-        newProd.save();
+        if (newProd.getProductId() == null) {
+            newProd.save();
+        }else{
+            newProd.update();
+        }
 
         MultipartFormData data = request().body().asMultipartFormData();
 
@@ -121,23 +148,29 @@ public class AdminController extends Controller {
         return redirect(controllers.routes.AdminController.adminPanel());
     }
 
-    //@Security.Authenticated(Secured.class)
-    //@With(AuthAdmin.class)
+    @Security.Authenticated(Secured.class)
+    @With(AuthAdmin.class)
     public Result deleteProduct(Long productId) {
         Product.deleteProduct(productId);
         return redirect(routes.AdminController.adminPanel());
     }
 
+    @Security.Authenticated(Secured.class)
+    @With(AuthAdmin.class)
     public Result deleteBlogPost(Long blogId) {
         BlogPost.deleteBlogPost(blogId);
         return redirect(routes.AdminController.adminPanel());
     }
 
+    @Security.Authenticated(Secured.class)
+    @With(AuthAdmin.class)
     public Result deleteUser(String email) {
         User.deleteUser(email);
         return redirect(routes.AdminController.adminPanel());
     }
 
+    @Security.Authenticated(Secured.class)
+    @With(AuthAdmin.class)
     @Transactional
     public Result giveAdmin(String email){
         User u = User.find.byId(email);
@@ -146,6 +179,8 @@ public class AdminController extends Controller {
         return redirect(routes.AdminController.adminPanel());
     }
 
+    @Security.Authenticated(Secured.class)
+    @With(AuthAdmin.class)
     @Transactional
     public Result removeAdmin(String email){
         User u = User.find.byId(email);

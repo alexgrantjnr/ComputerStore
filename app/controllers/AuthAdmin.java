@@ -14,7 +14,7 @@ public class AuthAdmin extends Action.Simple {
         String id = ctx.session().get("email");
         if (id != null) {
             User u = User.getUserById(id);
-            if ("admin".equals(u.getRole())){
+            if ("Admin".equals(u.getRole())){
                 return delegate.call(ctx);
             }
         }

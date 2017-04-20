@@ -10,7 +10,7 @@
                 @if(env.resource("public/images/user_profiles/" + user.getEmail + ".jpg").isDefined){
                     <a href = "/assets/images/user_profiles/@(user.getEmail + ".jpg")" data-lightbox="image-1" data-title="@(user.getFirstName + user.getLastName)"><img class="img-responsive img-circle" src="/assets/images/user_profiles/@(user.getEmail + ".jpg")"></a>
                 }else{
-                    <img class="img-responsive" src="/assets/images/productImages/noImage.jpg">
+                    <img class="img-responsive" src="/assets/images/blank_profile.jpg">
                     }
             </div>
             <div class="user-info-block">

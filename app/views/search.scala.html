@@ -65,9 +65,12 @@
                                             <!--End of col-->
                                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                             <h2 class="text-center" id="productprice"><span class="purpletext">€</span> @p.getPrice</h2>
-                                            <a href = "@routes.ShoppingController.addToBasket(p.getProductId)">
-                                            <button type="button" id="addtocartbutton">Add To Cart <i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
-                                            </a>
+                                            @if(user != null) {
+                                                <a href = "@routes.ShoppingController.addToBasket(p.getProductId)">
+                                                    <button type="button" id="addtocartbutton">
+                                                        Add To Cart <i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+                                                </a>
+                                            }
                     </div>
             </div>
                 <!--End of row-->

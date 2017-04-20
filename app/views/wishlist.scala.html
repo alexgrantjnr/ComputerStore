@@ -17,9 +17,6 @@
 
                     <div class="row">
 
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                            <h2 class ="text-center">#ID</h2>
-                        </div><!--End of col-->
 
                         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
                             <h2 class="text-center">Details</h2>
@@ -36,9 +33,7 @@
                     @if(user.getWishlist() != null) {
                         @for(i <- user.getWishlist.getWishItems()) {
 
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <h4 class ="text-center">@i.getProduct().getProductId()</h4>
-                            </div> <!--End of col-->
+
 
                             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
                                 <div class="row">

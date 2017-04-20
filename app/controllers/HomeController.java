@@ -31,7 +31,8 @@ public class HomeController extends Controller {
 
     public Result index() {
         List<Product> indexProducts = Product.indexProducts();
-        return ok(index.render(getUserFromSession(),indexProducts,env));
+        List<Product> appleProducts = Product.appleProducts();
+        return ok(index.render(getUserFromSession(),indexProducts,env,appleProducts));
     }
 
     public Result register(){
@@ -77,7 +78,7 @@ public class HomeController extends Controller {
     }
 
     public Result product(Long productId) {
-        List<Product> relatedProducts = Product.indexProducts();
+        List<Product> relatedProducts = Product.relatedProducts();
         Product prod = Product.getProductById(productId);
         return ok(product.render(prod,getUserFromSession(),env,relatedProducts));
     }

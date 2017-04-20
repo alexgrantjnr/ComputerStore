@@ -14,7 +14,7 @@ public class Product extends Model {
     @SequenceGenerator(name = "product_gen",allocationSize = 1, initialValue = 1)
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_gen")
-    public long productId;
+    public Long productId;
     @Constraints.Required
     public String name;
     @Constraints.Required
@@ -40,12 +40,20 @@ public class Product extends Model {
         return Product.find.where().ilike("name","%" + filter + "%").orderBy("name asc").findList();
     }
 
+    public static List<Product>appleProducts(){
+        return find.where().between("productId",10,11).findList();
+    }
+
     public static List<Product> findByCategory(String category){
         return Product.find.where().ilike("category","%" + category + "%").findList();
     }
 
     public static List<Product> indexProducts(){
-        return Product.find.where().between("productId",0,8).findList();
+        return Product.find.where().between("productId",15,19).findList();
+    }
+
+    public static List<Product> relatedProducts(){
+        return Product.find.where().between("productId",4,7).findList();
     }
 
     public static List<Product> filterProduct(String filter,double min,double max){
@@ -60,7 +68,7 @@ public class Product extends Model {
         find.ref(productId).delete();
     }
 
-    public long getProductId() {
+    public Long getProductId() {
         return productId;
     }
 

@@ -61,6 +61,8 @@ public class LoginController extends Controller {
     }
 
     public Result logout() {
+        User u = User.getUserById(session().get("email"));
+        u.getBasket().removeAllItems();
         session().clear();
         flash("success", "You've been logged out");
         return redirect(

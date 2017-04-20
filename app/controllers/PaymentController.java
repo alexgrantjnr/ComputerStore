@@ -53,8 +53,7 @@ public class PaymentController extends Controller{
                 return badRequest(payment.render(getUserFromSession(), paymentForm));
             }
         }
-        List<Product> indexProducts = Product.indexProducts();
-        return ok(index.render(getUserFromSession(),indexProducts,env));
+        return redirect(routes.HomeController.index());
     }
 
     private User getUserFromSession(){
