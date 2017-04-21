@@ -1,9 +1,10 @@
 # ComputerStore
 
 This store was created using the Java Play! Framework, for our end of year 2 project, some of the features are
-  - Feature here
-  - Feature here
-  - Feature here
+  - Fully Functional Admin Panel
+  - Add products to cart and wishlist
+  - Create accounts and edit personal details
+  - Pay by credit card and view orders in your account
 
 # Team Members
 
