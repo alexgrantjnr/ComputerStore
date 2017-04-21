@@ -6,23 +6,23 @@
     <div class="row">
         <div class="col-lg-3 col-sm-3 col-xs-12 col-md-3" id="product-filter-bounds">
             <h2 class="text-center whitetext">Filter Results</h2>
-            <form action = "@routes.HomeController.">
+            <form action = "@routes.HomeController.filterProduct()" method="get">
                 <div class="form-group">
-                    <label for="brand">
+
                         <p class="whitetext">Brand</p>
-                    </label>
-                    <input type="text" name="name" class="form-control">
+
+                    <input type="text" name="productName" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="minprice">
+
                         <p class="whitetext">Minimum Price</p>
-                    </label>
+
                     <input type="number" min="1.00" step="1" max="9999" value="00.00" name="min" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="maxprice">
+
                         <p class="whitetext">Maximum Price</p>
-                    </label>
+                  
                     <input type="number" min="1.00" step="1" max="9999" value="00.00" name="max" class="form-control">
                 </div>
                 <input type="submit" value="Filter" id="product-submit" class="pull-right">

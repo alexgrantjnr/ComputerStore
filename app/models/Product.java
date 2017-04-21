@@ -57,7 +57,7 @@ public class Product extends Model {
     }
 
     public static List<Product> filterProduct(String filter,double min,double max){
-        return Product.find.where().ilike("name","%" + filter + "%").and().between("price",min,max).findList();
+        return Product.find.where().ilike("name","%" + filter + "%").between("price",min,max).findList();
     }
 
     public static Product getProductById(Long productId){
