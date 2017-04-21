@@ -47,6 +47,7 @@ public class AdminController extends Controller {
         List<Product> allProducts = Product.findAll();
         List<BlogPost> allBlogPosts = BlogPost.findAll();
         List<User> allUsers = User.findAll();
+        List<PaymentDetails> payments = PaymentDetails.findAll();
         int[] barChartData = barChartData();
         int[] userJoinDate = userJoinDate();
         double[] revenuePerMonth = revenuePerMonth();
@@ -54,7 +55,7 @@ public class AdminController extends Controller {
         for (int i = 0; i< temp.length; i++){
             temp[i] = revenuePerMonth[i];
         }
-        return ok(adminpanel.render(addProductForm, allProducts, getUserFromSession(), addBlogPostForm, allUsers, allBlogPosts, env, barChartData, userJoinDate, temp));
+        return ok(adminpanel.render(addProductForm, allProducts, getUserFromSession(), addBlogPostForm, allUsers, allBlogPosts, env, barChartData, userJoinDate, temp,payments));
     }
 
     @Security.Authenticated(Secured.class)
@@ -82,6 +83,7 @@ public class AdminController extends Controller {
         List<Product> allProducts = Product.findAll();
         List<BlogPost> allBlogPosts = BlogPost.findAll();
         List<User> allUsers = User.findAll();
+        List<PaymentDetails> payments = PaymentDetails.findAll();
         int[] barChartData = barChartData();
         int[] userJoinDate = userJoinDate();
         double[] revenuePerMonth = revenuePerMonth();
@@ -91,7 +93,7 @@ public class AdminController extends Controller {
         }
 
         flash("editproduct","Please click Add A Product section to update your selected product");
-        return ok(adminpanel.render(addProductForm, allProducts, getUserFromSession(), addBlogPostForm, allUsers, allBlogPosts, env, barChartData, userJoinDate, temp));
+        return ok(adminpanel.render(addProductForm, allProducts, getUserFromSession(), addBlogPostForm, allUsers, allBlogPosts, env, barChartData, userJoinDate, temp,payments));
     }
 
     //Add a Product to the database
@@ -103,6 +105,7 @@ public class AdminController extends Controller {
         //Create a new Form object of type product, which will be passed to the view
         Form<Product> addProductForm = formFactory.form(Product.class);
         Form<BlogPost> addBlogPostForm = formFactory.form(BlogPost.class);
+        List<PaymentDetails> payments = PaymentDetails.findAll();
         //Create a Form object which takes the form passed from the view
         int[] barChartData = barChartData();
         int[] userJoinDate = userJoinDate();
@@ -125,7 +128,7 @@ public class AdminController extends Controller {
         //If the form has errors return a bad request
         if (newProduct.hasErrors()) {
             flash("error", "Please correct the form below");
-            return badRequest(adminpanel.render(addProductForm, allProducts, getUserFromSession(), addBlogPostForm, allUsers, allBlogPosts, env, barChartData, userJoinDate, temp));
+            return badRequest(adminpanel.render(addProductForm, allProducts, getUserFromSession(), addBlogPostForm, allUsers, allBlogPosts, env, barChartData, userJoinDate, temp,payments));
         }
         //Making a new object of type Product and assigning the variables from the form to the object
         Product newProd = newProduct.get();

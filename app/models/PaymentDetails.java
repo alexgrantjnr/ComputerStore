@@ -37,7 +37,7 @@ public class PaymentDetails extends Model {
     public static Finder<String,PaymentDetails> find = new Finder<>(PaymentDetails.class);
 
     public static List<PaymentDetails> findAll() {
-    return PaymentDetails.find.all();
+    return PaymentDetails.find.orderBy("holdersEmail").findList();
     }
 
     public static List<PaymentDetails> findByUser(String email){

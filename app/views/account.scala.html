@@ -63,7 +63,7 @@
             </table>
             <!--Need some padding around the bottom of these-->
         </div>
-        <div class=" col-md-12 col-lg-12 col-lg-12 col-xs-12 " id="account-settings">
+        <div class="col-md-12 col-lg-12 col-lg-12 col-xs-12 " id="account-settings">
             <div class="container">
             @helper.form(action = routes.HomeController.updateDetails() ,'enctype -> "multipart/form-data", 'method -> "POST"){
                 <p><b>Email</b></p>
@@ -79,7 +79,14 @@
                 <p><b>Age</b></p>
                 @number(updateDetailsForm("age"),'type -> "number", 'class -> "form-control", 'min -> "1", 'step -> "1", 'max -> "9999", 'value -> "0")
                 <p><b>Profile Image</b></p>
-                @file(updateDetailsForm("profilePic"), 'class -> "form-control")
+                <input type="file" accept="image/*" onchange="loadFile(event)" name = "profilePic">
+                <img id="output" class = "img-responsive">
+                <script>
+                        var loadFile = function(event) {
+                            var output = document.getElementById('output');
+                            output.src = URL.createObjectURL(event.target.files[0]);
+                        };
+                </script>
                 <p><b>Phone</b></p>
                 @text(updateDetailsForm("phone"), 'class -> "form-control", 'placeholder -> "Phone")
                 <p><b>Mobile</b></p>
