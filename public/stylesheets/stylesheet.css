@@ -817,9 +817,19 @@ a:hover{
 
 /*Start of sign up CSS*/
 
-.container-form form{
+.reg-wrap{
     border: solid;
-    border-color: #a24ef4;
+    border-color: #46349b;
+    background:white;
+    margin-bottom: 1.5em;
+    margin-top: 1.5em;
+    padding: 20px;
+    width: 600px;
+    height: auto;
+}
+.reg-form form{
+    border: solid;
+    border-color: black;
     background:white;
     margin-bottom: 1.5em;
     margin-top: 1.5em;
@@ -829,52 +839,47 @@ a:hover{
     height: auto;
 }
 
-.container-form fieldset{
+.reg-form fieldset{
     border:0;
     padding:0;
     margin:0;
 }
 
-.container-form p.contact {
+.reg-form p.contact {
     font-size: 12px;
     margin:0px 0px 10px 0;
     line-height: 14px;
     font-family:Arial, Helvetica;
 }
 
-.container-form input[type="text"] {
+.reg-form input[type="text"] {
     width: 200px;
 }
 
-.container-form input[type="email"] {
+.reg-form input[type="email"] {
+    width: 200px;
+
+}
+
+.reg-form input[type="password"] {
     width: 200px;
 }
 
-.container-form input[type="password"] {
+.reg-form input[type="number"] {
     width: 200px;
 }
 
-.container-form input.birthday{
-    width:60px;
+.reg-form input[type="file"] {
+    width: 400px;
+    margin: auto;
+    text-align: center;
+}
+.pic-lable{
+    margin: auto;
+    text-align: center;
 }
 
-.container-form input.birthyear{
-    width:120px;
-    padding-left : 10px;
-}
-
-.container-form label {
-    color: #000;
-    font-weight:bold;
-    font-size: 12px;
-    font-family:Arial, Helvetica;
-}
-
-.container-form label.month {
-    width: 135px;
-}
-
-.container-form input, textarea {
+.reg-form input, textarea {
     background-color: white;
     border: 1px solid #46349b;
     padding: 7px;
@@ -886,7 +891,7 @@ a:hover{
     border-radius: 5px;
 }
 
-.container-form input:focus, textarea:focus {
+.reg-form input:focus, textarea:focus {
     border: 1px solid #ff5400;
     background-color: rgba(255, 255, 255, 1);
 }
@@ -895,68 +900,10 @@ a:hover{
     width:410px;
 }
 
-.container-form input.buttom{
-    background: #46349b;
-    display: inline-block;
-    padding: 5px 10px 6px;
-    color: #fbf7f7;
-    text-decoration: none;
-    font-weight: bold;
-    line-height: 1;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px #999;
-    text-shadow: 0 -1px 1px #222;
-    border: none;
-    position: relative;
-    cursor: pointer;
-    font-size: 14px;
-    font-family:Verdana, Geneva, sans-serif;
-}
-
-.container-form input.buttom:hover {
-    background-color: #2a78f6;
-}
-
-
 .headerform h3{
 
     text-align: center;
     color: #a24ef4;
-}
-
-#contactform h6{
-    font:  400  20px 'Just Another Hand', Helvetica, sans-serif;
-    color: #2a78f6;
-}
-
-.container-form, .datefield {
-    display: inline;
-    padding: 0.3em;
-    border: 1px solid #46349b;
-    background: #FFF;
-    border-radius: 4px;
-    color: #666;
-}
-
-#contactform, .datefield * {
-    display: inline-block;
-}
-
-.datefield input {
-    width: 3em;
-    padding: 0 0.4em;
-    border: none;
-    font-size: 100%;
-    background: none;
-    color: #000;
-}
-
-.datefield input#year {
-    width:3.5em;
-}
-
-.datefield input:focus {
-    outline:none;
 }
 
 .reg p {
@@ -969,7 +916,7 @@ p.agreement {
     margin-left:15px;
 }
 p.agreement  label{
-    font-size:80%;
+font-size:80%;
     width:390px;
     text-align:left;
 
